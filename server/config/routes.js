@@ -1,5 +1,11 @@
-// TODO: Require controllers for handling different requests to various routes
+var userController = require('../controllers/userController');
+var videoController = require('../controllers/videoController');
+
 
 exports = function(app, express) {
-  // TODO: Set up app routes, coordinating with front-end
+  // Handles request to sign up new user
+  app.post('/signup', userController.userSignUp);
+
+  // Handles request to sign in existing user
+  app.post('/signin', userController.userSignIn);
 }
