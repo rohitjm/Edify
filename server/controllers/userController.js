@@ -1,8 +1,9 @@
 var db = require('../db');
 
-exports = {
+module.exports = {
   // Handles signing up a new user and adding them to the database
   userSignUp: function (req, res) {
+    // TODO: Need to fix this to to add password as well
     db.User.findOrCreate({where: {username: req.body.username}})
     // .spread handles situation when more than 1 argument is returned from DB query (e.g. when using findOrCreate)
     .spread(function(user, created) {
@@ -21,11 +22,12 @@ exports = {
     .then(function(user) {
       if (!user) {
         console.log("Username doesn't exist!");
-        res.sendStats(200);
+        res.sendStatus(401); //Is this the correct status code for this situation?
       }
       // TODO: Add password salting/hashing (Passport ?)
       if (user.password === req.body.password) {
         //Create new user session, redirect user to some other page (Welcome page ?)
+        res.sendStatus(200);
       }
     })
   }

@@ -2,7 +2,7 @@ var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
 
 
-exports = function(app, express) {
+module.exports = function(app, express) {
   // Handles request to sign up new user
   app.post('/signup', userController.userSignUp);
 
