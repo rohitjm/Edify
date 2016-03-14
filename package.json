@@ -5,6 +5,7 @@
     "express": "^4.4.5",
     "morgan": "^1.1.1",
     "mysql": "^2.10.2",
-    "sequelize": "^3.19.3"
+    "sequelize": "^3.19.3",
+    "webpack": "^1.12.14"
   }
 }
