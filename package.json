@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "lint": "eslint -c .eslintrc.json --ignore-path .gitignore ."
+  },
+  "pre-commit": [
+    "lint"
+  ],
   "license": "UNLICENSED",
   "dependencies": {
     "body-parser": "^1.4.3",
@@ -6,5 +12,9 @@
     "morgan": "^1.1.1",
     "mysql": "^2.10.2",
     "sequelize": "^3.19.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^4.2.1",
+    "pre-commit": "^1.1.2"
   }
 }

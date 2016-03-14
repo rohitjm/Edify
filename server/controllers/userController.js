@@ -29,6 +29,6 @@ module.exports = {
         //Create new user session, redirect user to some other page (Welcome page ?)
         res.sendStatus(200);
       }
-    })
+    });
   }
-}
+};
