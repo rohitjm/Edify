@@ -3,7 +3,6 @@ var db = require('./db');
 
 var app = express();
 
-
 require('./config/middleware')(app, express);
 require('./config/routes')(app, express);
 
