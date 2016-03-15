@@ -31,4 +31,7 @@ module.exports = function(app, express) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
+  app.use(express.static(__dirname + '/../../client'));
 };
+
