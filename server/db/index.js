@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 
 // Fill in with your own mysql info (you'll probably be using root-user too)
 //                     db-name , user  ,  password
-var db = new Sequelize('thesis', 'root', 'Thomas');
+var db = new Sequelize('thesis', 'root', '');
 
 // User's schema
 var User = db.define('User', {
