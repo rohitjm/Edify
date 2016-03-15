@@ -4,23 +4,23 @@ var path = require('path');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    path.resolve(__dirname, '../client/components/App.js')
+    path.resolve(__dirname, 'client/components/App.jsx')
   ],
   output: {
-    path: path.resolve(__dirname, '../public'),
-    publicPath: 'http://localhost:3000/',
+    path: path.resolve(__dirname, 'client'),
+    publicPath: 'http://localhost:8000/',
     filename: "bundle.js",
   },
   devtool: '#source-map',
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel']
       },
       {
-        test: /\.css$/, loader: "style-loader!css-loader"
+        test: /\.css$/, loader: 'style-loader!css-loader'
       }
 
     ]
