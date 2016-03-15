@@ -11,6 +11,7 @@ import ReduxPromise from 'redux-promise'
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, logger()));
 
 ReactDOM.render(
+  <h3>From index.jsx</h3>
   <Provider store={store}>
     <AppContainer />
   </Provider>,

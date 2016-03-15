@@ -1,5 +1,6 @@
 {
   "license": "UNLICENSED",
+  "main": "client/index.jsx", 
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
