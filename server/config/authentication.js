@@ -1,6 +1,7 @@
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('../db');
+var bcrypt = require('bcrypt');
 
 // Uses 'passport-local' pre-made strategy to handle standard username and password verification
 passport.use(new Strategy(
@@ -10,13 +11,19 @@ passport.use(new Strategy(
       if (!user) {
         return done(null, false, {message: 'Username incorrect'}); 
       }
-      if (user.password !== password) {
-        return done(null, false, {message: 'Password incorrect'}); 
-      }
-      return done(null, user);
+      bcrypt.compare(password, user.password, function(err, match) {
+        if (err) {
+          return done(err);
+        }
+        if (!match) {
+          return done(null, false, {message: 'Password incorrect'}); 
+        } else {
+          return done(null, user);
+        }
+      });
     })
     .catch(function(err) {
-      console.log(err);
+      return done(err);
     });
   }
 ));

@@ -1,17 +1,34 @@
 var db = require('../db');
+var bcrypt = require('bcrypt');
 
 module.exports = {
   // Handles signing up a new user and adding them to the database
   userSignUp: function (req, res) {
-    db.User.findOrCreate({where: {username: req.body.username}, defaults: {password: req.body.password}})
-    // .spread handles situation when more than 1 argument is returned from DB query (e.g. when using findOrCreate)
-    .spread(function(user, created) {
-      if (!created) {
+    db.User.findOne({where: {username: req.body.username}})
+    .then(function(user) {
+      if (user) {
         console.log('Username already exists!');
         res.sendStatus(200);
       }
-      console.log('User created successfully');
-      res.sendStatus(201);
+      bcrypt.hash(req.body.password, 10, function(err, hash) {
+        if (err) {
+          res.send(err);
+        }
+        db.User.create({
+          username: req.body.username,
+          password: hash
+        })
+        .then(function(user) {
+          console.log('User created successfully');
+          res.sendStatus(201);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+      });
+    })
+    .catch(function(err) {
+      console.log(err);
     });
   },
 
