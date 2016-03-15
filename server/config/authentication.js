@@ -2,6 +2,7 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('../db');
 
+// Uses 'passport-local' pre-made strategy to handle standard username and password verification
 passport.use(new Strategy(
   function(username, password, done) {
     db.User.findOne({where: {username: username}})
@@ -20,10 +21,12 @@ passport.use(new Strategy(
   }
 ));
 
+// Handles session stuff (still not entirely sure how exactly)
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
+// ^^ Same as above ^^
 passport.deserializeUser(function(id, done) {
   db.User.findOne({where: {id: id}})
   .then(function(user) {
@@ -34,4 +37,4 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-module.exports = passport;
+module.exports.passport = passport;
