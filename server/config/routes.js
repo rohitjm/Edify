@@ -1,6 +1,7 @@
 var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
-var passport = require('./authentication.js').passport;
+var passport = require('./authentication').passport;
+var ensureAuthenticated = require('./authentication').ensureAuthenticated;
 
 
 module.exports = function(app, express) {

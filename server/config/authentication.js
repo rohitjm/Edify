@@ -37,4 +37,15 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+var ensureAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    console.log('You need to log in first!');
+    res.sendStatus(401);
+    // Redirects or does something else to indicate operation was unsuccessful 
+  }
+};
+
 module.exports.passport = passport;
+module.exports.ensureAuthenticated = ensureAuthenticated;
