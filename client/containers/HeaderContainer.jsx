@@ -7,8 +7,10 @@ export default class Header extends Component {
   render(){
   	return (
   	  <div id = "header">
-		<AuthBox />
-		<SearchBar />
+  	  	<tr>
+	  	  	<td><AuthBox /></td>
+					<td><SearchBar /></td>
+  	  	</tr>
   	  </div>
   	);
   }
