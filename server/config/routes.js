@@ -8,4 +8,4 @@ module.exports = function(app, express) {
 
   // Handles request to sign in existing user
   app.post('/signin', userController.userSignIn);
-}
+};

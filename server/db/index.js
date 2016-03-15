@@ -36,4 +36,5 @@ Tag.sync();
 
 exports.User = User;
 exports.Video = Video;
+exports.Tag = Tag;
 exports.db = db;
