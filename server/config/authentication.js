@@ -37,6 +37,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+// Checks to make sure user is logged in before allowing route request to continue
 var ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();

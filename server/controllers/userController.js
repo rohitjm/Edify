@@ -36,5 +36,13 @@ module.exports = {
     //   console.log(err);
     // })
     res.send('User signed in!');
+  },
+
+  // Handles user signing out and removes their existing session
+  userSignOut: function (req, res) {
+    // Built in function provided by Passport
+    req.logout();
+    console.log('User logged out!');
+    // Redirect or do something else to let user know they successfully loged out
   }
 };

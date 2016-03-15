@@ -10,4 +10,7 @@ module.exports = function(app, express) {
 
   // Handles request to sign in existing user
   app.post('/signin', passport.authenticate('local'), userController.userSignIn);
+
+  // Handles user sign out
+  app.post('/signout', userController.userSignOut);
 };
