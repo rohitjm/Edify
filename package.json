@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "lint": "eslint -c .eslintrc.json --ignore-path .gitignore ."
+    "lint": "eslint -c .eslintrc.json --ignore-path .gitignore .",
+    "start": "nodemon --watch server server/server.js",
+    "build": "webpack --progress --colors"
   },
   "pre-commit": [
     "lint"
@@ -12,9 +14,9 @@
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
+    "express-session": "^1.13.0",
     "morgan": "^1.1.1",
     "mysql": "^2.10.2",
-    "sequelize": "^3.19.3",
     "bcrypt": "^0.8.5",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.3.1",
@@ -22,7 +24,6 @@
     "jquery": "^2.2.0",
     "material-ui": "^0.15.0-alpha.1",
     "method-override": "~2.0.2",
-    "mongoose": "~3.8.0",
     "path": "^0.12.7",
     "q": "^1.4.1",
     "react": "^0.14.7",
@@ -39,7 +40,10 @@
     "request": "^2.69.0",
     "request-promise": "^2.0.1",
     "underbar": "^0.1.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^3.19.3"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -62,10 +66,6 @@
     "webpack-hot-middleware": "^2.9.1",
     "eslint-plugin-react": "^4.2.1",
     "pre-commit": "^1.1.2"
-  },
-  "scripts": {
-    "start": "nodemon --watch server server/server.js",
-    "build": "webpack --progress --colors"
   }
 }
 

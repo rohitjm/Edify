@@ -1,6 +1,8 @@
 var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var session = require('express-session');
 
 var webpack = require('webpack');
 var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../../webpack.config');
@@ -33,5 +35,7 @@ module.exports = function(app, express) {
   });
 
   app.use(express.static(__dirname + '/../../client'));
+  app.use(session({ secret: 'galvanized fern' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
 };
-
