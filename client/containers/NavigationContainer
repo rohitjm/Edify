@@ -1,2 +1,0 @@
-import React, {Component} from 'react';
-import Auth {from} '../components/Auth/Auth.jsx';

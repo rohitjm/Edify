@@ -24,7 +24,7 @@ module.exports = function(app, express) {
     path: '/__webpack_hmr', heartbeat: 10 * 1000
   }));
 
-  app.use(express.static(path.resolve(__dirname, '../../client')));
+  //app.use(express.static(path.resolve(__dirname, '../../client')));
 
   app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -34,4 +34,3 @@ module.exports = function(app, express) {
 
   app.use(express.static(__dirname + '/../../client'));
 };
-

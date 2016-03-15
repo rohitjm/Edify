@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import VideoListEntry from '../Main/VideoListEntry.jsx';
+import React, { Component } from 'react';
+import { VideoListEntry } from '../components/Main/VideoListEntry.jsx';
 
-export class MainVideoListCont extends Component {
+export class MainVideoListContainer extends Component {
 
   render(){
     return (

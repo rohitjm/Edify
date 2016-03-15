@@ -1,19 +1,17 @@
-import React, {Component} from 'react';
-import NavigationContainer from 'NavigationContainer';
-import SearchContainer from 'SearchContainer';
-import MainVideoListContainer from 'MainVideoListContainer';
+import React, { Component } from 'react';
+import { SearchContainer } from './SearchContainer.jsx';
+import { MainVideoListContainer } from './MainVideoListContainer.jsx';
+import Greeting from '../greeting.js';
 
-export class App extends Component{
+export default class AppContainer extends Component {
 
   render(){
     return (
-      <div>
-        <h3>Inside App Container</h3>
+      <div id="app-view">
+        <Greeting name = "Liz" />
+        <Greeting name = "Hazal" />
+        <SearchContainer />
       </div>
-      <NavigationContainer/>
-      <SearchContainer/>
-      <!--Featured-->
-      <MainVideoListContainer/>
-    )
+    );
   }
 }
