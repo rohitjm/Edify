@@ -17,7 +17,7 @@ const VideoList = (state = {}, action) => {
 		case 'FETCH_VIDEOS':
 			console.log("fetching videos");
 			$.get('/fetch').done(function(res){
-				console.log("response: ",res);
+				//console.log("response: ",res);
 				newstate.videos = res;
 			});
 			return newstate;
