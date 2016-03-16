@@ -1,7 +1,9 @@
 var db = require('../db');
+//var Video = require('..db/index.js');
 
-exports = {
+module.exports = {
   // Handles importing a video to the S3 storage 
+
   addVideo: function (req, res) {
 
   },
@@ -12,5 +14,12 @@ exports = {
   // Handles user search input and fetches related videos
   searchForVideos: function (req, res) {
 
+  },
+
+  fetchAll: function (req, res) {
+  	console.log("inside fetchAll");
+  	db.Video.findAll().then(function(videos){
+  		res.send(videos);
+  	});
   }
 };
