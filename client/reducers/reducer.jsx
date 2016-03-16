@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import $ from 'jquery';
 
 const CurrentVideo = (state = "a", action) => {
   switch (action.type) {
@@ -10,8 +11,24 @@ const CurrentVideo = (state = "a", action) => {
   }
 }
 
+const VideoList = (state = {}, action) => {
+	var newstate = Object.assign({},state);
+	switch (action.type) {
+		case 'FETCH_VIDEOS':
+			console.log("fetching videos");
+			$.get('/fetch').done(function(res){
+				console.log("response: ",res);
+				newstate.videos = res;
+			});
+			return newstate;
+		default:
+			return newstate;	
+	}
+}
+
 const VideoAppHandler = combineReducers({
-  currentVideo: CurrentVideo
+  currentVideo: CurrentVideo,
+  videos:VideoList
 });
 
 export default VideoAppHandler;
