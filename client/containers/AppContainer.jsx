@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import App from '../components/App.jsx';
 import { changeCurrentVideo} from '../actions/actions.jsx'
 import { connect } from 'react-redux';
