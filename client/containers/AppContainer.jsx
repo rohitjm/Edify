@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
-import { SearchContainer } from './SearchContainer.jsx';
-import { MainVideoListContainer } from './MainVideoListContainer.jsx';
-import Greeting from '../greeting.js';
+import App from '../components/App.jsx';
+import { changeCurrentVideo} from '../actions/actions.jsx'
+import { connect } from 'react-redux';
 
-export default class AppContainer extends Component {
 
-  render(){
-    return (
-      <div id="app-view">
-        <Greeting name = "Liz" />
-        <Greeting name = "Hazal" />
-        <SearchContainer />
-      </div>
-    );
+const mapStateToProps = (state) => {
+  return {
+    video: state.currentVideo
   }
-}
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    playVideo: (value) => {
+      console.log('I got called')
+      dispatch(changeCurrentVideo(value));
+    }
+  }
+};
+
+const AppContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+export default AppContainer;

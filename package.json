@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-<<<<<<< HEAD
-=======
     "lint": "eslint -c .eslintrc.json --ignore-path .gitignore .",
->>>>>>> b6c7c219db655e26fbb3c419d2da7d2dc0828bb0
     "start": "nodemon --watch server server/server.js",
     "build": "webpack --progress --colors"
   },
@@ -16,15 +13,12 @@
   "license": "UNLICENSED",
   "main": "client/index.jsx",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "bcrypt": "^0.8.5",
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
     "express-session": "^1.13.0",
     "morgan": "^1.1.1",
     "mysql": "^2.10.2",
->>>>>>> b6c7c219db655e26fbb3c419d2da7d2dc0828bb0
     "bcrypt": "^0.8.5",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.3.1",
@@ -34,12 +28,8 @@
     "jquery": "^2.2.0",
     "material-ui": "^0.15.0-alpha.1",
     "method-override": "~2.0.2",
-<<<<<<< HEAD
     "mongoose": "~3.8.0",
     "morgan": "^1.1.1",
-    "mysql": "^2.10.2",
-=======
->>>>>>> b6c7c219db655e26fbb3c419d2da7d2dc0828bb0
     "path": "^0.12.7",
     "q": "^1.4.1",
     "react": "^0.14.7",
