@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
-export class VideoListEntry extends Component {
-  render(){
+export default class VideoListEntry extends Component {
 
+  render(){
+  	return(
+  		<div id = "VideoThumbnail">
+  		</div>
+  	);
   }
 }
