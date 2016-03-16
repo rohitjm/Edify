@@ -13,7 +13,9 @@ var User = db.define('User', {
 // Video's schema
 var Video = db.define('Video', {
   title: Sequelize.STRING,
-  description: Sequelize.STRING
+  description: Sequelize.STRING,
+  url:Sequelize.STRING,
+  cover:Sequelize.STRING
 });
 
 // Tag's schema
