@@ -4,3 +4,9 @@ export const changeCurrentVideo = (value) => {
     value: value
   };
 };
+
+export const fetchVideoList = () => {
+  return {
+    type: 'FETCH_VIDEOS'
+  };
+};
