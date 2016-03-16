@@ -4,7 +4,9 @@ export default class VideoGrid extends Component {
 
 	render(){
 	  return(
-	  	<h2>VideoGrid</h2>
+	  	<div id = 'VideoGrid'>
+	  	  <h2>VideoGrid</h2>
+	  	</div>
 	  )
 	}
 }

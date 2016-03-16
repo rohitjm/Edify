@@ -4,7 +4,7 @@ export default class SearchBar extends Component {
 
   render(){
   	return (
-  	  <div id = "header">
+  	  <div>
 		<p>Search</p> 
   	  </div>
   	);

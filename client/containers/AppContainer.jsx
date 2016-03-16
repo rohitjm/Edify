@@ -4,7 +4,7 @@ import Featured from './FeaturedContainer.jsx';
 import VideoGrid from './VideoGridContainer.jsx';
 import { SearchContainer } from './SearchContainer.jsx';
 import { MainVideoListContainer } from './MainVideoListContainer.jsx';
-import Greeting from '../greeting.js';
+import VideoPlayer from '../components/Main/VideoPlayer.jsx'
 
 export default class AppContainer extends Component {
 
@@ -14,7 +14,7 @@ export default class AppContainer extends Component {
         <Header />
         <Featured />
         <VideoGrid />
-        <Greeting name = "Hazal" />
+        <VideoPlayer />
       </div>
     );
   }

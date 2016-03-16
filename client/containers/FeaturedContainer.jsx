@@ -4,7 +4,9 @@ export default class Featured extends Component {
 
 	render(){
 	  return(
-	  	<h2>Featured</h2>
+	  	<div id = 'featured'>
+	  		<h2>Featured</h2>
+	  	</div>
 	  )
 	}
 }
