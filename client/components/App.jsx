@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
-// import { SearchContainer } from './SearchContainer.jsx';
-// import { MainVideoListContainer } from './MainVideoListContainer.jsx';
+import { Header } from '../containers/HeaderContainer.jsx';
+import { Featured } from '../containers/FeaturedContainer.jsx';
+import { VideoGrid } from '../containers/VideoGridContainer.jsx';
 
-const App = ({playVideo,fetchVideos}) => {
+
+export default class App extends Component {
 // export default class App extends Component {
   // render () {
     // console.log(this.props.playVideo);
-    return (
-      <div id="app-view">  
-       <h1 onClick = {() => playVideo('h')}> heyyy </h1>
-		<h1 onClick = {() => fetchVideos()}> Fetch Videos </h1>
-      </div>
-    )
-}
 
-export default App;
+    componentWillMount(){
+    	this.props.fetchVideos();
+    }
+
+    render(){
+    	//console.log(this.props.videos);
+	    return (
+	      <div id="app-view">  
+	       <h1 onClick = {() => this.props.playVideo('h')}> heyyy </h1>
+	       {this.props.videos.videos[0].title}
+	      </div>
+	    )	
+    }
+}
