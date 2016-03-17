@@ -27,6 +27,13 @@ export const fetchVideoList = (videos) => {
   };
 };
 
+export const getVideo = (data) => {
+  return {
+    type: 'GET_VIDEOS',
+    data: data
+  };
+};
+
 export const videoFetch = () => {
 	return(dispatch) => {
 		dispatch(requestVideoList());

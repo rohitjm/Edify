@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import $ from 'jquery';
+import {reducer as formReducer} from 'redux-form';
 
 const CurrentVideo = (state = "a", action) => {
   switch (action.type) {
@@ -28,7 +29,8 @@ const VideoList = (state = {}, action) => {
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
-  videos:VideoList
+  videos:VideoList,
+  form: formReducer
 });
 
 export default VideoAppHandler;

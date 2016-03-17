@@ -45,6 +45,7 @@
     "react-star-rating-component": "^0.1.0",
     "react-tap-event-plugin": "^0.2.2",
     "redux": "^3.3.1",
+    "redux-form": "^4.2.2",
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.1",
     "redux-thunk": "^2.0.1",
