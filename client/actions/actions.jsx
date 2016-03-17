@@ -5,8 +5,9 @@ export const changeCurrentVideo = (value) => {
   };
 };
 
-export const fetchVideoList = () => {
+export const fetchVideoList = (videos) => {
   return {
-    type: 'FETCH_VIDEOS'
+    type: 'FETCH_VIDEOS',
+    videos: videos
   };
 };

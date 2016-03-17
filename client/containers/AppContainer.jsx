@@ -8,6 +8,7 @@ import VideoGrid from './VideoGridContainer.jsx';
 import { SearchContainer } from './SearchContainer.jsx';
 import { MainVideoListContainer } from './MainVideoListContainer.jsx';
 import VideoPlayer from '../components/Main/VideoPlayer.jsx'
+import $ from 'jquery';
 
 const mapStateToProps = (state) => {
   return {
@@ -24,10 +25,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchVideos: () => {
     	console.log("fetching videos!");
-    	dispatch(fetchVideoList());
+      $.get('/fetch')
+      .done(function(res){
+      	dispatch(fetchVideoList(res));
+      });
     }
-  }
-
+  };
 };
 
 const AppContainer = connect(

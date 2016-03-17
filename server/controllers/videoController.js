@@ -17,9 +17,9 @@ module.exports = {
   },
 
   fetchAll: function (req, res) {
-  	console.log("inside fetchAll");
-  	db.Video.findAll().then(function(videos){
-  		res.send(videos);
-  	});
+    console.log("inside fetchAll");
+    db.Video.findAll().then(function(videos){
+      res.send(videos);
+    });
   }
 };
