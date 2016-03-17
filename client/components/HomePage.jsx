@@ -1,8 +1,10 @@
+
 import React, {Component} from 'react';
 import Featured from './Featured.jsx';
 import VideoGrid from './VideoGrid.jsx';
 
-export default class Header extends Component {
+
+export default class HomePage extends Component {
 
   render(){
   	return (
@@ -13,3 +15,4 @@ export default class Header extends Component {
   	);
   }
 }
+

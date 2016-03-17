@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     videoFetch: (data) => {
     	console.log("fetching videos!");
-
       $.get('/fetch')
       .done(function(res){
       	dispatch(fetchVideoList(res));
