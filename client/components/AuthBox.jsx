@@ -4,8 +4,10 @@ export default class AuthBox extends Component {
 
   render(){
   	return (
-  	  <div>
-				<p>Authentication</p>
+  	  <div id="AuthBox">
+				<button name="LogIn">Log In</button>
+        <button name="SignUp">Sign Up</button>
+        <button name="LogOut">Log Out</button>
   	  </div>
   	);
   }
