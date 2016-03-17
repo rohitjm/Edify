@@ -25,14 +25,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     videoFetch: (data) => {
     	console.log("fetching videos!");
-<<<<<<< HEAD
-    	dispatch(videoFetch(data));
-=======
+
       $.get('/fetch')
       .done(function(res){
       	dispatch(fetchVideoList(res));
       });
->>>>>>> 12b213e6156b031f7912f56622781538f26b815f
     }
   };
 };

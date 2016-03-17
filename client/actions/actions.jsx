@@ -17,6 +17,8 @@ export const receivedVideoList = (videos) => {
   return {
     type: 'RECEIEVED_VIDEOS',
     videos:videos
+  };
+};   
 
 export const fetchVideoList = (videos) => {
   return {
