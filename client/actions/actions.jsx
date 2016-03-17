@@ -55,7 +55,7 @@ export const signInUser = (user) => {
         console.log("from action: ", response);
         dispatch(changeUser(user));
       });
-  }
 };
+
 
 
