@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-// import NavBar from 'NavBar.js';
+// import NavBar from 'NavBar.jsx';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
+import HomePage from './HomePage.jsx';
 
 
 export default class App extends Component {
@@ -12,7 +13,6 @@ export default class App extends Component {
   render(){
     return (
       <div>
-       
         {this.props.children}
       </div>
     )	
@@ -25,11 +25,12 @@ render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
-      <Route path='/search' component={Search} />
-      <Route path='/player' component={Player} />
+      
     </Route>
   </Router>
 ), document.getElementById('app'));
+
+
 
 
 // =======Original working AppContainer component=======
