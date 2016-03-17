@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 
 export default class VideoDetails extends Component {
 
-  render(){
+  render() {
     return(
       <div id = "VideoDetails">
         <h2>{this.props.currentVideo.title}</h2>
