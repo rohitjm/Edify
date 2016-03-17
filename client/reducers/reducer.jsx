@@ -45,7 +45,7 @@ const VideoAppHandler = combineReducers({
 const User = (state = {}, action) => {
   var newState = Object.assign({},state);
   switch(action.type) {
-    case 'SIGN_IN_USER':
+    case 'CHANGE_USER':
       console.log('from reducer: ', action.user);
       newState.user = action.user;
     default:

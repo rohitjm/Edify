@@ -7,12 +7,6 @@ export const changeCurrentVideo = (value) => {
   };
 };
 
-export const requestVideoList = () => {
-  return {
-    type: 'REQUEST_VIDEOS',
-  };
-};
-
 export const receivedVideoList = (videos) => {
   return {
     type: 'RECEIEVED_VIDEOS',
@@ -36,7 +30,7 @@ export const getVideo = (data) => {
 
 export const videoFetch = () => {
 	return(dispatch) => {
-		dispatch(requestVideoList());
+		dispatch(fetchVideoList());
 		$.get('/fetch')
 		.then((response) => 
 			{
@@ -46,11 +40,22 @@ export const videoFetch = () => {
 	}
 };
 
-export const signInUser = (user) => {
+export const changeUser = (user) => {
   return {
-    type: 'SIGN_IN_USER',
+    type: 'CHANGE_USER',
     user: user
-  };
+  }
+};
+
+export const signInUser = (user) => {
+  return $.post('/signin', user)
+    .then((response) => 
+      {
+        // not sure what this request returns (using user from input just in case it's not the user object)
+        console.log("from action: ", response);
+        dispatch(changeUser(user));
+      });
+  }
 };
 
 

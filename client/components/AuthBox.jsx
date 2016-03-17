@@ -1,6 +1,33 @@
 import React, {Component} from 'react';
 
+// container
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // user obtained from pop up sign in modal should be formatted like {username: username, password: password}
+    signIn: (user) => {
+      console.log('Signing in user')
+      dispatch(signInUser(user));
+    }
+  };
+};
+
+const AuthContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Auth);
+
+// component
+
 export default class AuthBox extends Component {
+
+  // the Log In and Sign Up buttons will trigger a modal where information is collected
 
   render(){
   	return (
