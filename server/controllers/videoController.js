@@ -9,7 +9,11 @@ module.exports = {
   },
   // Handles fetching of specified video from S3 storage
   fetchVideo: function (req, res) {
-
+    console.log("inside fetchVideo req:", req.body);
+    db.Video.findOne({title: req.body}).then(function(videos){
+      console.log("videos:", videos)
+      res.send(videos);
+    });
   },
   // Handles user search input and fetches related videos
   searchForVideos: function (req, res) {

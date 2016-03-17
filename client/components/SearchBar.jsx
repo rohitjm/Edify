@@ -18,7 +18,7 @@ class SearchBar extends Component {
       resetForm,
       submitting
       } = this.props;
-     
+
     return (<form onSubmit={handleSubmit}>
         <div>
           <label>First Name</label>

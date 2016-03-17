@@ -17,5 +17,6 @@ module.exports = function(app, express) {
   //Fetching inital videos from db
   app.get('/fetch', videoController.fetchAll);
 
-  app.post('/search');
+
+  app.post('/search', videoController.fetchVideo);
 };
