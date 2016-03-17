@@ -10,9 +10,9 @@ export default class Header extends Component {
   
   handleSubmit(data) {
     var self = this;
-    console.log('Submission received!:', data.firstName);
+    console.log('Submission received!:', data.title);
     console.log("propsis", this.props)
-    $.post('/search', data.firstName).done(function(res){
+    $.post('/search', data.title).done(function(res){
       self.props.dispatch(receivedVideoList(res))
     })
   }

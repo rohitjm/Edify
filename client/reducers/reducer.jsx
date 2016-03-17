@@ -39,7 +39,7 @@ const Video = (state = {}, action) => {
     default:
       return state; 
   }
-  } 
+} 
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,

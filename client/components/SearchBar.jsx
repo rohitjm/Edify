@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
-export const fields = ['firstName', 'lastName'];
+export const fields = ['title', 'mentor'];
 
 
 class SearchBar extends Component {
@@ -13,7 +13,7 @@ class SearchBar extends Component {
 
   render() {
     const {
-      fields: {firstName, lastName},
+      fields: {title, mentor},
       handleSubmit,
       resetForm,
       submitting
@@ -21,15 +21,15 @@ class SearchBar extends Component {
 
     return (<form onSubmit={handleSubmit}>
         <div>
-          <label>First Name</label>
+          <label>Title</label>
           <div>
-            <input type="text" placeholder="First Name" {...firstName}/>
+            <input type="text" placeholder=" Title" {...title}/>
           </div>
         </div>
         <div>
-          <label>Last Name</label>
+          <label>Mentor</label>
           <div>
-            <input type="text" placeholder="Last Name" {...lastName}/>
+            <input type="text" placeholder="Mentor" {...mentor}/>
           </div>
         </div>
         <div>
