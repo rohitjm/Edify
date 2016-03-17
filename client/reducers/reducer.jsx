@@ -16,10 +16,7 @@ const VideoList = (state = {}, action) => {
 	switch (action.type) {
 		case 'FETCH_VIDEOS':
 			console.log("fetching videos");
-			$.get('/fetch').done(function(res){
-				//console.log("response: ",res);
-				newstate.videos = res;
-			});
+      newstate.videos = action.videos;
 			return newstate;
 		default:
 			return newstate;	
