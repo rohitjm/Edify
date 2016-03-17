@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { Header } from '../containers/HeaderContainer.jsx';
-import { Featured } from '../containers/FeaturedContainer.jsx';
-import { VideoGrid } from '../containers/VideoGridContainer.jsx';
-
 
 export default class App extends Component {
 // export default class App extends Component {
@@ -11,7 +7,7 @@ export default class App extends Component {
 
   componentWillMount(){
     console.log('willMount');
-  	this.props.fetchVideos();
+  	this.props.videoFetch();
   }
 
   render(){
