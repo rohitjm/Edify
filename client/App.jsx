@@ -15,6 +15,7 @@ import VideoAppHandler from './reducers/reducer.jsx';
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, thunk, logger()));
 
 export default class App extends Component {
+
   constructor(props) {
     super(props)
   }
