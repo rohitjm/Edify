@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import App from '../components/App.jsx';
+import App from './App.jsx';
 import { changeCurrentVideo , fetchVideoList} from '../actions/actions.jsx'
 import { connect } from 'react-redux';
-import Header from './HeaderContainer.jsx';
-import Featured from './FeaturedContainer.jsx';
-import VideoGrid from './VideoGridContainer.jsx';
-import { SearchContainer } from './SearchContainer.jsx';
-import { MainVideoListContainer } from './MainVideoListContainer.jsx';
-import VideoPlayer from '../components/Main/VideoPlayer.jsx'
 import $ from 'jquery';
 
 const mapStateToProps = (state) => {
@@ -23,8 +17,9 @@ const mapDispatchToProps = (dispatch) => {
       console.log('I got called')
       dispatch(changeCurrentVideo(value));
     },
-    fetchVideos: () => {
+    videoFetch: (data) => {
     	console.log("fetching videos!");
+
       $.get('/fetch')
       .done(function(res){
       	dispatch(fetchVideoList(res));
