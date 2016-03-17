@@ -4,8 +4,7 @@
 }
 
 #box {
-  width: 100px;  /* Or whatever */
-  height: 100px; /* Or whatever */
+  width: 75%  /* Or whatever */
   margin: auto; 
 }
 
@@ -36,4 +35,25 @@ body {
     width: 100%;
     height: 100%;
   }
+}
+
+.videoGrid {
+  display: flex;
+}
+
+.videoThumbnail {
+  width: 150px;
+  height: 150px;
+  border: 3px solid #73AD21;
+  margin: auto;
+}
+
+.image_thumbnail {
+  max-width: 50%;
+  max-height: 50%;
+  border: 3px solid #73AD21;
+}
+
+#NavBar {
+  border: 4pm solid #73AD21;
 }

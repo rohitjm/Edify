@@ -3,17 +3,24 @@ import { connect } from 'react-redux';
 import VideoListEntry from './VideoListEntry.jsx';
 
 //Component code
-export function VideoGrid({ videos }) {
-	return (
-		<div>
-			{ videos.map(function(video){
-					return <VideoListEntry video = {video} />;
-			})}
-		</div>	
-	)
+export function VideoGrid({ videos , selectVideo}) {
+	
+	if(videos){
+		return (
+			<div className = 'videoGrid'>
+				{ videos.map(function(video){
+						return <VideoListEntry video = {video} selectVideo = {selectVideo}/>;
+				})}
+			</div>	
+		);	
+	}else{
+		return (
+			<h2>No videos found</h2>
+		)
+	}
 }
 
-//Continaer Code
+//Container Code
 const mapStateToProps = (state) => {
   return {
     videos: state.videos.videos
