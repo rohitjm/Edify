@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 // import LogoBox from '../components/Header/LogoBox.jsx';
 // import AuthBox from '../components/Header/AuthBox.jsx';
@@ -13,3 +14,4 @@ export default class HomePage extends Component {
   	);
   }
 }
+
