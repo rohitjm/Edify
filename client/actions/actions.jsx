@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export const changeCurrentVideo = (value) => {
   return {
     type: 'CHANGE_VIDEO',
@@ -5,8 +7,29 @@ export const changeCurrentVideo = (value) => {
   };
 };
 
-export const fetchVideoList = () => {
+export const requestVideoList = () => {
   return {
-    type: 'FETCH_VIDEOS'
+    type: 'REQUEST_VIDEOS',
   };
 };
+
+export const receivedVideoList = (videos) => {
+  return {
+    type: 'RECEIEVED_VIDEOS',
+    videos:videos
+  };
+};
+
+export const videoFetch = () => {
+	return(dispatch) => {
+		dispatch(requestVideoList());
+		$.get('/fetch')
+		.then((response) => 
+			{
+				console.log("from action: ",response);
+				dispatch(receivedVideoList(response));
+			});
+	}
+};
+
+

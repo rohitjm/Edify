@@ -14,12 +14,9 @@ const CurrentVideo = (state = "a", action) => {
 const VideoList = (state = {}, action) => {
 	var newstate = Object.assign({},state);
 	switch (action.type) {
-		case 'FETCH_VIDEOS':
-			console.log("fetching videos");
-			$.get('/fetch').done(function(res){
-				//console.log("response: ",res);
-				newstate.videos = res;
-			});
+		case 'RECEIEVED_VIDEOS':
+			console.log("from reducer: ",action.videos);
+			newstate.videos = action.videos;
 			return newstate;
 		default:
 			return newstate;	

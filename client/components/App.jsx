@@ -10,15 +10,14 @@ export default class App extends Component {
     // console.log(this.props.playVideo);
 
     componentWillMount(){
-    	this.props.fetchVideos();
+    	this.props.videoFetch();
     }
 
     render(){
-    	//console.log(this.props.videos);
+    	console.log(this.props.videos);
 	    return (
 	      <div id="app-view">  
-	       <h1 onClick = {() => this.props.playVideo('h')}> heyyy </h1>
-	       {this.props.videos.videos[0].title}
+	       	{this.props.videos.videos[0]}
 	      </div>
 	    )	
     }
