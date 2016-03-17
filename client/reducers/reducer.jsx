@@ -13,17 +13,15 @@ const CurrentVideo = (state = "a", action) => {
 }
 
 const VideoList = (state = {}, action) => {
-	var newstate = Object.assign({},state);
+	var newState = Object.assign({},state);
 	switch (action.type) {
 		case 'FETCH_VIDEOS':
 			console.log("fetching videos");
       newstate.videos = action.videos;
 			return newstate;
-
 		default:
-			return newstate;	
+			return newState;	
 	}
-}
 
 const Video = (state = {}, action) => {
   var news = Object.assign({},state);
@@ -43,6 +41,22 @@ const VideoAppHandler = combineReducers({
   videos:VideoList,
   found: Video,
   form: formReducer
+
+const User = (state = {}, action) => {
+  var newState = Object.assign({},state);
+  switch(action.type) {
+    case 'SIGN_IN_USER':
+      console.log('from reducer: ', action.user);
+      newState.user = action.user;
+    default:
+      return newState;
+  }
+}
+
+const VideoAppHandler = combineReducers({
+  currentVideo: CurrentVideo,
+  videos: VideoList,
+  user: User
 });
 
 export default VideoAppHandler;
