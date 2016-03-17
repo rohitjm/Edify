@@ -1,13 +1,38 @@
 import React, {Component} from 'react';
-import VideoListEntry from '../components/Main/VideoListEntry.jsx';
+import { connect } from 'react-redux';
+import VideoListEntry from './VideoListEntry.jsx';
 
-export default class VideoGrid extends Component {
-
-	render(){
-	  return(
-	  	<div id = 'VideoGrid'>
-	  		<h2>VideoGrid</h2>
-	  	</div>
-	  )
-	}
+//Component code
+export function VideoGrid({ videos }) {
+	return (
+		<div>
+			{ videos.map(function(video){
+					return <VideoListEntry video = {video} />;
+			})}
+		</div>	
+	)
 }
+
+//Continaer Code
+const mapStateToProps = (state) => {
+  return {
+    videos: state.videos.videos
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectVideo: (value) => {
+      console.log('Selected video!');
+      dispatch(changeCurrentVideo(value));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VideoGrid);
+
+
+
