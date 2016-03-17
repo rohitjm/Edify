@@ -3,7 +3,6 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
-
 var webpack = require('webpack');
 var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../../webpack.config');
 var compiler = webpack(webpackConfig);

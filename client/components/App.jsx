@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import NavBar from 'NavBar.jsx';
+import NavBar from './NavBar.jsx';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import HomePage from './HomePage.jsx';
@@ -12,7 +12,9 @@ export default class App extends Component {
 
   render(){
     return (
-      <div>
+
+      <div id="app-view">  
+        <div><NavBar/></div>
         {this.props.children}
       </div>
     )	
@@ -25,7 +27,6 @@ render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
-      
     </Route>
   </Router>
 ), document.getElementById('app'));
