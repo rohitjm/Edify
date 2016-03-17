@@ -15,9 +15,6 @@ const CurrentVideo = (state = "a", action) => {
 const VideoList = (state = {}, action) => {
 	var newstate = Object.assign({},state);
 	switch (action.type) {
-		// case 'RECEIEVED_VIDEOS':
-		// 	console.log("from reducer received: ",action.videos);
-		// 	newstate.videos = action.videos;
 		case 'FETCH_VIDEOS':
 			console.log("fetching videos");
       newstate.videos = action.videos;
@@ -34,8 +31,8 @@ const Video = (state = {}, action) => {
     case 'RECEIEVED_VIDEOS':
       console.log("from reducer received: ",action.videos);
       news.found = action.videos;
-      console.log(news.found.title)
-        return news;
+      console.log("news.found.title is", news.found.title )
+        return news.found;
     default:
       return state; 
   }

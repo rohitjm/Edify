@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HomePage from './HomePage.jsx'
+import NavBar from './NavBar.jsx';
 
 export default class App extends Component {
   componentWillMount(){
@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <div id="app-view">  
        <h1 onClick = {() => this.props.playVideo('h')}> heyyy </h1>
-       <HomePage/>
+       <div><NavBar/></div>
        {this.props.videos.videos ? this.props.videos.videos[0].title : null}
       </div>
     )	
