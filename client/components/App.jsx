@@ -3,6 +3,7 @@ import NavBar from './NavBar.jsx';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import HomePage from './HomePage.jsx';
+import ReactS3Uploader from 'react-s3-uploader';
 
 
 export default class App extends Component {
@@ -12,7 +13,6 @@ export default class App extends Component {
 
   render(){
     return (
-
       <div id="app-view">  
         <div><NavBar/></div>
         {this.props.children}

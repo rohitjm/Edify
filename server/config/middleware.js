@@ -3,6 +3,12 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
+
+// Gets the proper credentials (hidden in file aws-config.json) for connecting to our S3 bucket
+var AWS = require('aws-sdk');
+AWS.config.loadFromPath(__dirname + '/aws-config.json');
+
+
 var webpack = require('webpack');
 var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../../webpack.config');
 var compiler = webpack(webpackConfig);
@@ -37,4 +43,12 @@ module.exports = function(app, express) {
   app.use(session({ secret: 'galvanized fern' }));
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // Essentially requests access to the S3 bucket so that a video may be uploaded directly from the frontend to S3
+  app.use('/s3', require('react-s3-uploader/s3router')({
+    bucket: "video.bucket1",
+    headers: {'Access-Control-Allow-Origin': '*'}, // optional
+    region: 'us-west-1', //optional
+    ACL: 'private' // this is default
+  }));
 };
