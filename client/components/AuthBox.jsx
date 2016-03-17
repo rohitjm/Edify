@@ -28,6 +28,7 @@ const AuthContainer = connect(
 export default class AuthBox extends Component {
 
   // the Log In and Sign Up buttons will trigger a modal where information is collected
+  // modal will pop up when buttons are clicked and info will be obtained on submit
 
   render(){
   	return (
