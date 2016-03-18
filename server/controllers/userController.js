@@ -20,7 +20,7 @@ module.exports = {
         })
         .then(function(user) {
           console.log('User created successfully');
-          res.sendStatus(201);
+          res.send(201, user);
         })
         .catch(function(err) {
           console.log(err);
@@ -52,7 +52,8 @@ module.exports = {
     // .catch(function(err) {
     //   console.log(err);
     // })
-    res.send('User signed in!');
+    console.log('req.user', req.user);
+    res.send(req.user);
   },
 
   // Handles user signing out and removes their existing session
@@ -60,6 +61,7 @@ module.exports = {
     // Built in function provided by Passport
     req.logout();
     console.log('User logged out!');
+    res.send('Logged out');
     // Redirect or do something else to let user know they successfully loged out
   }
 };
