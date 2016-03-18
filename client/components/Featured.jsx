@@ -1,13 +1,24 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import Video from 'react-html5video';
+
+  
 
 //Component Code
 export default function Featured({currentVideo}) {
  	console.log(currentVideo);
 
 	if(currentVideo){
+
+    var videoOptions = {
+      url: currentVideo.url,
+      poster: currentVideo.cover
+    };
+
 	  return(
 	  	<div id = 'Featured'>
+
+        <div className = 'featuredImage'><img src = {currentVideo.cover} /></div>
 	      <h3>{currentVideo.title}</h3>
 	      <h4>{currentVideo.description}</h4>
 	  	</div>	
