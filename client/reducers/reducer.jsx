@@ -13,7 +13,7 @@ const CurrentVideo = (state = "a", action) => {
 }
 
 const VideoList = (state = {}, action) => {
-	var newstate = Object.assign({},state);
+	var newstate = Object.assign({}, state);
 	switch (action.type) {
 		case 'FETCH_VIDEOS':
 			console.log("fetching videos");
@@ -21,12 +21,12 @@ const VideoList = (state = {}, action) => {
 			return newstate;
 
 		default:
-			return newstate;	
+			return state;	
 	}
 }
 
 const Video = (state = {}, action) => {
-  var news = Object.assign({},state);
+  var news = Object.assign({}, state);
   switch (action.type) {
     case 'RECEIEVED_VIDEOS':
       console.log("from reducer received: ",action.videos);
@@ -36,7 +36,18 @@ const Video = (state = {}, action) => {
     default:
       return state; 
   }
-} 
+}
+
+const UserInfo = (state = {}, action) => {
+  var newstate = Object.assign({}, state);
+  switch (action.type) {
+    case 'UPDATE_USER_INFO':
+      newstate.user = action.info;
+      return newstate;
+    default:
+      return state;
+  }
+}
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,

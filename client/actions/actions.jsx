@@ -34,6 +34,13 @@ export const getVideo = (data) => {
   };
 };
 
+export const updateUserInfo = (info) => {
+  return {
+    type: 'UPDATE_USER_INFO',
+    info: info
+  }
+}
+
 export const videoFetch = () => {
 	return(dispatch) => {
 		dispatch(requestVideoList());
