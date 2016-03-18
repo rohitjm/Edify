@@ -7,31 +7,33 @@ import $ from 'jquery';
 
 const mapStateToProps = (state) => {
   return {
-    found: state.found
+    state: state
   }
 };
 
-class Header extends Component {
-  handleSubmit(data) {
-    var self = this;
-    console.log('Submission received!:', data);
-    $.post('/search', data).done(function(res){
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleSubmit: (data) => {
+      $.post('/search', data).done(function(res){
       console.log("response is;", res);
-      self.props.dispatch(receivedVideoList(res))
+      dispatch(receivedVideoList(res))
+     window.location = '/#/search'
     })
   }
+}
+}
+class NavBar extends Component {
   render(){
     return (
       <div id = "header">
-      <div id = 'box'><SearchBar onSubmit={this.handleSubmit.bind(this)}/></div>
+      <div id = 'box'><SearchBar onSubmit={this.props.handleSubmit.bind(this)}/></div>
       <div id = 'box'><AuthBox /></div>
-      <div>
-      {this.props.found ? this.props.found.title: null}
-      </div>
       </div>
     );
   }
 }
 
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+

@@ -3,6 +3,7 @@ import NavBar from './components/NavBar.jsx';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import HomePage from './components/HomePage.jsx';
+import SearchPage from './components/SearchPage.jsx';
 import ReactS3Uploader from 'react-s3-uploader';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -15,6 +16,7 @@ import VideoAppHandler from './reducers/reducer.jsx';
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, thunk, logger()));
 
 export default class App extends Component {
+
   constructor(props) {
     super(props)
   }
@@ -36,12 +38,11 @@ render((
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={HomePage} />
+        <Route path="/search" component={SearchPage} />
       </Route>
     </Router>
   </Provider>
 ), document.getElementById('app'));
-
-
 
 
 // =======Original working AppContainer component=======
