@@ -25,6 +25,7 @@ const VideoList = (state = {}, action) => {
       newstate.videos = action.videos;
       console.log("newstate.videos", newstate.videos )
       return newstate;
+
 		default:
 			return state;	
 	}
@@ -67,11 +68,17 @@ const User = (state = {}, action) => {
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
+<<<<<<< HEAD
   videos: VideoList,
   form: formReducer,
   videos: VideoList,
   user: User
 
+=======
+  videos:VideoList,
+  // found: Video,
+  form: formReducer
+>>>>>>> 69829e371749aa0ee0b1b19f0280c708441a2ddc
 });
 
 export default VideoAppHandler;
