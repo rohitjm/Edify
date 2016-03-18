@@ -2,30 +2,32 @@ import { combineReducers } from 'redux'
 import $ from 'jquery';
 import {reducer as formReducer} from 'redux-form';
 
-const CurrentVideo = (state = "a", action) => {
+const CurrentVideo = (state = {}, action) => {
+  var newstate = Object.assign({},state);
   switch (action.type) {
-    case 'CHANGE_VIDEO':
-    console.log(action.value);
-      return action.value
+    case 'SELECT_VIDEO':
+    	console.log(action.data);
+      newstate.currentVideo = action.data;
+      return newstate;
     default:
       return state;
   }
 }
 
 const VideoList = (state = {}, action) => {
-	var newState = Object.assign({},state);
+	var newstate = Object.assign({}, state);
 	switch (action.type) {
 		case 'FETCH_VIDEOS':
 			console.log("fetching videos");
       newstate.videos = action.videos;
 			return newstate;
 		default:
-			return newState;	
+			return state;	
 	}
 }
 
 const Video = (state = {}, action) => {
-  var news = Object.assign({},state);
+  var news = Object.assign({}, state);
   switch (action.type) {
     case 'RECEIEVED_VIDEOS':
       console.log("from reducer received: ",action.videos);
@@ -35,7 +37,18 @@ const Video = (state = {}, action) => {
     default:
       return state; 
   }
-} 
+}
+
+const UserInfo = (state = {}, action) => {
+  var newstate = Object.assign({}, state);
+  switch (action.type) {
+    case 'UPDATE_USER_INFO':
+      newstate.user = action.info;
+      return newstate;
+    default:
+      return state;
+  }
+}
 
 const User = (state = {}, action) => {
   var newState = Object.assign({},state);

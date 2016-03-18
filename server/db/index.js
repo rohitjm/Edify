@@ -7,7 +7,7 @@ var db = new Sequelize('thesis', 'test', 'password');
 // User's schema
 var User = db.define('User', {
   username: {type: Sequelize.STRING, unique: true},
-  password: Sequelize.STRING
+  password: Sequelize.STRING,
 });
 
 // Video's schema
@@ -24,17 +24,33 @@ var Tag = db.define('Tag', {
 });
 
 // Set's up many-to-many relationship between Video and Tag (creates join table Video_Tag)
-Video.belongsToMany(Tag, {through: 'Video_Tag'});
 Tag.belongsToMany(Video, {through: 'Video_Tag'});
+Video.belongsToMany(Tag, {through: 'Video_Tag'});
 
 // Set's up one-to-many relationship between User and Video
 Video.belongsTo(User);
 User.hasMany(Video);
 
 // Syncs schemas with mysql, creating the actual tables in the DB
-User.sync();
-Video.sync();
-Tag.sync();
+User.sync()
+.then(function() {
+  Video.sync()
+  .then(function() {
+    Tag.sync()
+    .then(function() {
+      console.log('Tables successfully created');
+    })
+    .catch(function(err) {
+      throw err;
+    });
+  })
+  .catch(function(err) {
+    throw err;
+  });
+})
+.catch(function(err) {
+  throw err;
+});
 
 exports.User = User;
 exports.Video = Video;

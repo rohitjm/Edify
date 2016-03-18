@@ -1,17 +1,52 @@
-
 import React, {Component} from 'react';
-// import LogoBox from '../components/Header/LogoBox.jsx';
-// import AuthBox from '../components/Header/AuthBox.jsx';
-// import SearchBar from '../components/Header/SearchBar.jsx';
+import { connect } from 'react-redux';
+import Featured from './Featured.jsx';
+import VideoGrid from './VideoGrid.jsx';
+import { fetchVideoList } from '../actions/actions.jsx';
+import $ from 'jquery';
 
+//Component Code
 export default class HomePage extends Component {
 
+	componentWillMount(){
+	    console.log('willMount');
+	    this.props.fetchVideos();
+	}
+
   render(){
+  	//this.props.fetchVideos();
   	return (
-  	  <div id = "header">
-      Home Page!
+  	  <div id = "HomePage">
+	  	<div id = 'box'><Featured /></div>
+  	  	<div id = 'box'><VideoGrid fetchVideos = {this.props.fetchVideos}/></div>
   	  </div>
   	);
   }
 }
+
+//Container Code
+const mapStateToProps = (state) => {
+  return {
+    videos: state.videos.videos
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchVideos: () => {
+     console.log("fetching videos!");
+      $.get('/fetch')
+      .done(function(res){
+      	console.log("response: ",res);
+         dispatch(fetchVideoList(res));
+      });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);
+
 

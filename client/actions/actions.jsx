@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export const changeCurrentVideo = (value) => {
+export const changeVideo = (value) => {
   return {
     type: 'CHANGE_VIDEO',
     value: value
@@ -25,6 +25,20 @@ export const getVideo = (data) => {
   return {
     type: 'GET_VIDEOS',
     data: data
+  };
+};
+
+export const updateUserInfo = (info) => {
+  return {
+    type: 'UPDATE_USER_INFO',
+    info: info
+  }
+};
+
+export const changeCurrentVideo = (video) => {
+  return {
+    type: 'SELECT_VIDEO',
+    data: video
   };
 };
 
