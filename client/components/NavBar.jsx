@@ -27,8 +27,8 @@ class NavBar extends Component {
   render(){
     return (
       <div id = "header">
-      <div id = 'box'><SearchBar onSubmit={this.props.handleSubmit.bind(this)}/></div>
-      <div id = 'box'><AuthBox /></div>
+        <div id = 'box'><SearchBar onSubmit={this.props.handleSubmit.bind(this)}/></div>
+        <div id = 'box'><AuthBox /></div>
       </div>
     );
   }

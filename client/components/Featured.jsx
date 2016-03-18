@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-export default class Featured extends Component {
+//Component Code
+export default function Featured({currentVideo}) {
+ 	console.log(currentVideo);
 
-	render(){
+	if(currentVideo){
 	  return(
 	  	<div id = 'Featured'>
-	  		<h2>Featured</h2>
-	  	</div>
-	  )
+	      <h3>{currentVideo.title}</h3>
+	      <h4>{currentVideo.description}</h4>
+	  	</div>	
+  	);	
+	}else{
+		return (
+			<h2>Featured</h2>
+		);
 	}
 }
 
@@ -21,14 +28,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectVideo: (value) => {
+    changeFeatured: (value) => {
       console.log('Selected video!');
       dispatch(changeCurrentVideo(value));
     }
   };
 };
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(VideoGrid);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Featured);
+
