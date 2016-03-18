@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 export default class Featured extends Component {
 
@@ -27,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(VideoGrid);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(VideoGrid);
