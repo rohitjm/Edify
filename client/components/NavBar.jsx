@@ -25,9 +25,7 @@ class Header extends Component {
       <div id = "header">
       <div id = 'box'><SearchBar onSubmit={this.handleSubmit.bind(this)}/></div>
       <div id = 'box'><AuthBox /></div>
-      <div>
-      {this.props.found ? this.props.found.title: null}
-      </div>
+
       </div>
     );
   }

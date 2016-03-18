@@ -6,7 +6,7 @@ import { createStore, getState, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import ReduxPromise from 'redux-promise'
-import VideoAppHandler from './reducers/reducer.jsx'
+import VideoAppHandler from './reducers/reducer.jsxo'
 
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, thunk, logger()));
 
