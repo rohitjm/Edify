@@ -39,3 +39,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Featured);
+
