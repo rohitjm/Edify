@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import HomePage from './components/HomePage.jsx';
 import SearchPage from './components/SearchPage.jsx';
+import PlayerPage from './components/PlayerPage.jsx';
 import ReactS3Uploader from 'react-s3-uploader';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -39,6 +40,7 @@ render((
       <Route path="/" component={App}>
         <IndexRoute component={HomePage} />
         <Route path="/search" component={SearchPage} />
+        <Route path="/player" component={PlayerPage} />
       </Route>
     </Router>
   </Provider>

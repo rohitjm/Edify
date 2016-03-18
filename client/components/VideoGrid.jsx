@@ -34,6 +34,7 @@ const mapDispatchToProps = (dispatch) => {
     selectVideo: (value) => {
       console.log('Selected video!');
       dispatch(changeCurrentVideo(value));
+      window.location = '/#/player'
     }
   };
 };
