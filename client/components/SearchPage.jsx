@@ -18,10 +18,9 @@ export default class SearchPage extends Component {
   render(){
     return (
       <div id = "">
-      Search Page!
+      <VideoListEntry video ={this.props.found} />
       </div>
     );
   }
 }
-export default connect(mapStateToProps)(SearchPage);
- // < VideoListEntry video = {this.props.found} />
+export default connect (mapStateToProps)(SearchPage);

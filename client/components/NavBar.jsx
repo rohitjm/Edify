@@ -7,7 +7,7 @@ import $ from 'jquery';
 
 const mapStateToProps = (state) => {
   return {
-    found: state.found
+    state: state
   }
 };
 
