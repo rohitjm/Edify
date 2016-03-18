@@ -22,6 +22,7 @@ const VideoList = (state = {}, action) => {
 		default:
 			return newState;	
 	}
+}
 
 const Video = (state = {}, action) => {
   var news = Object.assign({},state);
@@ -36,12 +37,6 @@ const Video = (state = {}, action) => {
   }
 } 
 
-const VideoAppHandler = combineReducers({
-  currentVideo: CurrentVideo,
-  videos:VideoList,
-  found: Video,
-  form: formReducer
-
 const User = (state = {}, action) => {
   var newState = Object.assign({},state);
   switch(action.type) {
@@ -55,6 +50,9 @@ const User = (state = {}, action) => {
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
+  videos: VideoList,
+  found: Video,
+  form: formReducer,
   videos: VideoList,
   user: User
 });

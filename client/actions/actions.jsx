@@ -48,14 +48,36 @@ export const changeUser = (user) => {
 };
 
 export const signInUser = (user) => {
-  return $.post('/signin', user)
+  return(dispatch) => {
+    $.post('/signin', user)
     .then((response) => 
       {
-        // not sure what this request returns (using user from input just in case it's not the user object)
         console.log("from action: ", response);
-        dispatch(changeUser(user));
+        dispatch(changeUser(response));
       });
+  }
 };
 
+export const signOutUser = () => {
+  return(dispatch) => {
+    $.get('/signout')
+    .then((response) => 
+      {
+        console.log("from action: ", response);
+        dispatch(changeUser({}));
+      });
+  }
+};
+
+export const signUpUser = (user) => {
+  return(dispatch) => {
+    $.post('/signup', user)
+    .then((response) => 
+      {
+        console.log("from action: ", response);
+        dispatch(changeUser(response));
+      });
+  }
+};
 
 
