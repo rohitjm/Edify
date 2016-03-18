@@ -10,3 +10,24 @@ export default class Featured extends Component {
 	  )
 	}
 }
+
+//Container Code
+const mapStateToProps = (state) => {
+  return {
+    currentVideo: state.currentVideo.currentVideo
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectVideo: (value) => {
+      console.log('Selected video!');
+      dispatch(changeCurrentVideo(value));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VideoGrid);

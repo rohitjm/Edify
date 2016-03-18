@@ -34,6 +34,13 @@ export const getVideo = (data) => {
   };
 };
 
+export const changeCurrentVideo = (video) => {
+  return {
+    type: 'SELECT_VIDEO',
+    data: video
+  };
+};
+
 export const videoFetch = () => {
 	return(dispatch) => {
 		dispatch(requestVideoList());

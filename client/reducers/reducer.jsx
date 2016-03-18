@@ -5,9 +5,9 @@ import {reducer as formReducer} from 'redux-form';
 const CurrentVideo = (state = {}, action) => {
   var newstate = Object.assign({},state);
   switch (action.type) {
-    case 'CHANGE_VIDEO':
-    	console.log(action.value);
-      newstate.currentVideo = action.value;
+    case 'SELECT_VIDEO':
+    	console.log(action.data);
+      newstate.currentVideo = action.data;
       return newstate;
     default:
       return state;
