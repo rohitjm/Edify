@@ -1,26 +1,17 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import VideoListEntry from './VideoListEntry.jsx';
-
-// import LogoBox from '../components/Header/LogoBox.jsx';
-// import AuthBox from '../components/Header/AuthBox.jsx';
-// import SearchBar from '../components/Header/SearchBar.jsx';
- const mapStateToProps = (state) => {
-  return {
-    found: state.found
-  }
-};
+import VideoGrid from './VideoGrid.jsx';
 
 
 export default class SearchPage extends Component {
  
   render(){
     return (
-      <div id = "">
-      <VideoListEntry video ={this.props.found} />
+      <div id = "SearchPage">
+      <div id = 'box'><VideoGrid /></div>
       </div>
     );
   }
 }
-export default connect (mapStateToProps)(SearchPage);
+export default connect ()(SearchPage);

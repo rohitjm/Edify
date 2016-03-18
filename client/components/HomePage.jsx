@@ -19,7 +19,7 @@ export default class HomePage extends Component {
   	return (
   	  <div id = "HomePage">
 	  	<div id = 'box'><Featured /></div>
-  	  	<div id = 'box'><VideoGrid fetchVideos = {this.props.fetchVideos}/></div>
+  	  	<div id = 'box'><VideoGrid /></div>
   	  </div>
   	);
   }
