@@ -9,12 +9,20 @@ export function AuthBox ({signIn, signOut, signUp, user}) {
 
     return (
       <div id="AuthBox">
-        <input id="username" type="text" placeholder="username"></input>
-        <input id="password" type="text" placeholder="password"></input>
-        <button onClick={function(){signIn()}} name="LogIn">Log In</button>
-        <button onClick={function(){signOut()}} name="LogOut">Log Out</button>
-        <button onClick={function(){signUp()}} name="SignUp">Sign Up</button>
-        <button name="Upload">Upload Video</button>
+        <div>
+          <input id="username" type="text" placeholder="username"></input>
+        </div>
+        <div>
+          <input id="password" type="text" placeholder="password"></input>
+        </div>
+        <div>
+          <button onClick={function(){signIn()}} name="LogIn">Log In</button>
+          <button onClick={function(){signOut()}} name="LogOut">Log Out</button>
+        </div>
+        <div>
+          <button onClick={function(){signUp()}} name="SignUp">Sign Up</button>
+          <button name="Upload">Upload Video</button>
+        </div>
       </div>
     );
 }
