@@ -13,7 +13,7 @@ export default function PlayerPage({currentVideo}) {
     return(
       <div id = 'Featured'>
 
-        <Video controls loop muted
+        <Video width="800" height="600" controls loop muted
             poster={currentVideo.cover}
             onCanPlayThrough={() => {
                 // Do stuff 
