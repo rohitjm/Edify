@@ -3,13 +3,12 @@ var db = require('./db');
 
 var app = express();
 
-
 require('./config/middleware')(app, express);
 require('./config/routes')(app, express);
 
 var port = Number(process.env.PORT || 8000);
 app.listen(port, function() {
-  console.log(`Listening on port ${port}...`)
+  console.log(`Listening on port ${port}...`);
 });
 
 exports = app;
