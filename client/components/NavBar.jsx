@@ -25,15 +25,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSubmit: (data) => {
-      $.post('/search', data).done(function(res){
-        console.log("response is;", res);
+    handleSubmit: (query) => {
+      $.post('/search', {query: query}).done(function(res){
         dispatch(receivedVideoList(res))
         window.location = '/#/search'
       })
     },
     goHome: () => {
-      console.log('Going home');
       window.location = '/#/';
     }
   }
@@ -43,7 +41,7 @@ class NavBar extends Component {
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true} float="left">
-          <ToolbarTitle text="Virtuoso" />
+          <ToolbarTitle text="Virtuoso" style={{cursor: 'pointer'}} onClick={() => this.props.goHome()}/>
         </ToolbarGroup>
         <ToolbarGroup float="right">
           <ToolbarSeparator />
@@ -51,7 +49,7 @@ class NavBar extends Component {
           <RaisedButton label="Sign Up" primary={true} />
         </ToolbarGroup>
         <ToolbarGroup float="right" style={{width: "35%"}}>
-          <SearchBar />
+          <SearchBar handleSubmit={this.props.handleSubmit}/>
         </ToolbarGroup>
       </Toolbar>
     );
