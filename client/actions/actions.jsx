@@ -7,6 +7,13 @@ export const changeVideo = (value) => {
   };
 };
 
+export const changeFeatured = (value) => {
+  return {
+    type: 'CHANGE_FEATURED',
+    value: value
+  };
+};
+
 export const requestVideoList = () => {
   return {
     type: 'REQUEST_VIDEOS',

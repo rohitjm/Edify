@@ -5,24 +5,21 @@ import Video from 'react-html5video';
   
 
 //Component Code
-export default function Featured({currentVideo}) {
- 	console.log(currentVideo);
+export default function Featured({videos}) {
+ 	console.log(videos);
 
-	if(currentVideo){
+	if(videos){
+    var vidLength = videos.length;
+    var currentVideo = videos[Math.floor(Math.random()*vidLength)];
 
-    var videoOptions = {
-      url: currentVideo.url,
-      poster: currentVideo.cover
-    };
-
-	  return(
-	  	<div id = 'Featured'>
+    return(
+      <div id = 'Featured'>
 
         <div className = 'featuredImage'><img src = {currentVideo.cover} /></div>
-	      <h3>{currentVideo.title}</h3>
-	      <h4>{currentVideo.description}</h4>
-	  	</div>	
-  	);	
+        <h3>{currentVideo.title}</h3>
+        <h4>{currentVideo.description}</h4>
+      </div> 
+    );   
 	}else{
 		return (
 			<h2>Featured</h2>
@@ -33,15 +30,15 @@ export default function Featured({currentVideo}) {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    currentVideo: state.currentVideo.currentVideo
+    videos: state.videos.videos
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeFeatured: (value) => {
-      console.log('Selected video!');
-      dispatch(changeCurrentVideo(value));
+      console.log('Changing featured video!');
+      dispatch(changeFeatured());
     }
   };
 };
