@@ -12,7 +12,7 @@ module.exports = function(app, express) {
   app.post('/signin', passport.authenticate('local'), userController.userSignIn);
 
   // Handles user sign out
-  app.post('/signout', userController.userSignOut);
+  app.get('/signout', userController.userSignOut);
 
   //Fetching inital videos from db
   app.get('/fetch', videoController.fetchAll);

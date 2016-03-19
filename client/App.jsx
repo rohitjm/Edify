@@ -13,6 +13,8 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import ReduxPromise from 'redux-promise';
 import VideoAppHandler from './reducers/reducer.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, thunk, logger()));
 

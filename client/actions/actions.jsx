@@ -7,18 +7,6 @@ export const changeVideo = (value) => {
   };
 };
 
-export const changeFeatured = (value) => {
-  return {
-    type: 'CHANGE_FEATURED',
-    value: value
-  };
-};
-
-export const requestVideoList = () => {
-  return {
-    type: 'REQUEST_VIDEOS',
-  };
-};
 
 export const receivedVideoList = (videos) => {
   return {
@@ -41,6 +29,13 @@ export const getVideo = (data) => {
   };
 };
 
+export const updateUserInfo = (info) => {
+  return {
+    type: 'UPDATE_USER_INFO',
+    info: info
+  }
+};
+
 export const changeCurrentVideo = (video) => {
   return {
     type: 'SELECT_VIDEO',
@@ -50,7 +45,7 @@ export const changeCurrentVideo = (video) => {
 
 export const videoFetch = () => {
 	return(dispatch) => {
-		dispatch(requestVideoList());
+		dispatch(fetchVideoList());
 		$.get('/fetch')
 		.then((response) => 
 			{
@@ -58,6 +53,46 @@ export const videoFetch = () => {
 				dispatch(receivedVideoList(response));
 			});
 	}
+};
+
+export const changeUser = (user) => {
+  return {
+    type: 'CHANGE_USER',
+    user: user
+  }
+};
+
+export const signInUser = (user) => {
+  return(dispatch) => {
+    $.post('/signin', user)
+    .then((response) => 
+      {
+        console.log("from action: ", response);
+        dispatch(changeUser(response));
+      });
+  }
+};
+
+export const signOutUser = () => {
+  return(dispatch) => {
+    $.get('/signout')
+    .then((response) => 
+      {
+        console.log("from action: ", response);
+        dispatch(changeUser({}));
+      });
+  }
+};
+
+export const signUpUser = (user) => {
+  return(dispatch) => {
+    $.post('/signup', user)
+    .then((response) => 
+      {
+        console.log("from action: ", response);
+        dispatch(changeUser(response));
+      });
+  }
 };
 
 
