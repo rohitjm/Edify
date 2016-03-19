@@ -5,12 +5,14 @@ import TextField from 'material-ui/lib/text-field';
 import IconButton from 'material-ui/lib/icon-button';
 
 
-export default function SearchBar({onSubmit}) {
+export default class SearchBar extends Component {
+  render (){
   return (
     <div>
       <TextField ref='search' hintText="Search" />
       <IconButton iconClassName="material-icons md-24" onClick={() => console.log(this.refs.search.getValue())}>search</IconButton>
     </div>
-  );
+  );  
+  }
 }
 
