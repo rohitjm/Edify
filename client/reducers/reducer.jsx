@@ -74,7 +74,6 @@ const VideoAppHandler = combineReducers({
   form: formReducer,
   videos: VideoList,
   user: User
-
 });
 
 export default VideoAppHandler;

@@ -1,0 +1,7 @@
+{
+	"production":{
+		"host":"galvanizedfern-mysql1.cn3yqtfbbjtf.us-west-1.rds.amazonaws.com",
+		"port":3306,
+		"database":"thesis"
+	}
+}
