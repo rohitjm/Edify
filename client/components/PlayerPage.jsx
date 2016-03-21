@@ -7,22 +7,26 @@ import $ from 'jquery';
 //Component Code
 export default function PlayerPage({currentVideo}) {
   console.log(currentVideo);
+
   if(currentVideo){
 
     return(
-      <div id = 'Featured'>
 
-        <Video width="800" height="600" controls loop muted
-            poster={currentVideo.cover}
+      <div id = 'PlayerPage'>
+      <div id = 'Playercover'>
+        <Video width='900' height='auto' controls muted
+
             onCanPlayThrough={() => {
                 // Do stuff 
             }}>
             <source src={currentVideo.url} type="video/mp4" />
+           
         </Video>
-
-
-        <h3>{currentVideo.title}</h3>
-        <h4>{currentVideo.description}</h4>
+        </div>
+        <div id = 'description'>
+        <h3>Title: {currentVideo.title}</h3>
+        <h4>Description: {currentVideo.description}</h4>
+        </div>
       </div>  
     );  
   }else{
