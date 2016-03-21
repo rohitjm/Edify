@@ -1,56 +1,19 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 export const fields = ['title', 'mentor'];
+import TextField from 'material-ui/lib/text-field';
+import IconButton from 'material-ui/lib/icon-button';
 
 
-class SearchBar extends Component {
-  static propTypes = {
-    fields: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    resetForm: PropTypes.func.isRequired,
-    submitting: PropTypes.bool.isRequired
-  };
+export default class SearchBar extends Component {
 
   render() {
-
-    const {
-      fields: {title, mentor},
-      handleSubmit,
-      resetForm,
-      submitting
-      } = this.props;
-
     return (
-      <form onSubmit={handleSubmit}>
-       
-        <div>
-          <label>Title</label>
-          <div>
-            <input type="text" placeholder=" Title" {...title}/>
-          </div>
-        </div>
-        <div>
-          <label>Mentor</label>
-          <div>
-            <input type="text" placeholder="Mentor" {...mentor}/>
-          </div>
-        </div>
-        <div>
-          <button type="submit" disabled={submitting}>
-            {submitting ? <i/> : <i/>} Submit
-          </button>
-          <button type="button" disabled={submitting} onClick={resetForm}>
-            Clear Values
-          </button>
-        </div>
-      </form>
-
+      <div>
+        <TextField ref='search' hintText="Search" />
+        <IconButton iconClassName="material-icons md-24" onClick={() => this.props.handleSubmit(this.refs.search.getValue())}>search</IconButton>
+      </div>
     );
   }
 }
-
-export default reduxForm({
-  form: 'simple',
-  fields
-})(SearchBar);
 

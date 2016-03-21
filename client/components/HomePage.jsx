@@ -6,9 +6,9 @@ import { fetchVideoList } from '../actions/actions.jsx';
 import $ from 'jquery';
 
 //Component Code
-export default class HomePage extends Component {
+export class HomePage extends Component {
 
-	componentWillMount(){
+	componentDidMount(){
 	    console.log('willMount');
 	    this.props.fetchVideos();
 	}
@@ -17,8 +17,8 @@ export default class HomePage extends Component {
   	//this.props.fetchVideos();
   	return (
   	  <div id = "HomePage">
-	  	<div id = 'box'><Featured /></div>
-  	  	<div id = 'box'><VideoGrid fetchVideos = {this.props.fetchVideos}/></div>
+  	  	<div id = 'box'><Featured /></div>
+    	  <div ><VideoGrid /></div>
   	  </div>
   	);
   }

@@ -7,6 +7,7 @@ export const changeVideo = (value) => {
   };
 };
 
+
 export const receivedVideoList = (videos) => {
   return {
     type: 'RECEIEVED_VIDEOS',

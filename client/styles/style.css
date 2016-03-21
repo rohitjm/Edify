@@ -7,13 +7,70 @@
   width: 75%  /* Or whatever */
   margin: auto; 
 }
-
-#featured {
-	width: 100px;  /* Or whatever */
-  height: 100px; /* Or whatever */
-  margin: auto; 
+#sheet {
+  background-color : white;
+  width : 1200px;
+  height: 700px;
+  padding: 20px;
+  margin:auto;
+}
+#sheett {
+  background-color : white;
+  display: flex;
+  width : 1200px;
+  height: 400px;
+  padding: 20px;
+  margin:auto;
+  margin-top: 10px;
+  overflow: hidden;
+}
+#cover {
+  background-color : white;
+  width : 750px;
+  height: 340px;
+  margin: auto;
+  padding: 30px;
+  margin-top: 25px;
+  /*display: flex;*/
+ /*align-items: center;*/*/
 }
 
+#HomePage {
+background-color : #eeeeee;
+padding: 10px 0px 30px 0px;
+}
+#PlayerPage {
+background-color : #eeeeee;
+padding: 30px 20px 20px 20px;
+}
+#Playercover {
+  background-color : white;
+  width : 1200px;
+  height: 700px;
+  padding-left: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin:auto;
+  margin-bottom: 40px;
+
+}
+
+#description {
+  background-color : white;
+  margin-top: 20px;
+  padding-left: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width : 1200px;
+  height: 200px;
+  margin:auto;
+
+}
+/*#featured {
+	width: 200px;   Or whatever 
+  height: 200px;  
+  margin: auto; 
+}*/
 #VideoGrid {
   width: 100px;  /* Or whatever */
   height: 100px; /* Or whatever */
@@ -36,18 +93,47 @@ body {
     height: 100%;
   }
 }
-
-.featuredImage {
+.fill {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden
+    max-width: 600px;
+    max-height: 300px;
+    margin-top:10px;
+    
+}
+.fill img {
+    flex-shrink:0;
+    min-width:100%;
+    min-height:100%;
+    float:left;
+  
+}
+/*.featuredImage {
+  max-width: 500px;
+  max-height: 300px;
+  border: 3px solid black;
+  float: left;
+  margin-right: 20px;
+  object-fit: fill;
+}*/
+.descriptionBox  {
   max-width: 400px;
-  max-height: 400px;
-  border: 3px solid #73AD21;
-}
+  max-height: 200px;
+  border: 3px solid black;
+  margin-left: 70px;
 
-.featuredImage img {
-  max-width: 100%;
-  max-height: 100%;    
+  
 }
-
+/*img {
+  max-height: 300px;   
+  max-width: 500px;
+  
+}*/
+.video-play video__control {
+  width = 30px;
+}
 .homeImage {
   max-width: 100px;
   max-height: 100px;
@@ -81,6 +167,50 @@ body {
   max-height: 100%;
 }
 
-#NavBar {
-  border: 4pm solid #73AD21;
+/* =============== NavBar ================ */
+
+.navContent {
+  display: inline;
 }
+
+.navBar {
+  background-color: #C1E1A6;
+}
+
+.authBox {
+  display: inline;
+  float: right;
+}
+
+
+.searchForm {
+  padding-bottom: 20px;
+}
+
+.searchTitle {
+  font-size: 20px;
+}
+
+.navLeft {
+  display: inline;
+  float: left;
+  width: 20%;
+}
+
+.navMiddle {
+  display: inline;
+  width: 50%;
+}
+
+.navRight {
+  display: inline;
+  width:30%;
+}
+
+.searchIcon {
+  background-image: 
+}
+
+
+
+
