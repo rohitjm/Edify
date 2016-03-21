@@ -22,7 +22,8 @@ export function AuthBox ({showSignUpModal, showSignInModal, signOut, user}) {
 
 const mapStateToProps = (state) => {
   return {
-    displayAuthModal: state.displayAuthModal,
+    displaySignInModal: state.displaySignInModal,
+    displaySignOutModal: state.displaySignOutModal,
     user: state.user
   }
 };
