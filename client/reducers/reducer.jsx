@@ -56,8 +56,41 @@ const User = (state = {}, action) => {
     case 'CHANGE_USER':
       console.log('from reducer: ', action.user);
       newState.user = action.user;
-    default:
       return newState;
+    default:
+      return state;
+  }
+}
+
+const SignInModal = (state = false, action) => {
+  var newState = Object.assign({}, state);
+  switch (action.type) {
+    case 'SHOW_SIGNIN_MODAL':
+    console.log(action.displaySignInModal)
+      newState.displaySignInModal = true;
+      return newState;
+    case 'HIDE_SIGNIN_MODAL':
+    console.log(action.displaySignInModal)
+      newState.displaySignInModal = false;
+      return newState;
+    default:
+      return state;
+  }
+}
+
+const SignUpModal = (state = false, action) => {
+  var newState = Object.assign({}, state);
+  switch (action.type) {
+    case 'SHOW_SIGNUP_MODAL':
+    console.log(action.displaySignUpModal)
+      newState.displaySignUpModal = true;
+      return newState;
+    case 'HIDE_SIGNUP_MODAL':
+    console.log(action.displaySignUpModal)
+      newState.displaySignUpModal = false;
+      return newState;
+    default:
+      return state;
   }
 }
 
@@ -67,7 +100,9 @@ const VideoAppHandler = combineReducers({
   found: Video,
   form: formReducer,
   videos: VideoList,
-  user: User
+  user: User,
+  displaySignInModal: SignInModal,
+  displaySignUpModal: SignUpModal
 });
 
 export default VideoAppHandler;
