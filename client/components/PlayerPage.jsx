@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { fetchVideoList } from '../actions/actions.jsx';
-import Video from 'react-html5video';
 import $ from 'jquery';
-
+import video from 'video.js';
 //Component Code
 export default function PlayerPage({currentVideo}) {
   console.log(currentVideo);
@@ -14,14 +13,9 @@ export default function PlayerPage({currentVideo}) {
 
       <div id = 'PlayerPage'>
       <div id = 'Playercover'>
-        <Video width='900' height='auto' controls muted
-
-            onCanPlayThrough={() => {
-                // Do stuff 
-            }}>
+        <video width='900' height='auto' controls muted data-setup='{}'>
             <source src={currentVideo.url} type="video/mp4" />
-           
-        </Video>
+        </video>
         </div>
         <div id = 'description'>
         <h3>Title: {currentVideo.title}</h3>
