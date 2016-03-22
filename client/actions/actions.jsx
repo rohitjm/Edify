@@ -95,4 +95,31 @@ export const signUpUser = (user) => {
   }
 };
 
+export const toggleSignInModal= () => {
+  console.log('toggling SignInModal')
+  return {
+    type: 'SHOW_SIGNIN_MODAL',
+  }
+};
+
+export const hideSignInModal= () => {
+  console.log('toggling SignInModal')
+  return {
+    type: 'HIDE_SIGNIN_MODAL',
+  }
+};
+
+export const toggleSignUpModal= () => {
+  console.log('toggling SignUpModal')
+  return {
+    type: 'SHOW_SIGNUP_MODAL',
+  }
+};
+
+export const hideSignUpModal= () => {
+  console.log('toggling SignUpModal')
+  return {
+    type: 'HIDE_SIGNUP_MODAL',
+  }
+};
 

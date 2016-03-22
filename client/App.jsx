@@ -5,6 +5,8 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import HomePage from './components/HomePage.jsx';
 import SearchPage from './components/SearchPage.jsx';
 import PlayerPage from './components/PlayerPage.jsx';
+import SignInModal from './components/SignInModal.jsx';
+import SignUpModal from './components/SignUpModal.jsx';
 import ReactS3Uploader from 'react-s3-uploader';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -29,8 +31,10 @@ export default class App extends Component {
   render(){
     return (
       <div id="app-view">  
-          <div className='navBar'><NavBar/></div>
-          {this.props.children}
+        <SignInModal/>
+        <SignUpModal/>
+        <div className='navBar'><NavBar/></div>
+        {this.props.children}
       </div>
     )	
   }
