@@ -8,6 +8,7 @@ var db = new Sequelize('thesis', 'test', 'password');
 var User = db.define('User', {
   username: {type: Sequelize.STRING, unique: true},
   password: Sequelize.STRING,
+  aboutMe: Sequelize.STRING
 });
 
 // Video's schema

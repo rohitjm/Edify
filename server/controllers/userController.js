@@ -63,5 +63,16 @@ module.exports = {
     console.log('User logged out!');
     res.send('Logged out');
     // Redirect or do something else to let user know they successfully loged out
+  },
+
+
+  editAboutMe: function (req,res) {
+    db.User.findOne({where: {username: req.body.username}}).then(function(user) {
+      user.aboutMe = req.body.aboutMe
+      User.save().then(function(user) {
+        console.log('User updated successfully');
+        res.send(201, user);
+      })
+    })
   }
 };
