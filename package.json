@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint -c .eslintrc.json --ignore-path .gitignore .",
     "start": "nodemon --watch server server/server.js",
-    "build": "webpack --progress --colors"
+    "build": "webpack --progress --colors",
+    "test": "mocha --compilers js:babel-register --recursive"
   },
   "pre-commit": [
     "lint"
@@ -62,15 +63,21 @@
     "video.js": "^5.8.0"
   },
   "devDependencies": {
-    "babel-core": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.2",
     "babel-loader": "^6.2.3",
     "babel-plugin-react-transform": "^2.0.0",
     "babel-plugin-transform-runtime": "^6.6.0",
-    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.0",
     "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "eslint-plugin-react": "^4.2.1",
+    "mocha": "^2.4.5",
+    "pre-commit": "^1.1.2",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-debug-inspector": "^0.1.3",
     "react-transform-hmr": "^1.0.2",
@@ -79,8 +86,6 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.12",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.9.1",
-    "eslint-plugin-react": "^4.2.1",
-    "pre-commit": "^1.1.2"
+    "webpack-hot-middleware": "^2.9.1"
   }
 }
