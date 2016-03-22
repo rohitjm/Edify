@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import HomePage from './components/HomePage.jsx';
 import SearchPage from './components/SearchPage.jsx';
+import ProfilePage from './components/ProfilePage.jsx';
 import PlayerPage from './components/PlayerPage.jsx';
 import SignInModal from './components/SignInModal.jsx';
 import SignUpModal from './components/SignUpModal.jsx';
@@ -49,6 +50,7 @@ render((
         <IndexRoute component={HomePage} />
         <Route path="/search" component={SearchPage} />
         <Route path="/player" component={PlayerPage} />
+        <Route path="/profile" component={ProfilePage} />
       </Route>
     </Router>
   </Provider>
