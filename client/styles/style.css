@@ -64,13 +64,28 @@ padding: 30px 20px 20px 20px;
   width : 1200px;
   height: 200px;
   margin:auto;
+}
+
+#cardCover{
+ background-color : white;
+ margin: auto;
+ width : 1200px;
+ height: 750px;
+ padding: 20px;
+ margin-bottom: 80px;
 
 }
+
+#inner {
+ max-width: 100%;
+ max-height: 100%;
 /*#featured {
 	width: 200px;   Or whatever 
   height: 200px;  
   margin: auto; 
 }*/
+}
+
 #VideoGrid {
   width: 100px;  /* Or whatever */
   height: 100px; /* Or whatever */
@@ -110,27 +125,7 @@ body {
     float:left;
   
 }
-/*.featuredImage {
-  max-width: 500px;
-  max-height: 300px;
-  border: 3px solid black;
-  float: left;
-  margin-right: 20px;
-  object-fit: fill;
-}*/
-.descriptionBox  {
-  max-width: 400px;
-  max-height: 200px;
-  border: 3px solid black;
-  margin-left: 70px;
 
-  
-}
-/*img {
-  max-height: 300px;   
-  max-width: 500px;
-  
-}*/
 .video-play video__control {
   width = 30px;
 }
