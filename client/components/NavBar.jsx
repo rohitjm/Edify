@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import AuthBox from './AuthBox.jsx';
 import SearchBar from './SearchBar.jsx';
-import {receivedVideoList} from '../actions/actions.jsx'
+import {receivedVideoList, toggleSignInModal, toggleSignUpModal, signOutUser} from '../actions/actions.jsx'
 import {connect} from 'react-redux';
 import $ from 'jquery';
 // import {ToolBar, ToolBarSeparator} from 'material-ui';
@@ -18,7 +17,10 @@ import IconButton from 'material-ui/lib/icon-button';
 
 const mapStateToProps = (state) => {
   return {
-    state: state
+    state: state,
+    displaySignInModal: state.displaySignInModal,
+    displaySignOutModal: state.displaySignOutModal,
+    user: state.user
   }
 };
 
@@ -33,10 +35,24 @@ const mapDispatchToProps = (dispatch) => {
     },
     goHome: () => {
       window.location = '/#/';
+    },
+    signOut: () => {
+      console.log('Signing out user')
+      dispatch(signOutUser())
+    },
+    showSignInModal: () => {
+      console.log('Showing SignInModal')
+      dispatch(toggleSignInModal())
+    },
+    showSignUpModal: () => {
+      console.log('Showing SignUpModal')
+      dispatch(toggleSignUpModal())
     }
-  }
+  };
 }
+
 class NavBar extends Component {
+
   render(){
     return (
       <Toolbar>
@@ -45,8 +61,10 @@ class NavBar extends Component {
         </ToolbarGroup>
         <ToolbarGroup float="right">
           <ToolbarSeparator />
-          <RaisedButton label="Sign In" primary={true} />
-          <RaisedButton label="Sign Up" primary={true} />
+          <RaisedButton label="Sign In" primary={true} onTouchTap={() => this.props.showSignInModal()}/>
+          <RaisedButton label="Sign Up" primary={true} onTouchTap={() => this.props.showSignUpModal()}/>
+          <RaisedButton label="Sign Out" primary={true} onTouchTap={() => this.props.signOut()}/>
+          <RaisedButton label="Upload Video" secondary={true}/>
         </ToolbarGroup>
         <ToolbarGroup float="right" style={{width: "35%"}}>
           <SearchBar handleSubmit={this.props.handleSubmit}/>

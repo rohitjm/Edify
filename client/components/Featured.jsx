@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Video from 'react-html5video';
-
+import Card from 'material-ui/lib/card/card';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardTitle from 'material-ui/lib/card/card-title';
   
 
 //Component Code
@@ -12,14 +14,27 @@ export default function Featured({videos}) {
     var vidLength = videos.length;
     var currentVideo = videos[Math.floor(Math.random()*vidLength)];
 
-    return(
-      <div id = 'Featured'>
+    var videoOptions = {
+      url: currentVideo.url,
+      poster: currentVideo.cover
+    };
 
-        <div className = 'featuredImage'><img src = {currentVideo.cover} /></div>
-        <h3>{currentVideo.title}</h3>
-        <h4>{currentVideo.description}</h4>
-      </div> 
-    );   
+	  return(
+	  	
+      <div id = 'HomePage'>
+      <div id = 'cardCover'>
+         <div id= 'inner'>
+           <Card >
+             <CardMedia
+               overlay={<CardTitle title={currentVideo.title} subtitle={currentVideo.description} />}>
+               <img src={currentVideo.cover} />
+             </CardMedia>
+           </Card>
+         </div>
+       </div>
+	  	</div>	
+  	);	
+
 	}else{
 		return (
 			<h2>Featured</h2>
