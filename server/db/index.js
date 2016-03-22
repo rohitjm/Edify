@@ -20,9 +20,8 @@ var db = new Sequelize(
 var User = db.define('User', {
   username: {type: Sequelize.STRING, unique: true},
   password: Sequelize.STRING,
-  aboutMe: Sequelize.STRING
+  aboutMe:  {type: Sequelize.STRING, allowNull: false, defaultValue: ""} 
 });
-
 // Video's schema
 var Video = db.define('Video', {
   title: Sequelize.STRING,

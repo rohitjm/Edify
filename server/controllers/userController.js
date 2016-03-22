@@ -6,6 +6,7 @@ module.exports = {
   userSignUp: function (req, res) {
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
+      console.log("useris:", user);
       if (user) {
         console.log('Username already exists!');
         res.sendStatus(200);
@@ -16,7 +17,9 @@ module.exports = {
         }
         db.User.create({
           username: req.body.username,
-          password: hash
+          password: hash,
+          aboutMe: "hey"
+
         })
         .then(function(user) {
           console.log('User created successfully');
