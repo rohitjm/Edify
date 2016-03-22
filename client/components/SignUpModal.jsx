@@ -13,6 +13,11 @@ export default class SignUpModal extends React.Component {
 
   render() {
 
+    const customContentStyle = {
+      width: 350,
+      maxWidth: 'none',
+    };
+
     const actions = [
       <TextField
         ref="username"
@@ -44,6 +49,7 @@ export default class SignUpModal extends React.Component {
           title='Sign Up'
           actions={actions}
           modal={false}
+          contentStyle={customContentStyle}
           open={this.props.displaySignUpModal.displaySignUpModal}
         >
         </Dialog>
