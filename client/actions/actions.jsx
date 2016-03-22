@@ -35,7 +35,12 @@ export const updateUserInfo = (info) => {
     info: info
   }
 };
-
+export const updateAboutMe = (info) => {
+  return {
+    type: 'UPDATE_ABOUTME',
+    info: info
+  }
+};
 export const changeCurrentVideo = (video) => {
   return {
     type: 'SELECT_VIDEO',

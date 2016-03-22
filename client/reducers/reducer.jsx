@@ -50,7 +50,11 @@ const UserInfo = (state = {}, action) => {
   switch (action.type) {
     case 'UPDATE_USER_INFO':
       newstate.user = action.info;
-      return newstate;
+    case 'UPDATE_ABOUTME':
+      newstate.userInfo.aboutMe = action.info;
+      newstate.userInfo.aboutMeEdit = false;
+      console.log("aboutme in reducer:", newstate.userInfo.aboutMe);
+      return newstate.userInfo;
     default:
       return state;
   }
@@ -107,7 +111,8 @@ const VideoAppHandler = combineReducers({
   videos: VideoList,
   user: User,
   displaySignInModal: SignInModal,
-  displaySignUpModal: SignUpModal
+  displaySignUpModal: SignUpModal,
+  userInfo: UserInfo
 });
 
 export default VideoAppHandler;
