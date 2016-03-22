@@ -7,7 +7,6 @@ export const changeVideo = (value) => {
   };
 };
 
-
 export const receivedVideoList = (videos) => {
   return {
     type: 'RECEIEVED_VIDEOS',
@@ -127,4 +126,19 @@ export const hideSignUpModal= () => {
     type: 'HIDE_SIGNUP_MODAL',
   }
 };
+
+export const loadComments = (video) => {
+  console.log('Load comments from actions');
+  return {
+    type: 'LOAD_COMMENTS',
+    payload:video
+  }
+};
+
+export const addComment  = (comment) => {
+  console.log("Adding comment from actions");
+  return {
+    type: 'ADD_COMMENT'
+  }
+}
 
