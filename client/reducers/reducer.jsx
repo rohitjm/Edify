@@ -100,6 +100,22 @@ const SignUpModal = (state = false, action) => {
   }
 }
 
+const UploadModal = (state = false, action) => {
+  var newState = Object.assign({}, state);
+  switch (action.type) {
+    case 'SHOW_UPLOAD_MODAL':
+    console.log(action.displayUploadModal)
+      newState.displayUploadModal = true;
+      return newState;
+    case 'HIDE_UPLOAD_MODAL':
+    console.log(action.displayUploadModal)
+      newState.displayUploadModal = false;
+      return newState;
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -107,7 +123,8 @@ const VideoAppHandler = combineReducers({
   videos: VideoList,
   user: User,
   displaySignInModal: SignInModal,
-  displaySignUpModal: SignUpModal
+  displaySignUpModal: SignUpModal,
+  displayUploadModal: UploadModal
 });
 
 export default VideoAppHandler;
