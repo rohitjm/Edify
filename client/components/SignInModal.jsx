@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import {connect} from 'react-redux';
 import { signInUser, hideSignInModal, toggleSignInModal } from '../actions/actions.jsx';
 
-export default class Test extends React.Component {
+export default class SignInModal extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -72,4 +72,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInModal);
