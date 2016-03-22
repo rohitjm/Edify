@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SearchBar from './SearchBar.jsx';
-import {receivedVideoList, toggleSignInModal, toggleSignUpModal, signOutUser} from '../actions/actions.jsx'
+import {receivedVideoList, toggleSignInModal, toggleSignUpModal, toggleUploadModal, signOutUser} from '../actions/actions.jsx'
 import {connect} from 'react-redux';
 import $ from 'jquery';
 // import {ToolBar, ToolBarSeparator} from 'material-ui';
@@ -47,6 +47,10 @@ const mapDispatchToProps = (dispatch) => {
     showSignUpModal: () => {
       console.log('Showing SignUpModal')
       dispatch(toggleSignUpModal())
+    },
+    showUploadModal: () => {
+      console.log('Showing UploadModal')
+      dispatch(toggleUploadModal())
     }
   };
 }
@@ -64,7 +68,7 @@ class NavBar extends Component {
           <RaisedButton label="Sign In" primary={true} onTouchTap={() => this.props.showSignInModal()}/>
           <RaisedButton label="Sign Up" primary={true} onTouchTap={() => this.props.showSignUpModal()}/>
           <RaisedButton label="Sign Out" primary={true} onTouchTap={() => this.props.signOut()}/>
-          <RaisedButton label="Upload Video" secondary={true}/>
+          <RaisedButton label="Upload Video" secondary={true} onTouchTap={() => this.props.showUploadModal()}/>
         </ToolbarGroup>
         <ToolbarGroup float="right" style={{width: "35%"}}>
           <SearchBar handleSubmit={this.props.handleSubmit}/>
