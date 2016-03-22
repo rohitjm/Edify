@@ -7,10 +7,11 @@ import UserInfo from './UserInfo.jsx';
 
 export class ProfilePage extends Component {
 render(){
+  console.log("useris", this.props.user.user.username);
   return (
     <div>
-    <UserInfo user= {this.props.user} updateUserInfo = {this.props.aboutMe} aboutMe ={this.props.aboutMe} />
-  
+  <UserInfo user= {this.props.user}  />
+
   </div>
   );
 }
@@ -18,9 +19,8 @@ render(){
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    aboutMe: state.userInfo.aboutMe
-  }
+    user: state.user
+  }  
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -36,7 +36,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
+  // updateUserInfo = {this.props.aboutMe} aboutMe ={this.props.aboutMe}
+  // aboutMe: state.userInfo.aboutMe
   
 
 

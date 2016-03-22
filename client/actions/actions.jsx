@@ -83,6 +83,7 @@ export const signOutUser = () => {
 
 export const signUpUser = (user) => {
   return(dispatch) => {
+    console.log("Iam here");
     $.post('/signup', user)
     .then((response) => 
       {
