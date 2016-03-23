@@ -132,6 +132,23 @@ export const hideSignUpModal= () => {
   }
 };
 
+export const loadComments = (videoid) => {
+  return(dispatch) => {
+    $.post('/loadComments', {videoid:videoid})
+    .then((comments) => 
+      {
+        dispatch(loadAllComments(comments));
+      });
+  }
+};
+
+export const loadAllComments = (comments) => {
+  return {
+    type: 'LOAD_COMMENTS',
+    payload:comments
+  }
+};  
+
 export const toggleUploadModal= () => {
   console.log('toggling UploadModal')
   return {
@@ -146,13 +163,6 @@ export const hideUploadModal= () => {
   }
 };
 
-export const loadComments = (video) => {
-  console.log('Load comments from actions');
-  return {
-    type: 'LOAD_COMMENTS',
-    payload:video
-  }
-};
 
 export const addComment  = (comment) => {
   console.log("Adding comment from actions");
