@@ -21,17 +21,6 @@ export default class SignInModal extends React.Component {
     };
 
     const actions = [
-      <TextField
-        ref="username"
-        floatingLabelText="Username"
-        id="username"
-      />,
-      <TextField
-        ref="password"
-        floatingLabelText="Password"
-        type="password"
-        id="password"
-      />,
       <FlatButton
         label='Cancel'
         secondary={true}
@@ -54,6 +43,17 @@ export default class SignInModal extends React.Component {
           contentStyle={customContentStyle}
           open={this.props.displaySignInModal === true}
         >
+          <TextField
+          ref="username"
+          floatingLabelText="Username"
+          id="username"
+          />
+          <TextField
+            ref="password"
+            floatingLabelText="Password"
+            type="password"
+            id="password"
+          />
         </Dialog>
       </div>
     );
