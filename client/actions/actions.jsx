@@ -92,6 +92,18 @@ export const signUpUser = (user) => {
   }
 };
 
+export const addVideo = (video) => {
+  console.log('in action - adding new video', video)
+  return(dispatch) => {
+    $.post('/addVideo', video)
+    .then((response) => 
+      {
+        console.log("from action: ", response);
+        dispatch(changeCurrentVideo(response));
+      });
+  }
+};
+
 export const toggleSignInModal= () => {
   console.log('toggling SignInModal')
   return {
@@ -120,6 +132,20 @@ export const hideSignUpModal= () => {
   }
 };
 
+export const toggleUploadModal= () => {
+  console.log('toggling UploadModal')
+  return {
+    type: 'SHOW_UPLOAD_MODAL',
+  }
+};
+
+export const hideUploadModal= () => {
+  console.log('toggling UploadModal')
+  return {
+    type: 'HIDE_UPLOAD_MODAL',
+  }
+};
+
 export const loadComments = (video) => {
   console.log('Load comments from actions');
   return {
@@ -134,4 +160,5 @@ export const addComment  = (comment) => {
     type: 'ADD_COMMENT'
   }
 }
+
 

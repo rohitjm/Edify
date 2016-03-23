@@ -8,6 +8,7 @@ import ProfilePage from './components/ProfilePage.jsx';
 import PlayerPage from './components/PlayerPage.jsx';
 import SignInModal from './components/SignInModal.jsx';
 import SignUpModal from './components/SignUpModal.jsx';
+import UploadModal from './components/UploadModal.jsx';
 import ReactS3Uploader from 'react-s3-uploader';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -34,6 +35,7 @@ export default class App extends Component {
       <div id="app-view">  
         <SignInModal/>
         <SignUpModal/>
+        <UploadModal/>
         <div className='navBar'><NavBar/></div>
         {this.props.children}
       </div>

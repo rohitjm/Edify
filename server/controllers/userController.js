@@ -52,7 +52,6 @@ module.exports = {
     // .catch(function(err) {
     //   console.log(err);
     // })
-    console.log('req.user', req.user);
     res.send(req.user);
   },
 
