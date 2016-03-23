@@ -30,16 +30,10 @@ export default class UploadModal extends React.Component {
     // add progress bar while video is uploading?
 
     const actions = [
-      <TextField
-        ref="title"
-        floatingLabelText="Title"
-        id="title"
-      />,
-      <TextField
-        ref="description"
-        floatingLabelText="Description"
-        type="description"
-        id="description"
+      <ReactS3Uploader  
+        signingUrl="/s3/sign"
+        onFinish={() => {
+        }}
       />,
       <ReactS3Uploader  
         signingUrl="/s3/sign"
@@ -71,6 +65,18 @@ export default class UploadModal extends React.Component {
           contentStyle={customContentStyle}
           open={this.props.displayUploadModal === true}
         >
+        Select a video and thumbnail file.
+          <TextField
+          ref="title"
+          floatingLabelText="Title"
+          id="title"
+          />
+          <TextField
+            ref="description"
+            floatingLabelText="Description"
+            type="description"
+            id="description"
+          />
         </Dialog>
       </div>
     );
