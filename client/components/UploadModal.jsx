@@ -22,7 +22,7 @@ export default class UploadModal extends React.Component {
     };
 
     const customContentStyle = {
-      width: 350,
+      width: 500,
       maxWidth: 'none',
     };
 
@@ -69,7 +69,7 @@ export default class UploadModal extends React.Component {
           actions={actions}
           modal={false}
           contentStyle={customContentStyle}
-          open={this.props.displayUploadModal.displayUploadModal}
+          open={this.props.displayUploadModal === true}
         >
         </Dialog>
       </div>
