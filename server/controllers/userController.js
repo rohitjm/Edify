@@ -18,7 +18,7 @@ module.exports = {
         db.User.create({
           username: req.body.username,
           password: hash,
-          aboutMe: "hey"
+
 
         })
         .then(function(user) {
@@ -69,11 +69,12 @@ module.exports = {
 
 
   editAboutMe: function (req,res) {
+    console.log("reqis", req.body)
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
       console.log('User is:', user);
-      user.aboutMe = req.body.aboutMe;
-      User.save()
+      user.aboutMe = req.body.info;
+      user.save()
       .then(function(user) {
         console.log('User updated successfully');
         res.send(201, user);
