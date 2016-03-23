@@ -79,6 +79,17 @@ const SignUpModal = (state = {}, action) => {
   }
 }
 
+const UploadModal = (state = {}, action) => {
+  switch (action.type) {
+    case 'SHOW_UPLOAD_MODAL':
+      return true;
+    case 'HIDE_UPLOAD_MODAL':
+      return false;
+    default:
+      return state;
+  }
+}
+
 const Comments = (state = {}, action) => {
   var newState = Object.assign({}, state);
   switch (action.type) {
@@ -105,6 +116,7 @@ const VideoAppHandler = combineReducers({
   comments: Comments,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
+  displayUploadModal: UploadModal,
   userInfo: UserInfo
 });
 
