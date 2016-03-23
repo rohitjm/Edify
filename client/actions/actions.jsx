@@ -68,7 +68,7 @@ export const signInUser = (user) => {
     .then((response) => 
       {
         console.log("from action: ", response);
-        dispatch(changeCurrentVideo(response));
+        dispatch(changeUser(response));
       });
   }
 };
@@ -95,13 +95,14 @@ export const signUpUser = (user) => {
   }
 };
 
-export const addVideo = (vide) => {
+export const addVideo = (video) => {
+  console.log('in action - adding new video', video)
   return(dispatch) => {
     $.post('/addVideo', video)
     .then((response) => 
       {
         console.log("from action: ", response);
-        dispatch(changeUser(response));
+        dispatch(changeCurrentVideo(response));
       });
   }
 };

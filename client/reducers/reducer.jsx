@@ -72,11 +72,9 @@ const SignInModal = (state = false, action) => {
   var newState = Object.assign({}, state);
   switch (action.type) {
     case 'SHOW_SIGNIN_MODAL':
-    console.log(action.displaySignInModal)
       newState.displaySignInModal = true;
       return newState;
     case 'HIDE_SIGNIN_MODAL':
-    console.log(action.displaySignInModal)
       newState.displaySignInModal = false;
       return newState;
     default:
@@ -88,11 +86,9 @@ const SignUpModal = (state = false, action) => {
   var newState = Object.assign({}, state);
   switch (action.type) {
     case 'SHOW_SIGNUP_MODAL':
-    console.log(action.displaySignUpModal)
       newState.displaySignUpModal = true;
       return newState;
     case 'HIDE_SIGNUP_MODAL':
-    console.log(action.displaySignUpModal)
       newState.displaySignUpModal = false;
       return newState;
     default:
@@ -104,11 +100,9 @@ const UploadModal = (state = false, action) => {
   var newState = Object.assign({}, state);
   switch (action.type) {
     case 'SHOW_UPLOAD_MODAL':
-    console.log(action.displayUploadModal)
       newState.displayUploadModal = true;
       return newState;
     case 'HIDE_UPLOAD_MODAL':
-    console.log(action.displayUploadModal)
       newState.displayUploadModal = false;
       return newState;
     default:

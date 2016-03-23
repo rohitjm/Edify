@@ -27,6 +27,7 @@ export default class UploadModal extends React.Component {
     };
 
     // add snackbar for when video is finished uploading?
+    // add progress bar while video is uploading?
 
     const actions = [
       <TextField
@@ -43,15 +44,21 @@ export default class UploadModal extends React.Component {
       <ReactS3Uploader  
         signingUrl="/s3/sign"
         onFinish={() => {
-          // video file name must equal the title for now
-          var url = 'http://dndm6u438fnmq.cloudfront.net/' + title + '.mp4'
-          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), user: this.props.user.user, url: url})
         }}
       />,
       <FlatButton
         label='Cancel'
         secondary={true}
         onClick={this.props.closeModal}
+      />,
+      <FlatButton
+        label='Submit'
+        onClick={() => {
+          // video file name must equal the title for now
+          var url = 'http://dndm6u438fnmq.cloudfront.net/' + this.refs.title.getValue() + '.mp4'
+          console.log('submit button clicked')
+          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: 'test', user: this.props.user, url: url})
+        }}
       />
     ];
 
