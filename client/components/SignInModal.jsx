@@ -52,7 +52,7 @@ export default class SignInModal extends React.Component {
           actions={actions}
           modal={false}
           contentStyle={customContentStyle}
-          open={this.props.displaySignInModal.displaySignInModal}
+          open={this.props.displaySignInModal === true}
         >
         </Dialog>
       </div>

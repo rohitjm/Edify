@@ -9,7 +9,6 @@ import $ from 'jquery';
 export class HomePage extends Component {
 
 	componentDidMount(){
-	    console.log('willMount');
 	    this.props.fetchVideos();
 	}
 
@@ -27,17 +26,15 @@ export class HomePage extends Component {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    videos: state.videos.videos
+    videos: state.videos
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchVideos: () => {
-     console.log("fetching videos!");
       $.get('/fetch')
       .done(function(res){
-      	console.log("response: ",res);
          dispatch(fetchVideoList(res));
       });
     }

@@ -50,7 +50,7 @@ export default class SignUpModal extends React.Component {
           actions={actions}
           modal={false}
           contentStyle={customContentStyle}
-          open={this.props.displaySignUpModal.displaySignUpModal}
+          open={this.props.displaySignUpModal === true}
         >
         </Dialog>
       </div>
