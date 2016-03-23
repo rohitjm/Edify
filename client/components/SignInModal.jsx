@@ -73,6 +73,7 @@ const mapDispatchToProps = (dispatch) => {
       console.log('Signing in user')
       dispatch(signInUser(user))
       dispatch(hideSignInModal())
+    
     },
     closeModal: () => {
       dispatch(hideSignInModal())
