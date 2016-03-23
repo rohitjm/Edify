@@ -46,4 +46,20 @@ describe('reducer', () => {
     expect(initialState_HIDE.displaySignInModal).to.equal(undefined);
   });
 
+  it('handles SHOW_SIGNUP_MODAL and HIDE_SIGNUP_MODAL actions', () => {
+    const initialState_SHOW = {};
+    const action_SHOW = {type: 'SHOW_SIGNUP_MODAL'};
+    const nextState_SHOW = VideoAppHandler(initialState_SHOW, action_SHOW);
+
+    const initialState_HIDE = {};
+    const action_HIDE = {type: 'HIDE_SIGNUP_MODAL'};
+    const nextState_HIDE = VideoAppHandler(initialState_HIDE, action_HIDE);
+
+    expect(nextState_SHOW.displaySignUpModal).to.deep.equal(true);
+    expect(initialState_SHOW.displaySignUpModal).to.equal(undefined);
+
+    expect(nextState_HIDE.displaySignUpModal).to.deep.equal(false);
+    expect(initialState_HIDE.displaySignUpModal).to.equal(undefined);
+  });
+
 });
