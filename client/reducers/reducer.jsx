@@ -48,44 +48,31 @@ const UserInfo = (state = {}, action) => {
 }
 
 const User = (state = {}, action) => {
-  var newstate = Object.assign({},state);
   switch(action.type) {
     case 'CHANGE_USER':
-      console.log('from reducer: ', action.user);
-      newstate.user = action.user;
-      return newstate;
+      return action.user;
     default:
       return state;
   }
 }
 
-const SignInModal = (state = false, action) => {
-  var newState = Object.assign({}, state);
+const SignInModal = (state = {}, action) => {
   switch (action.type) {
     case 'SHOW_SIGNIN_MODAL':
-    console.log(action.displaySignInModal)
-      newState.displaySignInModal = true;
-      return newState;
+      return true;
     case 'HIDE_SIGNIN_MODAL':
-    console.log(action.displaySignInModal)
-      newState.displaySignInModal = false;
-      return newState;
+      return false;
     default:
       return state;
   }
 }
 
-const SignUpModal = (state = false, action) => {
-  var newState = Object.assign({}, state);
+const SignUpModal = (state = {}, action) => {
   switch (action.type) {
     case 'SHOW_SIGNUP_MODAL':
-    console.log(action.displaySignUpModal)
-      newState.displaySignUpModal = true;
-      return newState;
+      return true;
     case 'HIDE_SIGNUP_MODAL':
-    console.log(action.displaySignUpModal)
-      newState.displaySignUpModal = false;
-      return newState;
+      return false;
     default:
       return state;
   }
