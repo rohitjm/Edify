@@ -15,9 +15,6 @@ const VideoList = (state = {}, action) => {
 	switch (action.type) {
 		case 'FETCH_VIDEOS':
       return action.videos;
-    case 'RECEIEVED_VIDEOS':
-      return action.videos;
-
 		default:
 			return state;	
 	}
