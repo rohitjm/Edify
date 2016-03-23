@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = {
   // Handles importing a video to the S3 storage 
   addVideo: function (req, res) {
-    var video = req.body.video;
+    var video = req.body;
     db.Video.create({
       title: video.title,
       description: video.description,
