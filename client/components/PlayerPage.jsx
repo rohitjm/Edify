@@ -54,7 +54,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadComments: (videoid) => {
-      console.log("Loading comments from container..");
       dispatch(loadComments(videoid));
     }
   };

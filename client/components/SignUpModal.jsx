@@ -6,25 +6,19 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import {connect} from 'react-redux';
 import { signUpUser, hideSignUpModal, toggleSignUpModal } from '../actions/actions.jsx';
 
-export default class Test extends React.Component {
+export default class SignUpModal extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
 
+    const customContentStyle = {
+      width: 350,
+      maxWidth: 'none',
+    };
+
     const actions = [
-      <TextField
-        ref="username"
-        floatingLabelText="Username"
-        id="username"
-      />,
-      <TextField
-        ref="password"
-        floatingLabelText="Password"
-        type="password"
-        id="password"
-      />,
       <FlatButton
         label='Cancel'
         secondary={true}
@@ -44,8 +38,20 @@ export default class Test extends React.Component {
           title='Sign Up'
           actions={actions}
           modal={false}
+          contentStyle={customContentStyle}
           open={this.props.displaySignUpModal === true}
         >
+          <TextField
+          ref="username"
+          floatingLabelText="Username"
+          id="username"
+          />
+          <TextField
+            ref="password"
+            floatingLabelText="Password"
+            type="password"
+            id="password"
+          />
         </Dialog>
       </div>
     );
@@ -72,4 +78,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpModal);

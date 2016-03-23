@@ -12,12 +12,12 @@ const CurrentVideo = (state = {}, action) => {
 }
 
 const VideoList = (state = {}, action) => {
-	switch (action.type) {
-		case 'FETCH_VIDEOS':
+  switch (action.type) {
+    case 'FETCH_VIDEOS':
       return action.videos;
-		default:
-			return state;	
-	}
+    default:
+      return state; 
+  }
 }
 
 // const Video = (state = {}, action) => {
@@ -79,11 +79,21 @@ const SignUpModal = (state = {}, action) => {
   }
 }
 
+const UploadModal = (state = {}, action) => {
+  switch (action.type) {
+    case 'SHOW_UPLOAD_MODAL':
+      return true;
+    case 'HIDE_UPLOAD_MODAL':
+      return false;
+    default:
+      return state;
+  }
+}
+
 const Comments = (state = {}, action) => {
   var newState = Object.assign({}, state);
   switch (action.type) {
     case 'LOAD_COMMENTS':
-      console.log('inside load comments reducer for: ',action.payload);      
       newState.comments = action.payload;
       return newState;
     case 'ADD_COMMENT':
@@ -104,6 +114,7 @@ const VideoAppHandler = combineReducers({
   comments: Comments,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
+  displayUploadModal: UploadModal,
   userInfo: UserInfo
 });
 
