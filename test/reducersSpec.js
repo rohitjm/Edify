@@ -20,4 +20,13 @@ describe('reducer', () => {
     expect(nextState.videos).to.deep.equal([{video: "Awesome Video 1"}, {video: "Awesome Video 2"}, {video: "Awesome Video 3"}]);
     expect(initialState.videos).to.equal(undefined);
   });
+
+  it('handles CHANGE_USER action', () => {
+    const initialState = {};
+    const action = {type: 'CHANGE_USER', user: {name: 'The', password: 'Man'} };
+    const nextState = VideoAppHandler(initialState, action);
+
+    expect(nextState.user).to.deep.equal({name: 'The', password: 'Man'});
+    expect(initialState.user).to.equal(undefined);
+  });
 });
