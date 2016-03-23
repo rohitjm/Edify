@@ -38,7 +38,11 @@ const UserInfo = (state = {}, action) => {
   switch (action.type) {
     case 'UPDATE_USER_INFO':
       newstate.user = action.info;
-      return newstate;
+    case 'UPDATE_ABOUTME':
+      newstate.userInfo.aboutMe = action.info;
+      newstate.userInfo.aboutMeEdit = false;
+      console.log("aboutme in reducer:", newstate.userInfo.aboutMe);
+      return newstate.userInfo;
     default:
       return state;
   }
@@ -75,14 +79,33 @@ const SignUpModal = (state = {}, action) => {
   }
 }
 
+const Comments = (state = {}, action) => {
+  var newState = Object.assign({}, state);
+  switch (action.type) {
+    case 'LOAD_COMMENTS':
+      console.log('inside load comments reducer for: ',action.payload);
+      //DB query to fetch comments for specified video
+      newState.comments = [{user:"Rohit", postedAt:"0000", content:"This is a test comment."}];
+      return newState;
+    case 'ADD_COMMENT':
+      console.log("Adding comment from reducer");
+      //DB query to insert comment
+      return newState;
+    default:
+      return state;  
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   form: formReducer,
   videos: VideoList,
   user: User,
+  comments: Comments,
   displaySignInModal: SignInModal,
-  displaySignUpModal: SignUpModal
+  displaySignUpModal: SignUpModal,
+  userInfo: UserInfo
 });
 
 export default VideoAppHandler;

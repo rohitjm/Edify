@@ -27,7 +27,12 @@ export const updateUserInfo = (info) => {
     info: info
   }
 };
-
+export const updateAboutMe = (info) => {
+  return {
+    type: 'UPDATE_ABOUTME',
+    info: info
+  }
+};
 export const changeCurrentVideo = (video) => {
   return {
     type: 'SELECT_VIDEO',
@@ -114,4 +119,19 @@ export const hideSignUpModal= () => {
     type: 'HIDE_SIGNUP_MODAL',
   }
 };
+
+export const loadComments = (video) => {
+  console.log('Load comments from actions');
+  return {
+    type: 'LOAD_COMMENTS',
+    payload:video
+  }
+};
+
+export const addComment  = (comment) => {
+  console.log("Adding comment from actions");
+  return {
+    type: 'ADD_COMMENT'
+  }
+}
 

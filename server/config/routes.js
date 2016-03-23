@@ -22,4 +22,7 @@ module.exports = function(app, express) {
 
   // Handles adding a new video to the db
   app.post('/addVideo', videoController.addVideo);
+
+  //Handles adding about me on the profile page
+  app.post('/aboutMe', userController.editAboutMe);
 };
