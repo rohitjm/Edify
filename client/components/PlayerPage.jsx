@@ -10,7 +10,7 @@ export class PlayerPage extends Component {
 
   componentDidMount(){
       console.log('willMount');
-      this.props.loadComments(14);
+      this.props.loadComments(this.props.currentVideo.id);
   }
 
   render(){
@@ -19,14 +19,14 @@ export class PlayerPage extends Component {
       return (
 
         <div id = 'PlayerPage'>
-        <div id = 'Playercover'>
-          <video width='900' height='auto' controls muted data-setup='{}'>
+          <div id = 'Playercover'>
+            <video width='900' height='400' controls muted data-setup='{}'>
               <source src={this.props.currentVideo.url} type="video/mp4" />
-          </video>
+            </video>
           </div>
           <div id = 'description'>
-          <h3>Title: {this.props.currentVideo.title}</h3>
-          <h4>Description: {this.props.currentVideo.description}</h4>
+            <h3>Title: {this.props.currentVideo.title}</h3>
+            <h4>Description: {this.props.currentVideo.description}</h4>
           </div>
          
 

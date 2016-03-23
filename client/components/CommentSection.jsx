@@ -18,9 +18,11 @@ export default function CommentSection ({comments, addComment}) {
 			</div>
 		) 		
 	} else {
+		return (
 			<div id = 'CommentSection'>
 				<h3>No comments</h3>
 			</div>
+		);
 	}
 }
 
