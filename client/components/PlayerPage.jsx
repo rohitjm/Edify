@@ -47,7 +47,7 @@ export class PlayerPage extends Component {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    currentVideo: state.currentVideo.currentVideo
+    currentVideo: state.currentVideo
   }
 };
 

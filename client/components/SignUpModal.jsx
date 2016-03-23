@@ -44,7 +44,7 @@ export default class Test extends React.Component {
           title='Sign Up'
           actions={actions}
           modal={false}
-          open={this.props.displaySignUpModal.displaySignUpModal}
+          open={this.props.displaySignUpModal === true}
         >
         </Dialog>
       </div>

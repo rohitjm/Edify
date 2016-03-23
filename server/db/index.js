@@ -1,12 +1,15 @@
 var Sequelize = require('sequelize');
 const config = require('../config/database.json');
 const env = config.production;
+
 // Fill in with your own mysql info (you'll probably be using root-user too)
 //                     db-name , user  ,  password
+// var db = new Sequelize('thesis', 'test', 'password');
+
 var db = new Sequelize(
-  config.production.database,
-  'rootPROD',
-  'passwordPROD',
+ env.database,
+ 'rootPROD',
+ 'passwordPROD',
   {
     port: env.port,
     host: env.host,
@@ -17,6 +20,7 @@ var db = new Sequelize(
 var User = db.define('User', {
   username: {type: Sequelize.STRING, unique: true},
   password: Sequelize.STRING,
+  aboutMe: Sequelize.STRING
 });
 
 // Video's schema
