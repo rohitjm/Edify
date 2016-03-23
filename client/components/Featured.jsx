@@ -8,9 +8,8 @@ import CardTitle from 'material-ui/lib/card/card-title';
 
 //Component Code
 export default function Featured({videos}) {
- 	console.log(videos);
 
-	if(videos){
+	if(Object.keys(videos).length !== 0){
     var vidLength = videos.length;
     var currentVideo = videos[Math.floor(Math.random()*vidLength)];
 
@@ -45,7 +44,7 @@ export default function Featured({videos}) {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    videos: state.videos.videos
+    videos: state.videos
   }
 };
 

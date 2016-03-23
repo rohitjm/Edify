@@ -33,7 +33,7 @@ export default function PlayerPage({currentVideo}) {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    currentVideo: state.currentVideo.currentVideo
+    currentVideo: state.currentVideo
   }
 };
 

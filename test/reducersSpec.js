@@ -3,13 +3,12 @@ import VideoAppHandler from '../client/reducers/reducer.jsx';
 
 describe('reducer', () => {
 
-  it('handles SET_ENTRIES', () => {
-    const initialState = Map();
-    const action = {type: 'SET_ENTRIES', entries: ['Trainspotting']};
-    const nextState = reducer(initialState, action);
+  it('handles SELECT_VIDEO', () => {
+    const initialState = {};
+    const action = {type: 'SELECT_VIDEO', data: {video: "Awesome Video"}};
+    const nextState = VideoAppHandler(initialState, action);
 
-    expect(nextState).to.equal(fromJS({
-      entries: ['Trainspotting']
-    }));
+    expect(nextState.currentVideo).to.equal({video: "Awesome Video"});
+    expect(initialState.currentVideo).to.equal({});
   });
 });

@@ -23,7 +23,7 @@ export function VideoGrid({ videos , selectVideo}) {
   },
 };
 	
-	if(videos){
+	if(Object.keys(videos).length !== 0){
 		return (
 			<div id= "sheet" style={styles.root}>
         <GridList cellHeight={220} style={styles.gridList} cols= {4} padding= {5} >
@@ -49,7 +49,7 @@ export function VideoGrid({ videos , selectVideo}) {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    videos: state.videos.videos
+    videos: state.videos
   }
 };
 
