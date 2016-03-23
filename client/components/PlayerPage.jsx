@@ -10,7 +10,7 @@ export class PlayerPage extends Component {
 
   componentDidMount(){
       console.log('willMount');
-      this.props.loadComments();
+      this.props.loadComments(14);
   }
 
   render(){
@@ -53,9 +53,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadComments: (video) => {
+    loadComments: (videoid) => {
       console.log("Loading comments from container..");
-      dispatch(loadComments(video));
+      dispatch(loadComments(videoid));
     }
   };
 };

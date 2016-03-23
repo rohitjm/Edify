@@ -122,13 +122,25 @@ export const hideSignUpModal= () => {
   }
 };
 
-export const loadComments = (video) => {
-  console.log('Load comments from actions');
-  return {
-    type: 'LOAD_COMMENTS',
-    payload:video
+export const loadComments = (videoid) => {
+  console.log('Load comments from action1', videoid);
+  return(dispatch) => {
+    $.post('/loadComments', {videoid:videoid})
+    .then((comments) => 
+      {
+        console.log("fetched comments: ", comments);
+        dispatch(loadAllComments(comments));
+      });
   }
 };
+
+export const loadAllComments = (comments) => {
+  console.log("Load comments from action2");
+  return {
+    type: 'LOAD_COMMENTS',
+    payload: comments
+  }
+}
 
 export const addComment  = (comment) => {
   console.log("Adding comment from actions");

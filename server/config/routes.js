@@ -1,5 +1,6 @@
 var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
+var commentController = require('../controllers/commentController');
 var passport = require('./authentication').passport;
 var ensureAuthenticated = require('./authentication').ensureAuthenticated;
 
@@ -22,4 +23,8 @@ module.exports = function(app, express) {
 
   // Handles adding a new video to the db
   app.post('/addVideo', videoController.addVideo);
+
+  //Load comments for current Video
+  app.post('/loadComments', commentController.loadComments);
+
 };

@@ -27,6 +27,14 @@ var Video = db.define('Video', {
   cover:Sequelize.STRING
 });
 
+//Comment's schema
+var Comment = db.define('Comment', {
+  content: Sequelize.STRING,
+  userID: Sequelize.STRING,
+  videoID:Sequelize.STRING,
+  postedAt:Sequelize.STRING
+});
+
 // Tag's schema
 var Tag = db.define('Tag', {
   name: Sequelize.STRING
@@ -47,7 +55,13 @@ User.sync()
   .then(function() {
     Tag.sync()
     .then(function() {
-      console.log('Tables successfully created');
+      Comment.sync()
+      .then(function() {
+        console.log('Tables successfully created');
+      })
+      .catch(function(err) {
+        throw err;
+      })
     })
     .catch(function(err) {
       throw err;
@@ -61,6 +75,7 @@ User.sync()
   throw err;
 });
 
+exports.Comment = Comment;
 exports.User = User;
 exports.Video = Video;
 exports.Tag = Tag;

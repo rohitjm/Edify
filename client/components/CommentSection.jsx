@@ -4,13 +4,24 @@ import { connect } from 'react-redux';
 //Component Code
 export default function CommentSection ({comments, addComment}) {
 
-	console.log("From Component: ",comments);
-	//map over the comments prop and display the comments for the selected video 
-	return (
-		<div id = 'CommentSection'>
-			<h2>{comments[0].content}</h2>
-		</div>
-	) 
+	if(comments){
+		return (
+			<div id = 'CommentSection'>
+				{comments.map(function (comment){
+					return(
+						<div id = "comment">
+							<h3> {comment.content} </h3>
+							<h4> {comment.userID} </h4>
+						</div>
+					); 
+				})}
+			</div>
+		) 		
+	} else {
+			<div id = 'CommentSection'>
+				<h3>No comments</h3>
+			</div>
+	}
 }
 
 //Container Code
