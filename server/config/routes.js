@@ -27,6 +27,8 @@ module.exports = function(app, express) {
   //Load comments for current Video
   app.post('/loadComments', commentController.loadComments);
 
+  app.post('/addComment', commentController.addComment);
+
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
 };

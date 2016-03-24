@@ -91,15 +91,9 @@ const UploadModal = (state = {}, action) => {
 }
 
 const Comments = (state = {}, action) => {
-  var newState = Object.assign({}, state);
   switch (action.type) {
     case 'LOAD_COMMENTS':
-      newState.comments = action.payload;
-      return newState;
-    case 'ADD_COMMENT':
-      console.log("Adding comment from reducer");
-      //DB query to insert comment
-      return newState;
+      return action.payload;
     default:
       return state;  
   }
