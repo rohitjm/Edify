@@ -65,7 +65,7 @@ User.sync()
       })
       .catch(function(err) {
         throw err;
-      })
+      });
     })
     .catch(function(err) {
       throw err;

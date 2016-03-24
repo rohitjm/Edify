@@ -164,10 +164,18 @@ export const hideUploadModal= () => {
 };
 
 
-export const addComment  = (comment) => {
-  console.log("Adding comment from actions");
-  return {
-    type: 'ADD_COMMENT'
+export const addComment  = (comment, videoID, userID) => {
+  var newComment = {
+    content: comment,
+    videoID: videoID,
+    userID: userID
+  };
+  return(dispatch) => {
+    $.post('/addComment', newComment)
+    .then(() => 
+      {
+        dispatch(loadComments(videoID));
+      });
   }
 }
 

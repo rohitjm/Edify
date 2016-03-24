@@ -8,8 +8,7 @@ import $ from 'jquery';
 //Component Code
 export class PlayerPage extends Component {
 
-  componentDidMount(){
-      console.log('willMount');
+  componentWillMount(){
       this.props.loadComments(this.props.currentVideo.id);
   }
 
@@ -31,7 +30,7 @@ export class PlayerPage extends Component {
          
 
         <div id = "Comments">
-          <h2><CommentSection /></h2>
+          <h2><CommentSection currentVideo={this.props.currentVideo} user={this.props.currentUser}/></h2>
         </div>
         </div> 
       );
@@ -47,7 +46,8 @@ export class PlayerPage extends Component {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    currentVideo: state.currentVideo
+    currentVideo: state.currentVideo,
+    currentUser: state.user
   }
 };
 
