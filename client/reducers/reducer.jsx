@@ -92,7 +92,6 @@ const Comments = (state = {}, action) => {
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
-  videos: VideoList,
   form: formReducer,
   videos: VideoList,
   user: User,

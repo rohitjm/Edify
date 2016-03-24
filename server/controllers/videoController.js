@@ -33,17 +33,12 @@ module.exports = {
   fetchUserVideo: function (req, res) {
     db.Video.findAll({where: {userid: req.body.id}})
     .then(function(videos) {
-      console.log("videos", videos)
       res.send(videos);
     })
     .catch(function(err) {
       throw err;
       res.status(500);
     });
-  },
-  // Handles user search input and fetches related videos (THIS SEEMS UNNCECESSARY NOW, TAKEN CARE OF WITH 'fetchVideo' METHOD)
-  searchForVideos: function (req, res) {
-
   },
 
   fetchAll: function (req, res) {
