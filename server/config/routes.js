@@ -17,7 +17,10 @@ module.exports = function(app, express) {
 
   // Handles fetching inital videos from db to populate video grid on home page
   app.get('/fetch', videoController.fetchAll);
-
+  
+  // Handles fetching uploaded videos from db to populate video grid on profile page
+  app.post('/fetch', videoController.fetchUserVideo);
+  
   // Handles fetching videos that match the specified search query
   app.post('/search', videoController.fetchVideo);
 
@@ -26,6 +29,8 @@ module.exports = function(app, express) {
 
   //Load comments for current Video
   app.post('/loadComments', commentController.loadComments);
+
+  app.post('/addComment', commentController.addComment);
 
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
