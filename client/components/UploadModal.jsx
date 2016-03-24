@@ -49,9 +49,10 @@ export default class UploadModal extends React.Component {
         label='Submit'
         onClick={() => {
           // video file name must equal the title for now
-          var url = 'http://dndm6u438fnmq.cloudfront.net/' + this.refs.title.getValue() + '.mp4'
+          var videoUrl = 'http://dndm6u438fnmq.cloudfront.net/' + this.refs.title.getValue() + '.mp4'
+          var photoUrl = 'http://dndm6u438fnmq.cloudfront.net/' + this.refs.title.getValue() + '.jpg'
           console.log('submit button clicked')
-          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: 'test', user: this.props.user, url: url})
+          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: photoUrl, user: this.props.user, url: videoUrl})
         }}
       />
     ];
@@ -65,7 +66,7 @@ export default class UploadModal extends React.Component {
           contentStyle={customContentStyle}
           open={this.props.displayUploadModal === true}
         >
-        Select a video and thumbnail file.
+        Select video (.mp4) and thumbnail (.jpg) files.
           <TextField
           ref="title"
           floatingLabelText="Title"
