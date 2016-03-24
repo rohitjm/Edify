@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(showAboutMeEdit())
       }
+
     },
     fetchUploadedVideos: function(user) {
       $.post('/fetch', user)
@@ -36,6 +37,7 @@ const mapDispatchToProps = (dispatch) => {
           console.log("respondis", res)
            dispatch(fetchVideoList(res));
         });
+
     }
   }
 }
@@ -43,9 +45,11 @@ const mapDispatchToProps = (dispatch) => {
 
 export class ProfilePage extends Component {
 
+
 componentDidMount(){
     this.props.fetchUploadedVideos(this.props.user);
 }
+
 
 render(){
 console.log("useris:", this.props.user)
@@ -67,6 +71,7 @@ var aboutMeEdit = <form className="aboutMeForm">
         </div>
       </div>
       <div ><VideoGrid /></div>
+
   </div>
   );
 }
