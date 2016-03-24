@@ -16,13 +16,13 @@ var db = new Sequelize(
     logging: console.log
   });
 
-// User's schema
+// User schema
 var User = db.define('User', {
   username: {type: Sequelize.STRING, unique: true},
   password: Sequelize.STRING,
   aboutMe:  {type: Sequelize.STRING, allowNull: false, defaultValue: ""}
 });
-// Video's schema
+// Video schema
 var Video = db.define('Video', {
   title: Sequelize.STRING,
   description: Sequelize.STRING,
@@ -30,7 +30,7 @@ var Video = db.define('Video', {
   cover:Sequelize.STRING
 });
 
-//Comment's schema
+//Comment schema
 var Comment = db.define('Comment', {
   content: Sequelize.STRING,
   userID: Sequelize.STRING,
@@ -38,16 +38,16 @@ var Comment = db.define('Comment', {
   postedAt:Sequelize.STRING
 });
 
-// Tag's schema
-var Tag = db.define('Tag', {
+// Category schema
+var Category = db.define('Category', {
   name: Sequelize.STRING
 });
 
-// Set's up many-to-many relationship between Video and Tag (creates join table Video_Tag)
-Tag.belongsToMany(Video, {through: 'Video_Tag'});
-Video.belongsToMany(Tag, {through: 'Video_Tag'});
+// Sets up many-to-many relationship between Video and Category (creates join table Video_Category)
+Category.belongsToMany(Video, {through: 'Video_Category'});
+Video.belongsToMany(Category, {through: 'Video_Category'});
 
-// Set's up one-to-many relationship between User and Video
+// Sets up one-to-many relationship between User and Video
 Video.belongsTo(User);
 User.hasMany(Video);
 
@@ -56,7 +56,7 @@ User.sync()
 .then(function() {
   Video.sync()
   .then(function() {
-    Tag.sync()
+    Category.sync()
     .then(function() {
       Comment.sync()
       .then(function() {
@@ -81,5 +81,5 @@ User.sync()
 exports.Comment = Comment;
 exports.User = User;
 exports.Video = Video;
-exports.Tag = Tag;
+exports.Category = Category;
 exports.db = db;
