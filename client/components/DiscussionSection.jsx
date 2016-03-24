@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { addComment } from '../actions/actions.jsx';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
-import FeedbackTab from './FeedbackTab';
+import FeedbackTab from './FeedbackTab.jsx';
 
 
-function DiscussionSection ({addFeedback}) {
+function DiscussionSection ({addComment, comments, currentUser, currentVideo}) {
 
   return (
     <Tabs>
       <Tab label="Feedback">
-        <FeedbackTab addFeedback={addFeedback}/>
+        <FeedbackTab addComment={addComment} comments={comments} currentVideo={currentVideo} currentUser={currentUser}/>
       </Tab>
       <Tab label="Q&A">
-        
+
       </Tab>
     </Tabs>
   )
@@ -23,15 +23,17 @@ function DiscussionSection ({addFeedback}) {
 
 const mapStateToProps = (state) => {
   return {
-    feedback: state.feedback
+    comments: state.comments,
+    currentVideo: state.currentVideo,
+    currentUser: state.user
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFeedback: (feedback, videoID, userID) => {
+    addComment: (comment, videoID, userID) => {
       console.log('Adding Feedback!');
-      dispatch(addFeedback(feedback, videoID, userID));
+      dispatch(addComment(comment, videoID, userID));
     }
   };
 };

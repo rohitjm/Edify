@@ -37,30 +37,9 @@ export default class FeedbackTab extends Component {
           rowsMax={5}
           ref='comment'
         />
-        <RaisedButton label="Submit" onClick={() => this.props.addComment(this.refs.comment.getValue(), this.props.currentVideo.id, this.props.user.id)}/>
+        <RaisedButton label="Submit" onClick={() => this.props.addComment(this.refs.comment.getValue(), this.props.currentVideo.id, this.props.currentUser.id)}/>
         {commentsFound}
       </div>
     )
   };
 }
-
-//Container Code
-const mapStateToProps = (state) => {
-  return {
-    comments: state.comments
-  }
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addComment: (comment, videoID, userID) => {
-      console.log('Adding comment!');
-      dispatch(addComment(comment, videoID, userID));
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CommentSection);

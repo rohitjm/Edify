@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
 import CommentSection from './CommentSection.jsx';
+import DiscussionSection from './DiscussionSection.jsx';
 import { loadComments } from '../actions/actions.jsx';
 import video from 'video.js';
 import $ from 'jquery';
@@ -31,9 +32,9 @@ export class PlayerPage extends Component {
 
           <div><VotesSection /></div>
 
-          <div id = "Comments">
-            <h2><CommentSection currentVideo={this.props.currentVideo} user={this.props.currentUser}/></h2>
-          </div>
+        <div>
+          <h2><DiscussionSection /></h2>
+        </div>
         </div> 
       );
     } else {
@@ -49,7 +50,6 @@ export class PlayerPage extends Component {
 const mapStateToProps = (state) => {
   return {
     currentVideo: state.currentVideo,
-    currentUser: state.user
   }
 };
 
