@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 
 
 //Component Code
-export default class CommentSection extends Component {
+export default class FeedbackTab extends Component {
 
   render() {
     var commentsFound;
