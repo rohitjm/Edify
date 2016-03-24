@@ -28,6 +28,7 @@
     "method-override": "~2.0.2",
     "mongoose": "~3.8.0",
     "morgan": "^1.1.1",
+    "multer-s3": "^1.4.1",
     "mysql": "^2.10.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
