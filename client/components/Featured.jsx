@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { changeCurrentVideo } from '../actions/actions.jsx';
 import Card from 'material-ui/lib/card/card';
 import CardMedia from 'material-ui/lib/card/card-media';
 import CardTitle from 'material-ui/lib/card/card-title';
   
 
 //Component Code
-export default function Featured({videos}) {
+export default function Featured({videos, selectVideo}) {
 
 	if(Object.keys(videos).length !== 0){
     var vidLength = videos.length;
@@ -23,7 +24,7 @@ export default function Featured({videos}) {
       <div id = 'cardCover'>
          <div id= 'inner'>
            <Card >
-             <CardMedia
+             <CardMedia onClick = {() => selectVideo(currentVideo)}
                overlay={<CardTitle title={currentVideo.title} subtitle={currentVideo.description} />}>
                <img src={currentVideo.cover} />
              </CardMedia>
@@ -49,6 +50,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    selectVideo: (value) => {
+      console.log('Selected video!');
+      dispatch(changeCurrentVideo(value));
+      window.location = '/#/player'
+    },
     changeFeatured: (value) => {
       console.log('Changing featured video!');
       dispatch(changeFeatured());
