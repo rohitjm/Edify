@@ -4,17 +4,17 @@ const env = config.production;
 
 // Fill in with your own mysql info (you'll probably be using root-user too)
 //                     db-name , user  ,  password
-// var db = new Sequelize('thesis', 'test', 'password');
+var db = new Sequelize('thesis', 'test', 'password');
 
-var db = new Sequelize(
- env.database,
- 'rootPROD',
- 'passwordPROD',
-  {
-    port: env.port,
-    host: env.host,
-    logging: console.log
-  });
+// var db = new Sequelize(
+//  env.database,
+//  'rootPROD',
+//  'passwordPROD',
+//   {
+//     port: env.port,
+//     host: env.host,
+//     logging: console.log
+//   });
 
 // User's schema
 var User = db.define('User', {

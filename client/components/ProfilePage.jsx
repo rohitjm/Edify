@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutMeEdit} from '../actions/actions.jsx';
+import { fetchVideoList, updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutMeEdit} from '../actions/actions.jsx';
 import UserInfo from './UserInfo.jsx';
+import VideoGrid from './VideoGrid.jsx';
 import $ from 'jquery';
 
 
@@ -9,7 +10,8 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     aboutMeEdit:state.aboutMeEdit,
-    aboutMe: state.user.aboutMe
+    aboutMe: state.user.aboutMe,
+    videos: state.videos
   }  
 }
 
@@ -27,12 +29,24 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(showAboutMeEdit())
       }
+    },
+    fetchUploadedVideos: function(user) {
+      $.post('/fetch', user)
+        .done(function(res){
+          console.log("respondis", res)
+           dispatch(fetchVideoList(res));
+        });
     }
   }
 }
 
 
 export class ProfilePage extends Component {
+
+componentDidMount(){
+    this.props.fetchUploadedVideos(this.props.user);
+}
+
 render(){
 console.log("useris:", this.props.user)
 var aboutMeEdit = <form className="aboutMeForm">
@@ -52,8 +66,7 @@ var aboutMeEdit = <form className="aboutMeForm">
           {this.props.aboutMeEdit === true ? aboutMeEdit : aboutMe}
         </div>
       </div>
- 
-
+      <div ><VideoGrid /></div>
   </div>
   );
 }
