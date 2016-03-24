@@ -27,12 +27,35 @@ export const updateUserInfo = (info) => {
     info: info
   }
 };
-export const updateAboutMe = (info) => {
+export const updateAboutMe = (data) => {
   return {
     type: 'UPDATE_ABOUTME',
-    info: info
+    data:data
+    
   }
 };
+
+export const aboutMeEdit = (data) => {
+  return {
+    type: 'EDIT_ABOUTME',
+    data: data
+   
+
+  }
+};
+export const showAboutMeEdit = () => {
+  return {
+    type: 'SHOW_EDIT'
+  }
+};
+
+export const hideAboutMeEdit = () => {
+  return {
+    type: 'HIDE_EDIT'
+  }
+};
+
+
 export const changeCurrentVideo = (video) => {
   return {
     type: 'SELECT_VIDEO',
@@ -62,10 +85,10 @@ export const changeUser = (user) => {
 export const signInUser = (user) => {
   return(dispatch) => {
     $.post('/signin', user)
-    .then((response) => 
+    .then((data) => 
       {
-        console.log("from action: ", response);
-        dispatch(changeUser(response));
+        console.log("from action: ", data);
+        dispatch(changeUser(data));
       });
   }
 };
@@ -83,6 +106,7 @@ export const signOutUser = () => {
 
 export const signUpUser = (user) => {
   return(dispatch) => {
+    console.log("Iam here");
     $.post('/signup', user)
     .then((response) => 
       {

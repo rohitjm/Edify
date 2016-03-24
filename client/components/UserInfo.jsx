@@ -1,24 +1,25 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-export class UserInfo extends Component {
+export default function UserInfo ({user, updateUserInfo}) {
 
-  render() {
+  
+
     var aboutMeEdit = <form className="aboutMeForm">
-                        <textarea className="aboutMe" ref="aboutMe">{this.props.aboutMe}</textarea>
-                        <Button className="aboutMeSubmitButton" onClick={() => this.props.updateUserInfo()} bsSize='small' bsStye='defualt'>
+                        <textarea className="aboutMe" ref="aboutMe" >{user.aboutMe}</textarea>
+                       <button type="button" className="aboutMeSubmitButton" onClick={() => updateUserInfo(this.refs.aboutMe.value, this.props.user)}>
                           Save Changes
-                        </Button>
+                        </button>
                       </form>
-    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo() }>{this.props.aboutMe}</div>
+    var aboutMe = <div className="aboutMe" onClick={ () => updateUserInfo(null,user) }>hey {user.aboutMe}</div>
     return (
       <div className='aboutMeParentContainer'>
-        <div className='welcomeBackTitle'>Welcome Back, {this.props.user.username}</div>
+        <div className='welcomeBackTitle'>Welcome Back, {user.username}</div>
         <div className='profilePicture'></div>
         <div className="aboutMeContainer">
-          {this.props.aboutMeEdit ? aboutMeEdit : aboutMe}
+          {user.aboutMeEdit ? aboutMeEdit : aboutMe}
         </div>
       </div>
     )
-  }
 }
+ 
