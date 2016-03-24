@@ -9,6 +9,7 @@ module.exports = {
       description: video.description,
       cover: video.cover,
       url: video.url,
+      UserId: video.user.id
     })
     .then(function(video) {
       res.send(201, video);
@@ -30,9 +31,15 @@ module.exports = {
       res.status(500);
     });
   },
-  // Handles user search input and fetches related videos (THIS SEEMS UNNCECESSARY NOW, TAKEN CARE OF WITH 'fetchVideo' METHOD)
-  searchForVideos: function (req, res) {
-
+  fetchUserVideo: function (req, res) {
+    db.Video.findAll({where: {userid: req.body.id}})
+    .then(function(videos) {
+      res.send(videos);
+    })
+    .catch(function(err) {
+      throw err;
+      res.status(500);
+    });
   },
 
   fetchAll: function (req, res) {

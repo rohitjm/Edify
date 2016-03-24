@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SearchBar from './SearchBar.jsx';
-import {receivedVideoList, toggleSignInModal, toggleSignUpModal, toggleUploadModal, signOutUser} from '../actions/actions.jsx'
+import {fetchVideoList, toggleSignInModal, toggleSignUpModal, toggleUploadModal, signOutUser} from '../actions/actions.jsx'
 import {connect} from 'react-redux';
 import $ from 'jquery';
 // import {ToolBar, ToolBarSeparator} from 'material-ui';
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmit: (query) => {
       $.post('/search', {query: query}).done(function(res){
-        dispatch(receivedVideoList(res))
+        dispatch(fetchVideoList(res))
         window.location = '/#/search'
       })
     },

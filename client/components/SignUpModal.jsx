@@ -68,7 +68,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signUp: (user) => {
-      console.log("Signing up user")
+      console.log("Signing up user", user)
+
       dispatch(signUpUser(user))
       dispatch(hideSignUpModal())
     },

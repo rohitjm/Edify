@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import $ from 'jquery';
-import {reducer as formReducer} from 'redux-form';
 
 const CurrentVideo = (state = {}, action) => {
   switch (action.type) {
@@ -20,42 +19,33 @@ const VideoList = (state = {}, action) => {
   }
 }
 
-// const Video = (state = {}, action) => {
-//   var news = Object.assign({}, state);
-//   switch (action.type) {
-//     case 'RECEIEVED_VIDEOS':
-//       console.log("from reducer received: ",action.videos);
-//       news.found = action.videos;
-//       console.log("news.found.title is", news.found.title )
-//         return news.found;
-//     default:
-//       return state; 
-//   }
-// }
-
-const UserInfo = (state = {}, action) => {
-  var newstate = Object.assign({}, state);
-  switch (action.type) {
-    case 'UPDATE_USER_INFO':
-      newstate.user = action.info;
-    case 'UPDATE_ABOUTME':
-      newstate.userInfo.aboutMe = action.info;
-      newstate.userInfo.aboutMeEdit = false;
-      console.log("aboutme in reducer:", newstate.userInfo.aboutMe);
-      return newstate.userInfo;
-    default:
-      return state;
-  }
-}
 
 const User = (state = {}, action) => {
+  var user = action.data;
   switch(action.type) {
     case 'CHANGE_USER':
-      return action.user;
+      user = action.user;
+      return user;
+    case 'UPDATE_ABOUTME':
+      user.aboutMe = action.data.aboutMe;
+      return user;
     default:
       return state;
   }
 }
+
+
+const ToggleAboutMeEdit= (state = {}, action) => {
+  switch(action.type) {
+    case 'SHOW_EDIT':
+      return true;
+    case "HIDE_EDIT":
+      return false;
+    default:
+      return state;
+  }
+}
+
 
 const SignInModal = (state = {}, action) => {
   switch (action.type) {
@@ -91,15 +81,9 @@ const UploadModal = (state = {}, action) => {
 }
 
 const Comments = (state = {}, action) => {
-  var newState = Object.assign({}, state);
   switch (action.type) {
     case 'LOAD_COMMENTS':
-      newState.comments = action.payload;
-      return newState;
-    case 'ADD_COMMENT':
-      console.log("Adding comment from reducer");
-      //DB query to insert comment
-      return newState;
+      return action.payload;
     default:
       return state;  
   }
@@ -108,14 +92,12 @@ const Comments = (state = {}, action) => {
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
-  form: formReducer,
-  videos: VideoList,
   user: User,
   comments: Comments,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,
-  userInfo: UserInfo
+  aboutMeEdit:ToggleAboutMeEdit
 });
 
 export default VideoAppHandler;
