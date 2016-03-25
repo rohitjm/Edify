@@ -4,15 +4,13 @@ module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.addColumn(
   'Videos',
-  'upVotes',
+  'downVotes',
   {
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 0
   }
 )
-  },
-
 
     /*
       Add altering commands here.
@@ -21,7 +19,7 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
- 
+  },
 
   down: function (queryInterface, Sequelize) {
     /*
