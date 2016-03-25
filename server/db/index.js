@@ -51,25 +51,26 @@ var Votes = db.define('Votes', {
     timestamps: false
 });
 
-// Tag's schema
-var Tag = db.define('Tag', {
+// Category's schema
+var Category = db.define('Tag', {
   name: Sequelize.STRING
 });
 
 // Set's up many-to-many relationship between Video and Tag (creates join table Video_Tag)
-Tag.belongsToMany(Video, {through: 'Video_Tag'});
-Video.belongsToMany(Tag, {through: 'Video_Tag'});
+// Tag.belongsToMany(Video, {through: 'Video_Tag'});
+// Video.belongsToMany(Tag, {through: 'Video_Tag'});
 
 // Set's up one-to-many relationship between User and Video
 Video.belongsTo(User);
 User.hasMany(Video);
-
+Video.belongsTo(Category);
+Category.hasMany(Video);
 // Syncs schemas with mysql, creating the actual tables in the DB
 User.sync()
 .then(function() {
   Video.sync()
   .then(function() {
-    Tag.sync()
+    Category.sync()
     .then(function() {
       Comment.sync()
       .then(function() {
@@ -95,9 +96,7 @@ User.sync()
   throw err;
 });
 
-// db.query("select SUM(upVote) as upVote from Votes where videoID = 13").then(function(votes){
-//   console.log("############################0-----------",votes);  
-// });
+
 
 
 
@@ -105,5 +104,5 @@ exports.Comment = Comment;
 exports.User = User;
 exports.Video = Video;
 exports.Votes = Votes;
-exports.Tag = Tag;
+exports.Category = Category;
 module.exports.db = db;
