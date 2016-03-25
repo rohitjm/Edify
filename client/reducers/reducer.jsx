@@ -89,11 +89,21 @@ const Comments = (state = {}, action) => {
   }
 }
 
+const Categories = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOAD_CATEGORIES':
+      return action.categories;
+    default:
+      return state;  
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   user: User,
   comments: Comments,
+  categories: Categories,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,
