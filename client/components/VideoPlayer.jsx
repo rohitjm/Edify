@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 
 export default class VideoPlayer extends Component {
 
-  shouldComponentUpdate(nextProps, nextState){
-    return nextState.currentVideo.url !== this.state.currentVideo.url;
-  }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return nextState.currentVideo.url !== this.state.currentVideo.url;
+  // }
 
   render() {
     return (

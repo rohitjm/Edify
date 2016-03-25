@@ -13,6 +13,7 @@ var db = new Sequelize(
   {
     port: env.port,
     host: env.host,
+    database: env.database,
     logging: console.log
   });
 
@@ -94,9 +95,15 @@ User.sync()
   throw err;
 });
 
+// db.query("select SUM(upVote) as upVote from Votes where videoID = 13").then(function(votes){
+//   console.log("############################0-----------",votes);  
+// });
+
+
+
 exports.Comment = Comment;
 exports.User = User;
 exports.Video = Video;
 exports.Votes = Votes;
 exports.Tag = Tag;
-exports.db = db;
+module.exports.db = db;

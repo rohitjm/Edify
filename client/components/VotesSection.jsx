@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { upVote, downVote } from '../actions/actions.jsx'
+import { upVoteMore, downVote } from '../actions/actions.jsx'
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
+import $ from 'jquery';
 
 
 //Component Code
@@ -29,8 +30,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     upVote: (userID, videoID) => {
-      console.log("from up container");
-      dispatch(upVote(userID, videoID));
+
+      var vote = {
+        userID: userID,
+        videoID:videoID
+      };
+
+      $.post('/upVote', vote)
+        .then((voteCount) => 
+        {
+          console.log("from container: ",voteCount.upVotes);
+          dispatch(upVoteMore(voteCount.upVotes));  
+        });  
     },
     downVote: (userID, videoID) => {
       console.log("from down container");
