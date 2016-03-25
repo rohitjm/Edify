@@ -170,6 +170,7 @@ export const loadAllComments = (comments) => {
 };  
 
 export const upVote = (userID,videoID) => {
+  console.log("from up container");
   var vote = {
     userID: userID,
     videoID:videoID
@@ -191,6 +192,7 @@ export const upVoteMore = (voteCount) => {
 }
 
 export const downVote = (userID,videoID) => {
+  console.log("from down container");  
   var vote = {
     userID: userID,
     videoID:videoID

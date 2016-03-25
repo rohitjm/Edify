@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
 import CommentSection from './CommentSection.jsx';
 import { loadComments } from '../actions/actions.jsx';
@@ -13,22 +14,21 @@ export class PlayerPage extends Component {
       this.props.loadComments(this.props.currentVideo.id);
   }
 
+  /**
+  shouldComponentUpdate{
+
+  }
+  **/
+
   render(){
     //this.props.fetchVideos();
     if(this.props.currentVideo){
       return (
 
         <div id = 'PlayerPage'>
-          <div id = 'Playercover'>
-            <video width='900' height='400' controls muted data-setup='{}'>
-              <source src={this.props.currentVideo.url} type="video/mp4" />
-            </video>
-          </div>
-          <div id = 'description'>
-            <h3>Title: {this.props.currentVideo.title}</h3>
-            <h4>Description: {this.props.currentVideo.description}</h4>
-          </div>
-         
+    
+          <div><VideoPlayer currentVideo = {this.props.currentVideo}/></div>
+
           <div><VotesSection /></div>
 
           <div id = "Comments">
