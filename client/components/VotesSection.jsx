@@ -11,8 +11,8 @@ export default class VotesSection extends Component {
   render() {
     return (
       <div>
-        <h3 onClick = {() => this.props.upVote(this.props.user.id, this.props.currentVideo.id)}>Up Vote</h3>
-        <h3 onClick = {() => this.props.downVote(this.props.user.id, this.props.currentVideo.id)}>Down Vote</h3>
+        <h3 onClick = {() => this.props.upVote(this.props.user.id, this.props.currentVideo.id)}>Up Vote: {this.props.currentVideo.upVotes} </h3>
+        <h3 onClick = {() => this.props.downVote(this.props.user.id, this.props.currentVideo.id)}>Down Vote :  {this.props.currentVideo.downVotes} </h3>
       </div>
     );
   };
@@ -30,11 +30,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     upVote: (userID, videoID) => {
       console.log("from up container");
-      dispatch(upVote);
+      dispatch(upVote(userID, videoID));
     },
     downVote: (userID, videoID) => {
       console.log("from down container");
-      dispatch(downVote);
+      dispatch(downVote(userID, videoID));
     }   
   }
 };

@@ -2,9 +2,13 @@ import { combineReducers } from 'redux'
 import $ from 'jquery';
 
 const CurrentVideo = (state = {}, action) => {
+  var video = Object.assign({}, state.currentVideo);
   switch (action.type) {
     case 'SELECT_VIDEO':
       return action.data;
+    case 'UP_VOTE':
+      video.upVotes = action.payload;
+      return video;
     default:
       return state;
   }
