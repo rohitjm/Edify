@@ -1,7 +1,7 @@
 var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
 var voteController = require('../controllers/voteController');
-var commentController = require('../controllers/commentController');
+var discussionController = require('../controllers/discussionController');
 var passport = require('./authentication').passport;
 var ensureAuthenticated = require('./authentication').ensureAuthenticated;
 
@@ -28,10 +28,13 @@ module.exports = function(app, express) {
   app.post('/addVideo', videoController.addVideo);
 
   // Load comments for current Video
-  app.post('/loadComments', commentController.loadComments);
+  app.post('/loadComments', discussionController.loadComments);
 
   // Add new comment to db
-  app.post('/addComment', ensureAuthenticated, commentController.addComment);
+  app.post('/addComment', ensureAuthenticated, discussionController.addComment);
+
+  // Load questions for current Video
+  app.post('/loadQuestions', discussionController.loadQuestions);
 
   // Increases the upvote of certain video
   app.post('/upVote', voteController.upVotes);

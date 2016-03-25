@@ -58,7 +58,7 @@ var Tag = db.define('Tag', {
 // Question's schema
 var Question = db.define('Question', {
   question: Sequelize.STRING(600),
-  answer: Sequelize.TEXT,
+  answer: {type: Sequelize.TEXT, defaultValue: ""},
   asker: Sequelize.STRING
 });
 

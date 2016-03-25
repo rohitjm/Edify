@@ -25,5 +25,17 @@ module.exports = {
       throw err;
       res.sendstatus(500);
     });
+  },
+
+  loadQuestion: function(req, res) {
+    var videoid = req.body.videoid;
+    db.Question.findAll({where: {videoID: videoid}})
+    .then(function(questions) {
+      res.send(questions);
+    })
+    .catch(function(err) {
+      throw err;
+      res.sendstatus(500);
+    });
   }
 };
