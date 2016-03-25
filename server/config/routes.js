@@ -1,6 +1,7 @@
 var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
 var commentController = require('../controllers/commentController');
+var categoryController = require('../controllers/categoryController');
 var passport = require('./authentication').passport;
 var ensureAuthenticated = require('./authentication').ensureAuthenticated;
 
@@ -34,4 +35,7 @@ module.exports = function(app, express) {
 
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
+
+  //Handles fetching all video categories
+  app.get('loadCategories', categoryController.loadCategories);
 };
