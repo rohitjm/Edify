@@ -152,7 +152,7 @@ export const loadQuestions = (videoid) => {
   }
 };
 
-export const loadAllQuestions = (question) => {
+export const loadAllQuestions = (questions) => {
   return {
     type: 'LOAD_QUESTIONS',
     payload: questions
@@ -196,9 +196,10 @@ export const addComment  = (comment, videoID, userID) => {
   }
 };
 
-export const addQuestion  = (question, videoID, userID) => {
+export const addQuestion  = (question, asker, videoID, userID) => {
   var newQuestion = {
     content: question,
+    asker: asker,
     videoID: videoID,
     userID: userID
   };

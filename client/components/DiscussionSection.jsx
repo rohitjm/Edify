@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { addComment } from '../actions/actions.jsx';
+import { addComment, addQuestion } from '../actions/actions.jsx';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import FeedbackTab from './FeedbackTab.jsx';
 import Q_ATab from './Q_ATab.jsx';
 
 
-function DiscussionSection ({addComment, questions, comments, currentUser, currentVideo}) {
+function DiscussionSection ({addComment, addQuestion, questions, comments, currentUser, currentVideo}) {
 
   return (
     <Tabs>
@@ -15,7 +15,7 @@ function DiscussionSection ({addComment, questions, comments, currentUser, curre
         <FeedbackTab addComment={addComment} comments={comments} currentVideo={currentVideo} currentUser={currentUser}/>
       </Tab>
       <Tab label="Q&A">
-        <Q_ATab questions={questions} currentVideo={currentVideo} currentUser={currentUser}/>
+        <Q_ATab addQuestion={addQuestion} questions={questions} currentVideo={currentVideo} currentUser={currentUser}/>
       </Tab>
     </Tabs>
   )
@@ -37,8 +37,8 @@ const mapDispatchToProps = (dispatch) => {
       console.log('Adding Feedback!');
       dispatch(addComment(comment, videoID, userID));
     },
-    addQuestion: (question, videoID, userID) => {
-      dipatch(addQuestion(question, videoID, userID));
+    addQuestion: (question, asker, videoID, userID) => {
+      dispatch(addQuestion(question, asker, videoID, userID));
     }
   };
 };

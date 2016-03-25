@@ -9,11 +9,15 @@ export default class Q_ATab extends Component {
 
   render() {
     var questionsFound;
+    var asker = this.props.currentUser.username;
+    var videoid = this.props.currentVideo.id;
+    var userid = this.props.currentUser.id;
+    var addQuestion = this.props.addQuestion;
 
     // Questions is initially an empty object (before becoming an array of 
     // comment objects) so it must be verified as an array before trying to map it
     if (Array.isArray(this.props.questions)) {
-      commentsFound = (
+      questionsFound = (
       <div>
         {this.props.questions.map(function (question){
           return(
@@ -36,7 +40,7 @@ export default class Q_ATab extends Component {
           rowsMax={5}
           ref='comment'
         />
-        <RaisedButton label="Submit" onClick={() => this.props.addComment(this.refs.comment.getValue(), this.props.currentVideo.id, this.props.currentUser.id)}/>
+        <RaisedButton label="Submit" onClick={() => addQuestion(this.refs.comment.getValue(), asker, videoid, userid)}/>
         {questionsFound}
       </div>
     )

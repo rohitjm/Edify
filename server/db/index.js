@@ -4,17 +4,17 @@ const env = config.production;
 
 // Fill in with your own mysql info (you'll probably be using root-user too)
 //                     db-name , user  ,  password
-// var db = new Sequelize('thesis', 'test', 'password');
+var db = new Sequelize('thesis', 'test', 'password');
 
-var db = new Sequelize(
- env.database,
- 'rootPROD',
- 'passwordPROD',
-  {
-    port: env.port,
-    host: env.host,
-    logging: console.log
-  });
+// var db = new Sequelize(
+//  env.database,
+//  'rootPROD',
+//  'passwordPROD',
+//   {
+//     port: env.port,
+//     host: env.host,
+//     logging: console.log
+//   });
 
 // User's schema
 var User = db.define('User', {
@@ -58,7 +58,7 @@ var Tag = db.define('Tag', {
 // Question's schema
 var Question = db.define('Question', {
   question: Sequelize.STRING(600),
-  answer: {type: Sequelize.TEXT, defaultValue: ""},
+  answer: Sequelize.TEXT,
   asker: Sequelize.STRING
 });
 
@@ -87,6 +87,13 @@ User.sync()
       .then(function() {
         Votes.sync()
         .then(function() {
+          Question.sync()
+          .then(function() {
+            console.log('Tables successfully created');
+          })
+          .catch(function(err) {
+            throw err;
+          });
         })        
         .catch(function(err) {
         });
@@ -112,4 +119,5 @@ exports.User = User;
 exports.Video = Video;
 exports.Votes = Votes;
 exports.Tag = Tag;
+exports.Question = Question;
 exports.db = db;
