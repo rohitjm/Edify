@@ -28,8 +28,8 @@ var Video = db.define('Video', {
   description: Sequelize.STRING,
   url:Sequelize.STRING,
   cover:Sequelize.STRING,
-  // upVotes:Sequelize.INTEGER,
-  // downVotes:Sequelize.INTEGER
+  upVotes:Sequelize.INTEGER,
+  downVotes:Sequelize.INTEGER
 });
 
 //Comment's schema
@@ -74,7 +74,6 @@ User.sync()
       .then(function() {
         Votes.sync()
         .then(function() {
-          console.log('Tables successfully created');
         })        
         .catch(function(err) {
         });

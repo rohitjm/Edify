@@ -1,21 +1,25 @@
 var db = require('../db');
 
+module.exports = {
 upVotes: function (req, res) {
   var videoID = req.body.videoID;
   var userID = req.body.userID;
   db.Votes.findAll({where: {videoID: videoID, userID: userID}})
   .then(function(vote) {
-    if(vote === undefined) {
-      db.Votes.create({videoID: videoID, userID: userID, upVotes: 1, downVotes:0})
+    if(vote.length === 0) {
+      db.Votes.create({videoID: videoID, userID: userID, upVote: 1, downVote:0})
       .then(function() {
-        db.Votes.findAll({
-          attributes: [
-          [sequelize.fn('SUM', sequelize.col('upVotes')),'upVotes']
-          ],
-          where: {
+        db.Votes.find({
+          attributes: [[db.fn('COUNT', db.col(upVote)),'upVote'], 'downVote'],
+          include: [{
+          attributes : [],
+           where: {
             videoID: videoID
           }
+          }]
+        
         }).then(function(voteCount) {
+          console.log(voteCount);
           db.Videos.findAll({where: {videoID: videoID}})
           .then(function(video) {
             video.upVotes = voteCount
@@ -73,4 +77,5 @@ downVotes: function (req, res) {
     throw err;
     res.status(500);
   });
-},
+}
+}

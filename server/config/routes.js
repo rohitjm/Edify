@@ -1,5 +1,6 @@
 var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
+var voteController = require('../controllers/voteController');
 var commentController = require('../controllers/commentController');
 var passport = require('./authentication').passport;
 var ensureAuthenticated = require('./authentication').ensureAuthenticated;
@@ -32,6 +33,12 @@ module.exports = function(app, express) {
   // Add new comment to db
   app.post('/addComment', ensureAuthenticated, commentController.addComment);
 
+  // Increases the upvote of certain video
+  app.post('/upVote', voteController.upVotes);
+  
+  // Increases the upvote of certain video
+  app.post('/downVote', voteController.downVotes);
+  
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
 };

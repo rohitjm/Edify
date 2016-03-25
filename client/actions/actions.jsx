@@ -176,7 +176,7 @@ export const upVote = (userID,videoID) => {
     videoID:videoID
   };
   return(dispatch) => {
-    $post('/upVote', vote)
+    $.post('/upVote', vote)
     .then((voteCount) => 
     {
       dispatch(upVoteMore(voteCount));  
@@ -198,7 +198,7 @@ export const downVote = (userID,videoID) => {
     videoID:videoID
   };
   return(dispatch) => {
-    $post('/downVote', vote)
+    $.post('/downVote', vote)
     .then((voteCount) => 
     {
       dispatch(upVoteMore(voteCount));  
