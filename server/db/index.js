@@ -44,12 +44,14 @@ var Category = db.define('Category', {
 });
 
 // Sets up many-to-many relationship between Video and Category (creates join table Video_Category)
-Category.belongsToMany(Video, {through: 'Video_Category'});
-Video.belongsToMany(Category, {through: 'Video_Category'});
+// Category.belongsToMany(Video, {through: 'Video_Category'});
+// Video.belongsTo(Category, {through: 'Video_Category'});
 
-// Sets up one-to-many relationship between User and Video
+// Sets up one-to-many relationship between User and Video and Category and Video
 Video.belongsTo(User);
 User.hasMany(Video);
+Video.belongsTo(Category);
+Category.hasMany(Video);
 
 // Syncs schemas with mysql, creating the actual tables in the DB
 User.sync()
