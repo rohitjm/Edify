@@ -150,14 +150,14 @@ export const loadQuestions = (videoid) => {
         dispatch(loadAllQuestions(questions));
       });
   }
-}
+};
 
 export const loadAllQuestions = (question) => {
   return {
     type: 'LOAD_QUESTIONS',
     payload: questions
   }
-}
+};
 
 export const toggleUploadModal= () => {
   return {
@@ -194,7 +194,22 @@ export const addComment  = (comment, videoID, userID) => {
         dispatch(loadComments(videoID));
       });
   }
-}
+};
+
+export const addQuestion  = (question, videoID, userID) => {
+  var newQuestion = {
+    content: question,
+    videoID: videoID,
+    userID: userID
+  };
+  return(dispatch) => {
+    $.post('/addQuestion', newQuestion)
+    .then(() => 
+      {
+        dispatch(loadQuestions(videoID));
+      });
+  }
+};
 
 export const loadAllComments = (comments) => {
   return {

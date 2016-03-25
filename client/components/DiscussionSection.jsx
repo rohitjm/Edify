@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
     addComment: (comment, videoID, userID) => {
       console.log('Adding Feedback!');
       dispatch(addComment(comment, videoID, userID));
+    },
+    addQuestion: (question, videoID, userID) => {
+      dipatch(addQuestion(question, videoID, userID));
     }
   };
 };
