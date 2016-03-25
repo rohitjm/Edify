@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "test",
-    "password": "password",
+     "username": "rootPROD",
+    "password": "passwordPROD",
     "database": "thesis",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "galvanizedfern-mysql1.cn3yqtfbbjtf.us-west-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port:": 3306
   },
   "test": {
     "username": "root",
@@ -14,10 +15,19 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "test",
-    "password": "password",
+    "username": "rootPROD",
+    "password": "passwordPROD",
     "database": "thesis",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "galvanizedfern-mysql1.cn3yqtfbbjtf.us-west-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port:": 3306
   }
 }
+
+
+// For Local change development to: 
+// "username": "root",
+//     "password": "password",
+//     "database": "thesis",
+//     "host": "127.0.0.1",
+//     "dialect": "mysql"
