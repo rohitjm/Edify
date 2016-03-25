@@ -7,14 +7,11 @@ const env = config.production;
 // var db = new Sequelize('thesis', 'test', 'password');
 
 var db = new Sequelize(
- env.database,
- 'rootPROD',
- 'passwordPROD',
-  {
-    port: env.port,
-    host: env.host,
-    logging: console.log
-  });
+  env.database,
+  'rootPROD',
+  'passwordPROD',
+  { port: env.port, host: env.host, logging: console.log }
+);
 
 // User's schema
 var User = db.define('User', {

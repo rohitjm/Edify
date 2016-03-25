@@ -25,13 +25,13 @@ export const updateAboutMe = (data) => {
 
 export const showAboutMeEdit = () => {
   return {
-    type: 'SHOW_EDIT'
+    type: 'SHOW_ABOUTME_EDIT',
   }
 };
 
 export const hideAboutMeEdit = () => {
   return {
-    type: 'HIDE_EDIT'
+    type: 'HIDE_ABOUTME_EDIT',
   }
 };
 
@@ -245,3 +245,16 @@ export const downVoteMore = (voteCount) => {
     payload:voteCount
   }
 }
+
+export const showAnswerEdit = (questionID) => {
+  return {
+    type: 'SHOW_ANSWER_EDIT',
+    question: questionID
+  }
+};
+
+export const hideAnswerEdit = () => {
+  return {
+    type: 'HIDE_ANSWER_EDIT'
+  }
+};
