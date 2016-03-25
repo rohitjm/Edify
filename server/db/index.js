@@ -12,7 +12,7 @@ var db = new Sequelize(
  'passwordPROD',
   {
     port: env.port,
-    host: env.host,
+    host: env.h
     logging: console.log
   });
 
@@ -55,11 +55,24 @@ var Tag = db.define('Tag', {
   name: Sequelize.STRING
 });
 
-// Set's up many-to-many relationship between Video and Tag (creates join table Video_Tag)
+// Question's schema
+var Question = db.define('Question', {
+  question: Sequelize.STRING(600),
+  answer: Sequelize.TEXT,
+  asker: Sequelize.STRING
+});
+
+// Sets up one-to-many relationship between User and Question, and Video and Question
+Question.belongsTo(User);
+User.hasMany(Question);
+Question.belongsTo(Video);
+Video.hasMany(Question);
+
+// Sets up many-to-many relationship between Video and Tag (creates join table Video_Tag)
 Tag.belongsToMany(Video, {through: 'Video_Tag'});
 Video.belongsToMany(Tag, {through: 'Video_Tag'});
 
-// Set's up one-to-many relationship between User and Video
+// Sets up one-to-many relationship between User and Video
 Video.belongsTo(User);
 User.hasMany(Video);
 
