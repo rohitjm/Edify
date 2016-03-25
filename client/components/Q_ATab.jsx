@@ -12,14 +12,14 @@ export default class Q_ATab extends Component {
 
     // Questions is initially an empty object (before becoming an array of 
     // comment objects) so it must be verified as an array before trying to map it
-    if (Array.isArray(this.props.comments)) {
+    if (Array.isArray(this.props.questions)) {
       commentsFound = (
-      <div id = 'CommentSection'>
-        {this.props.comments.map(function (comment){
+      <div>
+        {this.props.questions.map(function (question){
           return(
-            <div id = "comment">
-              <h3> {comment.content} </h3>
-              <h4> {comment.userID} </h4>
+            <div>
+              <h3> {question.question} </h3>
+              <h4> {question.asker} </h4>
             </div>
           ); 
         })}
@@ -30,14 +30,14 @@ export default class Q_ATab extends Component {
     return (
       <div>
         <TextField
-          hintText="Enter a comment..."
+          hintText="Enter a question..."
           multiLine={true}
           rows={1}
           rowsMax={5}
           ref='comment'
         />
         <RaisedButton label="Submit" onClick={() => this.props.addComment(this.refs.comment.getValue(), this.props.currentVideo.id, this.props.currentUser.id)}/>
-        {commentsFound}
+        {questionsFound}
       </div>
     )
   };

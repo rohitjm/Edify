@@ -13,7 +13,7 @@ export class PlayerPage extends Component {
 
   componentWillMount(){
       this.props.loadComments(this.props.currentVideo.id);
-      this.props.loadQuesiton(this.props.currentVideo.id);
+      this.props.loadQuestions(this.props.currentVideo.id);
   }
 
   /**

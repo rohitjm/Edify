@@ -4,9 +4,10 @@ import { addComment } from '../actions/actions.jsx';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import FeedbackTab from './FeedbackTab.jsx';
+import Q_ATab from './Q_ATab.jsx';
 
 
-function DiscussionSection ({addComment, comments, currentUser, currentVideo}) {
+function DiscussionSection ({addComment, questions, comments, currentUser, currentVideo}) {
 
   return (
     <Tabs>
@@ -14,7 +15,7 @@ function DiscussionSection ({addComment, comments, currentUser, currentVideo}) {
         <FeedbackTab addComment={addComment} comments={comments} currentVideo={currentVideo} currentUser={currentUser}/>
       </Tab>
       <Tab label="Q&A">
-
+        <Q_ATab questions={questions} currentVideo={currentVideo} currentUser={currentUser}/>
       </Tab>
     </Tabs>
   )

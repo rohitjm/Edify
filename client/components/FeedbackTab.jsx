@@ -15,10 +15,10 @@ export default class FeedbackTab extends Component {
     // comment objects) so it must be verified as an array before trying to map it
     if (Array.isArray(this.props.comments)) {
       commentsFound = (
-      <div id = 'CommentSection'>
+      <div>
         {this.props.comments.map(function (comment){
           return(
-            <div id = "comment">
+            <div>
               <h3> {comment.content} </h3>
               <h4> {comment.userID} </h4>
             </div>

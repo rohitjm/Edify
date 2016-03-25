@@ -27,7 +27,7 @@ module.exports = {
     });
   },
 
-  loadQuestion: function(req, res) {
+  loadQuestions: function(req, res) {
     var videoid = req.body.videoid;
     db.Question.findAll({where: {videoID: videoid}})
     .then(function(questions) {
