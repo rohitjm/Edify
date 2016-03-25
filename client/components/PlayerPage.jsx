@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import VotesSection from './VotesSection.jsx';
 import CommentSection from './CommentSection.jsx';
 import { loadComments } from '../actions/actions.jsx';
 import video from 'video.js';
@@ -28,10 +29,11 @@ export class PlayerPage extends Component {
             <h4>Description: {this.props.currentVideo.description}</h4>
           </div>
          
+          <div><VotesSection /></div>
 
-        <div id = "Comments">
-          <h2><CommentSection currentVideo={this.props.currentVideo} user={this.props.currentUser}/></h2>
-        </div>
+          <div id = "Comments">
+            <h2><CommentSection currentVideo={this.props.currentVideo} user={this.props.currentUser}/></h2>
+          </div>
         </div> 
       );
     } else {
