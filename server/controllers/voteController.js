@@ -45,6 +45,7 @@ upVotes: function (req, res) {
   //   throw err;
   //   res.status(500);
   // });
+
 },
 downVotes: function (req, res) {
   var videoID = req.body.videoID;
