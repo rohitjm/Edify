@@ -246,6 +246,16 @@ export const downVoteMore = (voteCount) => {
   }
 }
 
+export const addAnswer  = (answer, question, videoID) => {
+  return(dispatch) => {
+    $.post('/addAnswer', {answer: answer, question: question})
+    .then(() =>
+      {
+        dispatch(loadQuestions(videoID));
+      });
+  }
+};
+
 export const showAnswerEdit = (questionID) => {
   return {
     type: 'SHOW_ANSWER_EDIT',

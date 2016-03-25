@@ -21,6 +21,7 @@ class DiscussionSection extends Component {
         </Tab>
         <Tab label="Q&A">
           <Q_ATab addQuestion={this.props.addQuestion}
+            addAnswer={this.props.addAnswer}
             questions={this.props.questions}
             currentVideo={this.props.currentVideo}
             currentUser={this.props.currentUser}
@@ -53,6 +54,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     addQuestion: (question, asker, videoID, userID) => {
       dispatch(addQuestion(question, asker, videoID, userID));
+    },
+    addAnswer: (answer, question, videoID) => {
+      dispatch(addAnswer(answer, question, videoID));
+      dispatch(hideAnswerEdit());
     },
     showAnswerEdit: (questionID) => {
       dispatch(showAnswerEdit(questionID));
