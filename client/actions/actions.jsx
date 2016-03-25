@@ -170,4 +170,21 @@ export const addComment  = (comment, videoID, userID) => {
   }
 }
 
+export const loadCategories = () => {
+  return(dispatch) => {
+    $.get('/loadCategories')
+    .then((categories) => 
+      {
+        dispatch(populateCategories(categories));
+      });
+  }
+};
+
+export const populateCategories = () => {
+  return {
+    type: 'LOAD_CATEGORIES',
+    categories: categories
+  }
+};
+
 
