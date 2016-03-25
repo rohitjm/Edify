@@ -93,11 +93,21 @@ const Comments = (state = {}, action) => {
   }
 }
 
+const Questions = (state = {}, action) => {
+  switch(action.type) {
+    case 'LOAD_QUESTIONS' :
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   user: User,
   comments: Comments,
+  questions: Questions,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,

@@ -24,6 +24,7 @@ function DiscussionSection ({addComment, comments, currentUser, currentVideo}) {
 const mapStateToProps = (state) => {
   return {
     comments: state.comments,
+    questions: state.questions,
     currentVideo: state.currentVideo,
     currentUser: state.user
   }

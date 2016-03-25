@@ -12,7 +12,7 @@ var db = new Sequelize(
  'passwordPROD',
   {
     port: env.port,
-    host: env.h
+    host: env.host,
     logging: console.log
   });
 

@@ -4,7 +4,7 @@ import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
 import CommentSection from './CommentSection.jsx';
 import DiscussionSection from './DiscussionSection.jsx';
-import { loadComments } from '../actions/actions.jsx';
+import { loadComments, loadQuestions } from '../actions/actions.jsx';
 import video from 'video.js';
 import $ from 'jquery';
 
@@ -13,6 +13,7 @@ export class PlayerPage extends Component {
 
   componentWillMount(){
       this.props.loadComments(this.props.currentVideo.id);
+      this.props.loadQuesiton(this.props.currentVideo.id);
   }
 
   /**
@@ -22,7 +23,6 @@ export class PlayerPage extends Component {
   **/
 
   render(){
-    //this.props.fetchVideos();
     if(this.props.currentVideo){
       return (
 
@@ -57,6 +57,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadComments: (videoid) => {
       dispatch(loadComments(videoid));
+    },
+    loadQuestions: (videoid) => {
+      dispatch(loadQuestions(videoid));
     }
   };
 };

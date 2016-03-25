@@ -125,6 +125,40 @@ export const hideSignUpModal= () => {
   }
 };
 
+export const loadComments = (videoid) => {
+  return(dispatch) => {
+    $.post('/loadComments', {videoid:videoid})
+    .then((comments) => 
+      {
+        dispatch(loadAllComments(comments));
+      });
+  }
+};
+
+export const loadAllComments = (comments) => {
+  return {
+    type: 'LOAD_COMMENTS',
+    payload:comments
+  }
+};  
+
+export const loadQuestions = (videoid) => {
+  return(dispatch) => {
+    $.post('/loadQuestions', {videoid:videoid})
+    .then((questions) => 
+      {
+        dispatch(loadAllQuestions(questions));
+      });
+  }
+}
+
+export const loadAllQuestions = (question) => {
+  return {
+    type: 'LOAD_QUESTIONS',
+    payload: questions
+  }
+}
+
 export const toggleUploadModal= () => {
   return {
     type: 'SHOW_UPLOAD_MODAL',
