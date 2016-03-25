@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 const config = require('../config/database.json');
-const env = config.local;
+const env = config.production;
 
 // Fill in with your own mysql info (you'll probably be using root-user too)
 //                     db-name , user  ,  password
@@ -8,8 +8,8 @@ const env = config.local;
 
 var db = new Sequelize(
  env.database,
- 'test',
- 'password',
+ 'rootPROD',
+ 'passwordPROD',
   {
     port: env.port,
     host: env.host,
@@ -27,7 +27,9 @@ var Video = db.define('Video', {
   title: Sequelize.STRING,
   description: Sequelize.STRING,
   url:Sequelize.STRING,
-  cover:Sequelize.STRING
+  cover:Sequelize.STRING,
+  // upVotes:Sequelize.INTEGER,
+  // downVotes:Sequelize.INTEGER
 });
 
 //Comment's schema
@@ -44,6 +46,8 @@ var Votes = db.define('Votes', {
   userID: Sequelize.STRING,
   upVote:Sequelize.INTEGER,
   downVote:Sequelize.INTEGER
+},{
+    timestamps: false
 });
 
 // Tag's schema
