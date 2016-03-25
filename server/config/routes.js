@@ -44,7 +44,6 @@ module.exports = function(app, express) {
   
   // Increases the upvote of certain video
   app.post('/downVote', voteController.downVotes);
-  
 
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
-import CommentSection from './CommentSection.jsx';
 import DiscussionSection from './DiscussionSection.jsx';
 import { loadComments, loadQuestions } from '../actions/actions.jsx';
 import video from 'video.js';

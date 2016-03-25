@@ -125,16 +125,6 @@ export const hideSignUpModal= () => {
   }
 };
 
-export const loadComments = (videoid) => {
-  return(dispatch) => {
-    $.post('/loadComments', {videoid:videoid})
-    .then((comments) => 
-      {
-        dispatch(loadAllComments(comments));
-      });
-  }
-};
-
 export const loadAllComments = (comments) => {
   return {
     type: 'LOAD_COMMENTS',
@@ -211,13 +201,6 @@ export const addQuestion  = (question, asker, videoID, userID) => {
       });
   }
 };
-
-export const loadAllComments = (comments) => {
-  return {
-    type: 'LOAD_COMMENTS',
-    payload:comments
-  }
-};  
 
 export const upVote = (userID,videoID) => {
   console.log("from up container");
