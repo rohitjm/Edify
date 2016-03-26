@@ -2,7 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.renameColumn('Videos', 'Category', 'CategoryId')
+    return queryInterface.renameColumn('Videos', 'Category', 'CategoryId')
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
