@@ -37,5 +37,5 @@ module.exports = function(app, express) {
   app.post('/aboutMe', userController.editAboutMe);
 
   //Handles fetching all video categories
-  app.get('loadCategories', categoryController.loadCategories);
+  app.get('/loadCategories', categoryController.loadCategories);
 };
