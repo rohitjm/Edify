@@ -85,7 +85,7 @@ export const signUpUser = (user) => {
   return(dispatch) => {
     $.post('/signup', user)
     .then((response) => 
-      {
+      { dispatch(signInUser(user));
         dispatch(changeUser(response));
       });
   }
