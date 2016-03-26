@@ -81,7 +81,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchByCategory: (categoryId) => {
-      $.post('/search', {query: categoryId, queryType: 'category'}).done(function(res){
+      $.post('/search', {query: categoryId, queryType: 'CategoryId'}).done(function(res){
         dispatch(fetchVideoList(res))
         window.location = '/#/search'
       })
