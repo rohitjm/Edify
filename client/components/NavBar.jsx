@@ -26,8 +26,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSubmit: (query) => {
-      $.post('/search', {query: query}).done(function(res){
+    handleSubmit: (query, queryType) => {
+      $.post('/search', {query: query, queryType:queryType}).done(function(res){
         dispatch(fetchVideoList(res))
         window.location = '/#/search'
       })
