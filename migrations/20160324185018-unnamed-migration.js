@@ -2,7 +2,15 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.removeColumn('Users', 'aboutMeEdit')
+    return queryInterface.addColumn(
+  'Videos',
+  'downVotes',
+  {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0
+  }
+)
 
     /*
       Add altering commands here.

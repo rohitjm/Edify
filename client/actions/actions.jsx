@@ -125,23 +125,6 @@ export const hideSignUpModal= () => {
   }
 };
 
-export const loadComments = (videoid) => {
-  return(dispatch) => {
-    $.post('/loadComments', {videoid:videoid})
-    .then((comments) => 
-      {
-        dispatch(loadAllComments(comments));
-      });
-  }
-};
-
-export const loadAllComments = (comments) => {
-  return {
-    type: 'LOAD_COMMENTS',
-    payload:comments
-  }
-};  
-
 export const toggleUploadModal= () => {
   return {
     type: 'SHOW_UPLOAD_MODAL',
@@ -154,6 +137,15 @@ export const hideUploadModal= () => {
   }
 };
 
+export const loadComments = (videoid) => {
+  return(dispatch) => {
+    $.post('/loadComments', {videoid:videoid})
+    .then((comments) => 
+      {
+        dispatch(loadAllComments(comments));
+      });
+  }
+};
 
 export const addComment  = (comment, videoID, userID) => {
   var newComment = {
@@ -170,6 +162,13 @@ export const addComment  = (comment, videoID, userID) => {
   }
 }
 
+export const loadAllComments = (comments) => {
+  return {
+    type: 'LOAD_COMMENTS',
+    payload:comments
+  }
+};  
+
 export const loadCategories = () => {
   return(dispatch) => {
     $.get('/loadCategories')
@@ -180,11 +179,51 @@ export const loadCategories = () => {
   }
 };
 
-export const populateCategories = () => {
+export const populateCategories = (categories) => {
   return {
     type: 'LOAD_CATEGORIES',
     categories: categories
   }
 };
 
+export const upVote = (userID,videoID) => {
+  var vote = {
+    userID: userID,
+    videoID:videoID
+  };
+  return(dispatch) => {
+    $post('/upVote', vote)
+    .then((voteCount) => 
+    {
+      dispatch(upVoteMore(voteCount));  
+    });    
+  }
+}
 
+export const upVoteMore = (voteCount) => {
+  return{
+    type:'UP_VOTE',
+    payload:voteCount
+  }
+}
+
+export const downVote = (userID,videoID) => {
+  var vote = {
+    userID: userID,
+    videoID:videoID
+  };
+  return(dispatch) => {
+    $post('/downVote', vote)
+    .then((voteCount) => 
+    {
+      dispatch(upVoteMore(voteCount));  
+    });    
+  }
+}
+
+export const downVoteMore = (voteCount) => {
+  return{
+    type:'DOWN_VOTE',
+    payload:voteCount
+  }
+}

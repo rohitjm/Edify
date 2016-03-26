@@ -27,7 +27,9 @@ var Video = db.define('Video', {
   title: Sequelize.STRING,
   description: Sequelize.STRING,
   url:Sequelize.STRING,
-  cover:Sequelize.STRING
+  cover:Sequelize.STRING,
+  // upVotes:Sequelize.INTEGER,
+  // downVotes:Sequelize.INTEGER
 });
 
 //Comment schema
@@ -43,6 +45,16 @@ var Category = db.define('Category', {
   name: Sequelize.STRING
 });
 
+//Votes's schema
+var Votes = db.define('Votes', {
+  videoID: Sequelize.STRING,
+  userID: Sequelize.STRING,
+  upVote:Sequelize.INTEGER,
+  downVote:Sequelize.INTEGER
+},{
+    timestamps: false
+});
+
 // Sets up many-to-many relationship between Video and Category (creates join table Video_Category)
 // Category.belongsToMany(Video, {through: 'Video_Category'});
 // Video.belongsTo(Category, {through: 'Video_Category'});
@@ -50,8 +62,6 @@ var Category = db.define('Category', {
 // Sets up one-to-many relationship between User and Video and Category and Video
 Video.belongsTo(User);
 User.hasMany(Video);
-Video.belongsTo(Category);
-Category.hasMany(Video);
 
 // Syncs schemas with mysql, creating the actual tables in the DB
 User.sync()
@@ -62,7 +72,12 @@ User.sync()
     .then(function() {
       Comment.sync()
       .then(function() {
-        console.log('Tables successfully created');
+        Votes.sync()
+        .then(function() {
+          console.log('Tables successfully created');
+        })        
+        .catch(function(err) {
+        });
       })
       .catch(function(err) {
         throw err;
@@ -84,4 +99,5 @@ exports.Comment = Comment;
 exports.User = User;
 exports.Video = Video;
 exports.Category = Category;
+exports.Votes = Votes;
 exports.db = db;

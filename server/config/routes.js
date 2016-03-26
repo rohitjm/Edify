@@ -5,7 +5,6 @@ var categoryController = require('../controllers/categoryController');
 var passport = require('./authentication').passport;
 var ensureAuthenticated = require('./authentication').ensureAuthenticated;
 
-console.log(videoController);
 module.exports = function(app, express) {
   // Handles request to sign up new user
   app.post('/signup', userController.userSignUp);
@@ -28,10 +27,11 @@ module.exports = function(app, express) {
   // Handles adding a new video to the db
   app.post('/addVideo', videoController.addVideo);
 
-  //Load comments for current Video
+  // Load comments for current Video
   app.post('/loadComments', commentController.loadComments);
 
-  app.post('/addComment', commentController.addComment);
+  // Add new comment to db
+  app.post('/addComment', ensureAuthenticated, commentController.addComment);
 
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
