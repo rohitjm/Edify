@@ -14,7 +14,7 @@ class DiscussionSection extends Component {
       <Tabs>
         <Tab label="Feedback">
           <FeedbackTab addFeedback={this.props.addFeedback}
-            feedback={this.props.feedbacks}
+            feedback={this.props.feedback}
             currentVideo={this.props.currentVideo}
             currentUser={this.props.currentUser}
           />
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addFeedback: (feedback, username, videoID, userID) => {
-      dispatch(addfeedback(feedback, videoID, userID));
+      dispatch(addFeedback(feedback, username, videoID, userID));
     },
     addQuestion: (question, asker, videoID, userID) => {
       dispatch(addQuestion(question, asker, videoID, userID));

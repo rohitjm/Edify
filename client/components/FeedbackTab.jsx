@@ -12,6 +12,7 @@ export default class FeedbackTab extends Component {
     var videoid = this.props.currentVideo.id;
     var username = this.props.currentUser.username;
     var userid = this.props.currentUser.id;
+    console.log(feedback);
 
 
     // Feedback is initially an empty object (before becoming an array of 
@@ -22,8 +23,8 @@ export default class FeedbackTab extends Component {
         {feedback.map(function (singleFeedback){
           return(
             <div>
-              <h3> {singleFeedback.content} </h3>
-              <h4> {singleFeedback.userID} </h4>
+              <h3> {singleFeedback.feedback} </h3>
+              <h4> {singleFeedback.username} </h4>
             </div>
           ); 
         })}
