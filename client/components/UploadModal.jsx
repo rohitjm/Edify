@@ -19,12 +19,17 @@ export default class UploadModal extends React.Component {
 
   render() {
 
+    const items = [];
+    for (let i = 0; i < this.props.categories.length; i++) {
+      items.push(<MenuItem value={this.props.categories[i].id} key={i} primaryText={this.props.categories[i].name}/>);
+    }
+
     const style = {
       marginRight: 20,
     };
 
     const customContentStyle = {
-      width: 500,
+      width: 330,
       maxWidth: 'none',
     };
 
@@ -33,22 +38,9 @@ export default class UploadModal extends React.Component {
 
     let videoUrl;
     let coverUrl;
+    let categoryId;
 
     const actions = [
-      <ReactS3Uploader  
-        signingUrl="/s3/sign"
-        onFinish={(videoResponse) => {
-          console.log('video response', videoResponse.filename)
-          videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
-        }}
-      />,
-      <ReactS3Uploader  
-        signingUrl="/s3/sign"
-        onFinish={(coverResponse) => {
-          console.log('cover response', coverResponse.filename)
-          coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
-        }}
-      />,
       <FlatButton
         label='Cancel'
         secondary={true}
@@ -58,7 +50,7 @@ export default class UploadModal extends React.Component {
         label='Submit'
         onClick={() => {
           console.log('submit button clicked')
-          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: this.props.user, url: videoUrl})
+          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: this.props.user, url: videoUrl, categoryId: categoryId})
         }}
       />
     ];
@@ -83,6 +75,29 @@ export default class UploadModal extends React.Component {
             type="description"
             id="description"
           />
+          Video File (.mp4)
+          <ReactS3Uploader  
+            signingUrl="/s3/sign"
+            onFinish={(videoResponse) => {
+              console.log('video response', videoResponse.filename)
+              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
+            }}
+          />
+          Thumbnail File (.jpg)
+          <ReactS3Uploader  
+            signingUrl="/s3/sign"
+            onFinish={(coverResponse) => {
+              console.log('cover response', coverResponse.filename)
+              coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
+            }}
+          />
+          Categories
+          <DropDownMenu maxHeight={300}
+            value={'Category'}
+            onChange={(evt, index, item) => {categoryId = item}}
+            ref="category">
+            {items}
+          </DropDownMenu>
         </Dialog>
       </div>
     );
