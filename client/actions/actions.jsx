@@ -125,10 +125,10 @@ export const hideSignUpModal= () => {
   }
 };
 
-export const loadAllComments = (comments) => {
+export const loadAllFeedback = (feedback) => {
   return {
-    type: 'LOAD_COMMENTS',
-    payload:comments
+    type: 'LOAD_FEEDBACK',
+    payload: feedback
   }
 };  
 
@@ -161,27 +161,28 @@ export const hideUploadModal= () => {
   }
 };
 
-export const loadComments = (videoid) => {
+export const loadFeedback = (videoid) => {
   return(dispatch) => {
-    $.post('/loadComments', {videoid:videoid})
-    .then((comments) => 
+    $.post('/loadFeedback', {videoid:videoid})
+    .then((feedback) => 
       {
-        dispatch(loadAllComments(comments));
+        dispatch(loadAllFeedback(feedback));
       });
   }
 };
 
-export const addComment  = (comment, videoID, userID) => {
-  var newComment = {
-    content: comment,
+export const addFeedback  = (feedback, username, videoID, userID) => {
+  var newFeedback = {
+    feedback: feedback,
+    username: username,
     videoID: videoID,
     userID: userID
   };
   return(dispatch) => {
-    $.post('/addComment', newComment)
+    $.post('/addFeedback', newFeedback)
     .then(() => 
       {
-        dispatch(loadComments(videoID));
+        dispatch(loadFeedback(videoID));
       });
   }
 };

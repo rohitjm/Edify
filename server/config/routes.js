@@ -27,11 +27,11 @@ module.exports = function(app, express) {
   // Handles adding a new video to the db
   app.post('/addVideo', videoController.addVideo);
 
-  // Load comments for current Video
-  app.post('/loadComments', discussionController.loadComments);
+  // Load feedback for current Video
+  app.post('/loadFeedback', discussionController.loadFeedback);
 
-  // Add new comment to db
-  app.post('/addComment', ensureAuthenticated, discussionController.addComment);
+  // Add new feedback to db
+  app.post('/addFeedback', ensureAuthenticated, discussionController.addFeedback);
 
   // Load questions for current Video
   app.post('/loadQuestions', discussionController.loadQuestions);

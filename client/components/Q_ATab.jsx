@@ -21,7 +21,7 @@ export default class Q_ATab extends Component {
     /*
     * This code block determines the structure and style of each question for a given video.
     * 'questions' is initially an empty object (before becoming an array of 
-    * comment objects) so it must be verified as an array before trying to map it
+    * feedback objects) so it must be verified as an array before trying to map it
     */
     if (Array.isArray(questions)) {
       var _this = this;

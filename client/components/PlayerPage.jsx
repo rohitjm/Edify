@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
 import DiscussionSection from './DiscussionSection.jsx';
-import { loadComments, loadQuestions } from '../actions/actions.jsx';
+import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
 import video from 'video.js';
 import $ from 'jquery';
 
@@ -11,7 +11,7 @@ import $ from 'jquery';
 export class PlayerPage extends Component {
 
   componentWillMount(){
-      this.props.loadComments(this.props.currentVideo.id);
+      this.props.loadFeedback(this.props.currentVideo.id);
       this.props.loadQuestions(this.props.currentVideo.id);
   }
 
@@ -54,8 +54,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadComments: (videoid) => {
-      dispatch(loadComments(videoid));
+    loadFeedback: (videoid) => {
+      dispatch(loadFeedback(videoid));
     },
     loadQuestions: (videoid) => {
       dispatch(loadQuestions(videoid));

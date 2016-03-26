@@ -29,12 +29,10 @@ var Video = db.define('Video', {
   downVotes:Sequelize.INTEGER
 });
 
-//Comment's schema
-var Comment = db.define('Comment', {
-  content: Sequelize.STRING,
-  userID: Sequelize.STRING,
-  videoID:Sequelize.STRING,
-  postedAt:Sequelize.STRING
+//Feedback schema
+var Feedback = db.define('Feedback', {
+  feedback: Sequelize.TEXT,
+  username: Sequelize.STRING
 });
 
 //Votes's schema
@@ -65,6 +63,12 @@ User.hasMany(Question);
 Question.belongsTo(Video);
 Video.hasMany(Question);
 
+// Sets up one-to-many relationship between User and Feedback, and Video and Feedback
+Feedback.belongsTo(User);
+User.hasMany(Feedback);
+Feedback.belongsTo(Video);
+Video.hasMany(Feedback);
+
 // Sets up many-to-many relationship between Video and Tag (creates join table Video_Tag)
 Tag.belongsToMany(Video, {through: 'Video_Tag'});
 Video.belongsToMany(Tag, {through: 'Video_Tag'});
@@ -80,7 +84,7 @@ User.sync()
   .then(function() {
     Tag.sync()
     .then(function() {
-      Comment.sync()
+      Feedback.sync()
       .then(function() {
         Votes.sync()
         .then(function() {
@@ -111,7 +115,7 @@ User.sync()
   throw err;
 });
 
-exports.Comment = Comment;
+exports.Feedback = Feedback;
 exports.User = User;
 exports.Video = Video;
 exports.Votes = Votes;

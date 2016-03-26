@@ -1,26 +1,29 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { addComment } from '../actions/actions.jsx';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 
-//Component Code
 export default class FeedbackTab extends Component {
 
   render() {
-    var commentsFound;
+    var feedbackFound;
+    var feedback = this.props.feedback;
+    var addFeedback = this.props.addFeedback;
+    var videoid = this.props.currentVideo.id;
+    var username = this.props.currentUser.username;
+    var userid = this.props.currentUser.id;
 
-    // Comments is initially an empty object (before becoming an array of 
-    // comment objects) so it must be verified as an array before trying to map it
-    if (Array.isArray(this.props.comments)) {
-      commentsFound = (
+
+    // Feedback is initially an empty object (before becoming an array of 
+    // feedback objects) so it must be verified as an array before trying to map it
+    if (Array.isArray(feedback)) {
+      feedbackFound = (
       <div>
-        {this.props.comments.map(function (comment){
+        {feedback.map(function (singleFeedback){
           return(
             <div>
-              <h3> {comment.content} </h3>
-              <h4> {comment.userID} </h4>
+              <h3> {singleFeedback.content} </h3>
+              <h4> {singleFeedback.userID} </h4>
             </div>
           ); 
         })}
@@ -31,14 +34,14 @@ export default class FeedbackTab extends Component {
     return (
       <div>
         <TextField
-          hintText="Enter a comment..."
+          hintText="Enter feedback..."
           multiLine={true}
           rows={1}
           rowsMax={5}
-          ref='comment'
+          ref='feedback'
         />
-        <RaisedButton label="Submit" onClick={() => this.props.addComment(this.refs.comment.getValue(), this.props.currentVideo.id, this.props.currentUser.id)}/>
-        {commentsFound}
+        <RaisedButton label="Submit" onClick={() => addFeedback(this.refs.feedback.getValue(), username, videoid, userid)}/>
+        {feedbackFound}
       </div>
     )
   };

@@ -95,9 +95,9 @@ const UploadModal = (state = {}, action) => {
   }
 }
 
-const Comments = (state = {}, action) => {
+const Feedback = (state = {}, action) => {
   switch (action.type) {
-    case 'LOAD_COMMENTS':
+    case 'LOAD_FEEDBACK':
       return action.payload;
     default:
       return state;  
@@ -117,7 +117,7 @@ const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   user: User,
-  comments: Comments,
+  feedback: Feedback,
   questions: Questions,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,

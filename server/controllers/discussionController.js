@@ -1,11 +1,11 @@
 var db = require('../db');
 
 module.exports = {
-  loadComments: function(req, res) {
+  loadFeedback: function(req, res) {
     var videoid = req.body.videoid;
-    db.Comment.findAll({where: {videoID: videoid}})
-    .then(function(comments) {
-      res.send(200, comments);
+    db.Feedback.findAll({where: {videoID: videoid}})
+    .then(function(feedback) {
+      res.send(200, feedback);
     })
     .catch(function(err) {
       throw err;
@@ -13,11 +13,12 @@ module.exports = {
     });
   },
 
-  addComment: function(req, res) {
-    var content = req.body.content;
+  addFeedback: function(req, res) {
+    var feedback = req.body.feedback;
     var videoID = req.body.videoID;
     var userID = req.body.userID;
-    db.Comment.create({content: content, videoID: videoID, userID: userID})
+    var username = req.body.username;
+    db.Feedback.create({feedback: feedback, username: username, VideoId: videoID, UserId: userID})
     .then(function() {
       res.sendStatus(201);
     })
