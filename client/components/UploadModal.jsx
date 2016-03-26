@@ -34,17 +34,6 @@ export default class UploadModal extends React.Component {
     let videoUrl;
     let coverUrl;
 
-    let items;
-
-    // initialize drop down menu with categories
-    // if(!items) {
-    //   items = [];
-    //   this.props.fetchCategories();
-    //   for (let i = 0; i < this.props.categories.length; i++) {
-    //     items.push(<MenuItem value={i} key={i} primaryText={`${i}`}/>);
-    //   }
-    // }
-
     const actions = [
       <ReactS3Uploader  
         signingUrl="/s3/sign"
@@ -83,20 +72,17 @@ export default class UploadModal extends React.Component {
           contentStyle={customContentStyle}
           open={this.props.displayUploadModal === true}
         >
-          Select a video file (.mp4).
           <TextField
-          ref="title"
-          floatingLabelText="Title"
-          id="title"
+            ref="title"
+            floatingLabelText="Title"
+            id="title"
           />
-          Select a thumbnail file (.jpg).
           <TextField
             ref="description"
             floatingLabelText="Description"
             type="description"
             id="description"
           />
-          Category
         </Dialog>
       </div>
     );
@@ -121,9 +107,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     closeModal: () => {
       dispatch(hideUploadModal())
-    },
-    fetchCategories: () => {
-      dispatch(loadCategories())
     }
   };
 };
