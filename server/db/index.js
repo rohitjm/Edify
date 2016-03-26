@@ -52,7 +52,7 @@ var Votes = db.define('Votes', {
 });
 
 // Category's schema
-var Category = db.define('Tag', {
+var Category = db.define('Category', {
   name: Sequelize.STRING
 });
 

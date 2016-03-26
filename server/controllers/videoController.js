@@ -22,7 +22,11 @@ module.exports = {
   // Handles fetching of specified video from S3 storage
   fetchVideo: function (req, res) {
     var query = req.body.query;
-    db.Video.findAll({where: {title: {$like : '%' + query + '%'}}})
+    var queryType= req.body.queryType;
+    console.log("queryType is;", queryType);
+    var search ={};
+    search[queryType] =  {$like : '%' + query + '%'};
+    db.Video.findAll({where: search})
     .then(function(videos) {
       res.send(videos);
     })
@@ -45,6 +49,7 @@ module.exports = {
   fetchAll: function (req, res) {
     db.Video.findAll({})
     .then(function(videos) {
+      console.log("inside fetchAll", videos)
       res.send(videos);
     })
     .catch(function(err) {
