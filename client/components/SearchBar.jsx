@@ -10,7 +10,7 @@ export default class SearchBar extends Component {
     return (
       <div>
         <TextField ref='search' hintText="Search" />
-        <IconButton iconClassName="material-icons md-24" onClick={() => this.props.handleSubmit(this.refs.search.getValue())}>search</IconButton>
+        <IconButton iconClassName="material-icons md-24" onClick={() => this.props.handleSubmit(this.refs.search.getValue(), "title")}>search</IconButton>
       </div>
     );
   }
