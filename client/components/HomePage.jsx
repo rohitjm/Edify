@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Featured from './Featured.jsx';
 import VideoGrid from './VideoGrid.jsx';
-import { fetchVideoList } from '../actions/actions.jsx';
+import CategoriesBar from './CategoriesBar.jsx';
+import { fetchVideoList, loadCategories } from '../actions/actions.jsx';
 import $ from 'jquery';
 
 //Component Code
 export class HomePage extends Component {
 
 	componentDidMount(){
-	    this.props.fetchVideos();
+    this.props.fetchVideos();
+    this.props.fetchCategories();
 	}
 
   render(){
@@ -17,6 +19,7 @@ export class HomePage extends Component {
   	return (
   	  <div id = "HomePage">
   	  	<div id = 'box'><Featured /></div>
+        <CategoriesBar />
     	  <div ><VideoGrid /></div>
   	  </div>
   	);
@@ -37,6 +40,9 @@ const mapDispatchToProps = (dispatch) => {
       .done(function(res){
          dispatch(fetchVideoList(res));
       });
+    },
+    fetchCategories: () => {
+      dispatch(loadCategories())
     }
   };
 };
