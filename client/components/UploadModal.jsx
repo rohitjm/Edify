@@ -29,7 +29,7 @@ export default class UploadModal extends React.Component {
     };
 
     const customContentStyle = {
-      width: 500,
+      width: 330,
       maxWidth: 'none',
     };
 
@@ -41,20 +41,6 @@ export default class UploadModal extends React.Component {
     let categoryId;
 
     const actions = [
-      <ReactS3Uploader  
-        signingUrl="/s3/sign"
-        onFinish={(videoResponse) => {
-          console.log('video response', videoResponse.filename)
-          videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
-        }}
-      />,
-      <ReactS3Uploader  
-        signingUrl="/s3/sign"
-        onFinish={(coverResponse) => {
-          console.log('cover response', coverResponse.filename)
-          coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
-        }}
-      />,
       <FlatButton
         label='Cancel'
         secondary={true}
@@ -89,6 +75,23 @@ export default class UploadModal extends React.Component {
             type="description"
             id="description"
           />
+          Video File (.mp4)
+          <ReactS3Uploader  
+            signingUrl="/s3/sign"
+            onFinish={(videoResponse) => {
+              console.log('video response', videoResponse.filename)
+              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
+            }}
+          />
+          Thumbnail File (.jpg)
+          <ReactS3Uploader  
+            signingUrl="/s3/sign"
+            onFinish={(coverResponse) => {
+              console.log('cover response', coverResponse.filename)
+              coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
+            }}
+          />
+          Categories
           <DropDownMenu maxHeight={300}
             value={'Category'}
             onChange={(evt, index, item) => {categoryId = item}}
