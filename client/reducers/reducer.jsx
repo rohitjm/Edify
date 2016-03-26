@@ -108,6 +108,15 @@ const Feedback = (state = {}, action) => {
   }
 }
 
+const Categories = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOAD_CATEGORIES':
+      return action.categories;
+    default:
+      return state;  
+  }
+}
+
 const Questions = (state = {}, action) => {
   switch(action.type) {
     case 'LOAD_QUESTIONS' :
@@ -121,6 +130,7 @@ const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   user: User,
+  categories: Categories,
   feedback: Feedback,
   questions: Questions,
   displaySignInModal: SignInModal,

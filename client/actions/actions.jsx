@@ -203,6 +203,23 @@ export const addQuestion  = (question, asker, videoID, userID) => {
   }
 };
 
+export const loadCategories = () => {
+  return(dispatch) => {
+    $.get('/loadCategories')
+    .then((categories) => 
+      {
+        dispatch(populateCategories(categories));
+      });
+  }
+};
+
+export const populateCategories = (categories) => {
+  return {
+    type: 'LOAD_CATEGORIES',
+    categories: categories
+  }
+};
+
 export const upVote = (userID,videoID) => {
   var vote = {
     userID: userID,

@@ -5,10 +5,12 @@ import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+import DropDownMenu from 'material-ui/lib/DropDownMenu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 import {connect} from 'react-redux';
 import ReactS3Uploader from 'react-s3-uploader';
 
-import { addVideo, hideUploadModal } from '../actions/actions.jsx';
+import { addVideo, hideUploadModal, loadCategories } from '../actions/actions.jsx';
 
 export default class UploadModal extends React.Component {
   constructor(props) {
@@ -29,8 +31,8 @@ export default class UploadModal extends React.Component {
     // add snackbar for when video is finished uploading?
     // add progress bar while video is uploading?
 
-    var videoUrl;
-    var coverUrl;
+    let videoUrl;
+    let coverUrl;
 
     const actions = [
       <ReactS3Uploader  
@@ -55,7 +57,6 @@ export default class UploadModal extends React.Component {
       <FlatButton
         label='Submit'
         onClick={() => {
-          // video file name must equal the title for now
           console.log('submit button clicked')
           this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: this.props.user, url: videoUrl})
         }}
@@ -71,11 +72,10 @@ export default class UploadModal extends React.Component {
           contentStyle={customContentStyle}
           open={this.props.displayUploadModal === true}
         >
-        Select video (.mp4) and thumbnail (.jpg) files.
           <TextField
-          ref="title"
-          floatingLabelText="Title"
-          id="title"
+            ref="title"
+            floatingLabelText="Title"
+            id="title"
           />
           <TextField
             ref="description"
@@ -92,7 +92,8 @@ export default class UploadModal extends React.Component {
 const mapStateToProps = (state) => {
   return {
     displayUploadModal: state.displayUploadModal,
-    user: state.user
+    user: state.user,
+    categories: state.categories
   }
 };
 

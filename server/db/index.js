@@ -1,3 +1,4 @@
+
 var Sequelize = require('sequelize');
 const config = require('../config/database.json');
 const env = config.production;

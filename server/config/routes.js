@@ -1,5 +1,6 @@
 var userController = require('../controllers/userController');
 var videoController = require('../controllers/videoController');
+var categoryController = require('../controllers/categoryController');
 var voteController = require('../controllers/voteController');
 var discussionController = require('../controllers/discussionController');
 var passport = require('./authentication').passport;
@@ -48,6 +49,10 @@ module.exports = function(app, express) {
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
 
+  //Handles fetching all video categories
+  app.get('/loadCategories', categoryController.loadCategories);
+
   // Add's answer to an existing question
   app.post('/addAnswer', discussionController.addAnswer);
+
 };
