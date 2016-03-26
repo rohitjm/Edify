@@ -9,8 +9,8 @@ module.exports = {
       description: video.description,
       cover: video.cover,
       url: video.url,
-      UserId: video.user.id
-      
+      UserId: video.user.id,
+      CategoryId: video.categoryId
     })
     .then(function(video) {
       res.send(201, video);
