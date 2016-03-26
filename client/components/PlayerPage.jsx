@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
-import CommentSection from './CommentSection.jsx';
-import { loadComments } from '../actions/actions.jsx';
+import DiscussionSection from './DiscussionSection.jsx';
+import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
 import video from 'video.js';
 import $ from 'jquery';
 
@@ -11,7 +11,8 @@ import $ from 'jquery';
 export class PlayerPage extends Component {
 
   componentWillMount(){
-      this.props.loadComments(this.props.currentVideo.id);
+      this.props.loadFeedback(this.props.currentVideo.id);
+      this.props.loadQuestions(this.props.currentVideo.id);
   }
 
   /**
@@ -21,7 +22,6 @@ export class PlayerPage extends Component {
   **/
 
   render(){
-    //this.props.fetchVideos();
     if(this.props.currentVideo){
       return (
 
@@ -31,9 +31,9 @@ export class PlayerPage extends Component {
 
           <div><VotesSection /></div>
 
-          <div id = "Comments">
-            <h2><CommentSection currentVideo={this.props.currentVideo} user={this.props.currentUser}/></h2>
-          </div>
+        <div>
+          <h2><DiscussionSection /></h2>
+        </div>
         </div> 
       );
     } else {
@@ -49,14 +49,16 @@ export class PlayerPage extends Component {
 const mapStateToProps = (state) => {
   return {
     currentVideo: state.currentVideo,
-    currentUser: state.user
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadComments: (videoid) => {
-      dispatch(loadComments(videoid));
+    loadFeedback: (videoid) => {
+      dispatch(loadFeedback(videoid));
+    },
+    loadQuestions: (videoid) => {
+      dispatch(loadQuestions(videoid));
     }
   };
 };

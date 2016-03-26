@@ -16,7 +16,7 @@ module.exports = {
     })
     .catch(function(err) {
       throw err;
-      res.status(500);
+      res.sendStatus(500);
     });
   },
   // Handles fetching of specified video from S3 storage
@@ -28,33 +28,32 @@ module.exports = {
     search[queryType] =  {$like : '%' + query + '%'};
     db.Video.findAll({where: search})
     .then(function(videos) {
-      res.send(videos);
+      res.send(200, videos);
     })
     .catch(function(err) {
       throw err;
-      res.status(500);
+      res.sendStatus(500);
     });
   },
   fetchUserVideo: function (req, res) {
     db.Video.findAll({where: {userid: req.body.id}})
     .then(function(videos) {
-      res.send(videos);
+      res.send(200, videos);
     })
     .catch(function(err) {
       throw err;
-      res.status(500);
+      res.sendStatus(500);
     });
   },
 
   fetchAll: function (req, res) {
     db.Video.findAll({})
     .then(function(videos) {
-      console.log("inside fetchAll", videos)
-      res.send(videos);
+      res.send(200, videos);
     })
     .catch(function(err) {
       throw err;
-      res.status(500);
+      res.sendStatus(500);
     });
   }
 };

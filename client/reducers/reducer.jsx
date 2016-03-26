@@ -45,10 +45,21 @@ const User = (state = {}, action) => {
 
 const ToggleAboutMeEdit= (state = {}, action) => {
   switch(action.type) {
-    case 'SHOW_EDIT':
+    case 'SHOW_ABOUTME_EDIT':
       return true;
-    case "HIDE_EDIT":
+    case "HIDE_ABOUTME_EDIT":
       return false;
+    default:
+      return state;
+  }
+}
+
+const ToggleAnswerEdit= (state = {}, action) => {
+  switch(action.type) {
+    case 'SHOW_ANSWER_EDIT':
+      return action.question;
+    case "HIDE_ANSWER_EDIT":
+      return "";
     default:
       return state;
   }
@@ -88,12 +99,21 @@ const UploadModal = (state = {}, action) => {
   }
 }
 
-const Comments = (state = {}, action) => {
+const Feedback = (state = {}, action) => {
   switch (action.type) {
-    case 'LOAD_COMMENTS':
+    case 'LOAD_FEEDBACK':
       return action.payload;
     default:
       return state;  
+  }
+}
+
+const Questions = (state = {}, action) => {
+  switch(action.type) {
+    case 'LOAD_QUESTIONS' :
+      return action.payload;
+    default:
+      return state;
   }
 }
 
@@ -101,11 +121,13 @@ const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   user: User,
-  comments: Comments,
+  feedback: Feedback,
+  questions: Questions,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,
-  aboutMeEdit:ToggleAboutMeEdit
+  aboutMeEdit: ToggleAboutMeEdit,
+  answerEdit: ToggleAnswerEdit
 });
 
 export default VideoAppHandler;

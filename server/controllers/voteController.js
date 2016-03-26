@@ -4,7 +4,6 @@ module.exports = {
   upVotes: function (req, res) {
     var videoID = req.body.videoID;
     var userID = req.body.userID;
-    console.log(userID)
     if (userID !== undefined){
       db.Votes.findAll({where: {videoID: videoID, userID: userID}})
       .then(function(vote) {
@@ -20,7 +19,6 @@ module.exports = {
             //})
             db.db.query("select SUM(upVote) as upVote from Votes where videoID = "+videoID, {type: db.db.QueryTypes.SELECT})
             .then(function(voteCount) {
-              console.log(voteCount);
               db.Video.findOne({where: {id: videoID}})
               .then(function(video) {
                 video.updateAttributes({
@@ -29,19 +27,18 @@ module.exports = {
                 .then(function(){
                   db.Video.findOne({where: {id: videoID}})
                   .then(function(video){
-                    console.log("before sending: ",video.upVotes);
                     res.send(video);
-                  })
-                })
-              })
+                  });
+                });
+              });
             })
             .catch(function(err) {
               throw err;
               res.sendStatus(500);
             });
-          })   
+          }) ;  
         }
-      })   
+      });  
 
       // .catch(function(err) {
       //   throw err;
@@ -68,7 +65,6 @@ module.exports = {
           //})
           db.db.query("select SUM(downVote) as downVote from Votes where videoID = "+videoID, {type: db.db.QueryTypes.SELECT})
           .then(function(voteCount) {
-            console.log(voteCount);
             db.Video.findOne({where: {id: videoID}})
             .then(function(video) {
               video.updateAttributes({
@@ -77,18 +73,17 @@ module.exports = {
               .then(function(){
                 db.Video.findOne({where: {id: videoID}})
                 .then(function(video){
-                  console.log("before sending: ",video.downVotes);
                   res.send(video);
-                })
-              })
-            })
+                });
+              });
+            });
           })
           .catch(function(err) {
             throw err;
             res.sendStatus(500);
           });
-        })   
+        });   
       }
-    })   
+    });   
   }
-}
+};
