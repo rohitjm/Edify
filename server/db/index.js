@@ -45,8 +45,8 @@ var Votes = db.define('Votes', {
   timestamps: false
 });
 
-// Tag's schema
-var Tag = db.define('Tag', {
+// Category's schema
+var Category = db.define('Category', {
   name: Sequelize.STRING
 });
 
@@ -69,20 +69,21 @@ User.hasMany(Feedback);
 Feedback.belongsTo(Video);
 Video.hasMany(Feedback);
 
-// Sets up many-to-many relationship between Video and Tag (creates join table Video_Tag)
-Tag.belongsToMany(Video, {through: 'Video_Tag'});
-Video.belongsToMany(Tag, {through: 'Video_Tag'});
+// Set's up many-to-many relationship between Video and Tag (creates join table Video_Tag)
+// Tag.belongsToMany(Video, {through: 'Video_Tag'});
+// Video.belongsToMany(Tag, {through: 'Video_Tag'});
 
 // Sets up one-to-many relationship between User and Video
 Video.belongsTo(User);
 User.hasMany(Video);
-
+Video.belongsTo(Category);
+Category.hasMany(Video);
 // Syncs schemas with mysql, creating the actual tables in the DB
 User.sync()
 .then(function() {
   Video.sync()
   .then(function() {
-    Tag.sync()
+    Category.sync()
     .then(function() {
       Feedback.sync()
       .then(function() {
@@ -119,6 +120,6 @@ exports.Feedback = Feedback;
 exports.User = User;
 exports.Video = Video;
 exports.Votes = Votes;
-exports.Tag = Tag;
 exports.Question = Question;
+exports.Category = Category;
 exports.db = db;
