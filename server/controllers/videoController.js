@@ -10,6 +10,7 @@ module.exports = {
       cover: video.cover,
       url: video.url,
       UserId: video.user.id
+      
     })
     .then(function(video) {
       res.send(201, video);
