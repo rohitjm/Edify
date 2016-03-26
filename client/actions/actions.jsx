@@ -246,9 +246,9 @@ export const downVoteMore = (voteCount) => {
   }
 }
 
-export const addAnswer  = (answer, question, videoID) => {
+export const addAnswer  = (answer, questionID, videoID) => {
   return(dispatch) => {
-    $.post('/addAnswer', {answer: answer, question: question})
+    $.post('/addAnswer', {answer: answer, questionID: questionID})
     .then(() =>
       {
         dispatch(loadQuestions(videoID));

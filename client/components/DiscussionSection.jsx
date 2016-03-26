@@ -55,8 +55,8 @@ const mapDispatchToProps = (dispatch) => {
     addQuestion: (question, asker, videoID, userID) => {
       dispatch(addQuestion(question, asker, videoID, userID));
     },
-    addAnswer: (answer, question, videoID) => {
-      dispatch(addAnswer(answer, question, videoID));
+    addAnswer: (answer, questionID, videoID) => {
+      dispatch(addAnswer(answer, questionID, videoID));
       dispatch(hideAnswerEdit());
     },
     showAnswerEdit: (questionID) => {

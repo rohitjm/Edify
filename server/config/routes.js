@@ -47,4 +47,7 @@ module.exports = function(app, express) {
 
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
+
+  // Add's answer to an existing question
+  app.post('/addAnswer', discussionController.addAnswer);
 };
