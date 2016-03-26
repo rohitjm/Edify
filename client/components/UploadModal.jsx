@@ -19,6 +19,11 @@ export default class UploadModal extends React.Component {
 
   render() {
 
+    const items = [];
+    for (let i = 0; i < this.props.categories.length; i++) {
+      items.push(<MenuItem value={this.props.categories[i].id} key={i} primaryText={this.props.categories[i].name}/>);
+    }
+
     const style = {
       marginRight: 20,
     };
@@ -33,6 +38,7 @@ export default class UploadModal extends React.Component {
 
     let videoUrl;
     let coverUrl;
+    let categoryId;
 
     const actions = [
       <ReactS3Uploader  
@@ -58,7 +64,7 @@ export default class UploadModal extends React.Component {
         label='Submit'
         onClick={() => {
           console.log('submit button clicked')
-          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: this.props.user, url: videoUrl})
+          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: this.props.user, url: videoUrl, categoryId: categoryId})
         }}
       />
     ];
@@ -83,6 +89,12 @@ export default class UploadModal extends React.Component {
             type="description"
             id="description"
           />
+          <DropDownMenu maxHeight={300}
+            value={'Category'}
+            onChange={(evt, index, item) => {categoryId = item}}
+            ref="category">
+            {items}
+          </DropDownMenu>
         </Dialog>
       </div>
     );
