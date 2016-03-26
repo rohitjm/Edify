@@ -3,7 +3,6 @@ import SearchBar from './SearchBar.jsx';
 import {fetchVideoList, toggleSignInModal, toggleSignUpModal, toggleUploadModal, signOutUser} from '../actions/actions.jsx'
 import {connect} from 'react-redux';
 import $ from 'jquery';
-// import {ToolBar, ToolBarSeparator} from 'material-ui';
 import FontIcon from 'material-ui/lib/font-icon';
 import NavigationExpandMoreIcon from 'material-ui/lib/svg-icons/navigation/expand-more';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -35,9 +34,13 @@ const mapDispatchToProps = (dispatch) => {
     goHome: () => {
       window.location = '/#/';
     },
+    goProfile: () => {
+      window.location = '/#/profile'
+    },
     signOut: () => {
       console.log('Signing out user')
       dispatch(signOutUser())
+      window.location = '/#/'
     },
     showSignInModal: () => {
       console.log('Showing SignInModal')
@@ -57,21 +60,30 @@ const mapDispatchToProps = (dispatch) => {
 class NavBar extends Component {
 
   render(){
+  var noAuth =  <ToolbarGroup float="right">
+                  <ToolbarSeparator />
+                  <RaisedButton label="Sign In" primary={true} onTouchTap={() => this.props.showSignInModal()}/>
+                  <RaisedButton label="Sign Up" primary={true} onTouchTap={() => this.props.showSignUpModal()}/>
+                </ToolbarGroup>
+  
+  var Auth =    <ToolbarGroup float="right">
+                  <ToolbarSeparator />
+                  <RaisedButton label="Profile" secondary={true} onTouchTap={() => this.props.goProfile()}/>
+                  <RaisedButton label="Upload Video" secondary={true} onTouchTap={() => this.props.showUploadModal()}/>
+                  <RaisedButton label="Sign Out" primary={true} onTouchTap={() => this.props.signOut()}/>
+                </ToolbarGroup>
+
+    
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true} float="left">
           <ToolbarTitle text="Virtuoso" style={{cursor: 'pointer'}} onClick={() => this.props.goHome()}/>
         </ToolbarGroup>
-        <ToolbarGroup float="right">
-          <ToolbarSeparator />
-          <RaisedButton label="Sign In" primary={true} onTouchTap={() => this.props.showSignInModal()}/>
-          <RaisedButton label="Sign Up" primary={true} onTouchTap={() => this.props.showSignUpModal()}/>
-          <RaisedButton label="Sign Out" primary={true} onTouchTap={() => this.props.signOut()}/>
-          <RaisedButton label="Upload Video" secondary={true} onTouchTap={() => this.props.showUploadModal()}/>
-        </ToolbarGroup>
         <ToolbarGroup float="right" style={{width: "35%"}}>
+          <ToolbarSeparator />
           <SearchBar handleSubmit={this.props.handleSubmit}/>
         </ToolbarGroup>
+          {this.props.user.username !== undefined ? Auth : noAuth }
       </Toolbar>
     );
   }
@@ -79,13 +91,3 @@ class NavBar extends Component {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
-
-        // <div className='navLeft'>
-        //   <h1 className='logo navContent'>Virtuoso</h1>
-        // </div>
-        // <div className='navMiddle'>
-        //   <div className='searchBar navContent'><SearchBar onSubmit={this.props.handleSubmit.bind(this)}/></div>
-        // </div>
-        // <div className='navRight'>
-        //   <div className='authBox navContent'><AuthBox /></div>
-        // </div>
