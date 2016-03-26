@@ -59,7 +59,7 @@ var aboutMeEdit = <form className="aboutMeForm">
                           Save Changes
                         </button>
                       </form>
-    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo(null,this.props.user,this.props.aboutMeEdit) }>hey {this.props.aboutMe}</div>
+    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo(null,this.props.user,this.props.aboutMeEdit) } placeholder = "Click to Update About Me">{this.props.aboutMe}</div>
   
   return (
     <div>

@@ -18,16 +18,26 @@ import logger from 'redux-logger';
 import ReduxPromise from 'redux-promise';
 import VideoAppHandler from './reducers/reducer.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import MyTheme from './styles/materialTheme.js';
 
-// Necessary to use materialUI
 injectTapEventPlugin();
 
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, thunk, logger()));
 
 export default class App extends Component {
-
+ 
   constructor(props) {
     super(props)
+  }
+  //the key passed through context must be called "muiTheme"
+ childContextTypes = {
+    muiTheme: React.PropTypes.object,
+  };
+  getChildContext() {
+      return {
+          muiTheme: ThemeManager.getMuiTheme(MyTheme),
+      };
   }
 
   render(){
@@ -43,6 +53,10 @@ export default class App extends Component {
   }
 }
 
+App.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
+
 render((
   // React Router allows user to access different pages, depending how
   // the window location is set.
@@ -57,6 +71,8 @@ render((
     </Router>
   </Provider>
 ), document.getElementById('app'));
+
+
 
    // var style = {
    //    'backgroundImage': (`url('${currentVideo.cover}')`),
