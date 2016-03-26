@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { addComment, addQuestion, showAnswerEdit, hideAnswerEdit } from '../actions/actions.jsx';
+import { addComment, addQuestion, showAnswerEdit, hideAnswerEdit, addAnswer } from '../actions/actions.jsx';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import FeedbackTab from './FeedbackTab.jsx';
