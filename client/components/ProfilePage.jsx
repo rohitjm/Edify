@@ -73,8 +73,12 @@ var aboutMeEdit = <form className="aboutMeForm">
           {this.props.aboutMeEdit === true ? aboutMeEdit : aboutMe}
         </div>
       </div>
-      <Tab label="Uploaded Videos">
-      </Tab>
+      <Tabs>
+        <Tab label="Uploaded">
+        </Tab>
+        <Tab label="Watchlist">
+        </Tab>
+      </Tabs>
       <VideoGrid />
 
   </div>
