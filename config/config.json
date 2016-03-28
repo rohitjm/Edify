@@ -1,0 +1,27 @@
+{
+  "development": {
+     "username": "rootPROD",
+    "password": "passwordPROD",
+    "database": "thesis",
+    "host": "galvanizedfern-mysql1.cn3yqtfbbjtf.us-west-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port:": 3306
+  },
+  "test": {
+    "username": "root",
+    "password": "password",
+    "database": "thesis",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "rootPROD",
+    "password": "passwordPROD",
+    "database": "thesis",
+    "host": "galvanizedfern-mysql1.cn3yqtfbbjtf.us-west-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port:": 3306
+  }
+}
+
+

@@ -2,23 +2,25 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Featured from './Featured.jsx';
 import VideoGrid from './VideoGrid.jsx';
-import { fetchVideoList } from '../actions/actions.jsx';
+import CategoriesBar from './CategoriesBar.jsx';
+import { fetchVideoList, loadCategories } from '../actions/actions.jsx';
 import $ from 'jquery';
 
 //Component Code
-export default class HomePage extends Component {
+export class HomePage extends Component {
 
-	componentWillMount(){
-	    console.log('willMount');
-	    this.props.fetchVideos();
+	componentDidMount(){
+    this.props.fetchVideos();
+    this.props.fetchCategories();
 	}
 
   render(){
   	//this.props.fetchVideos();
   	return (
   	  <div id = "HomePage">
-	  	<div id = 'box'><Featured /></div>
-  	  	<div id = 'box'><VideoGrid /></div>
+  	  	<div id = 'box'><Featured /></div>
+        <CategoriesBar />
+    	  <div ><VideoGrid /></div>
   	  </div>
   	);
   }
@@ -27,19 +29,20 @@ export default class HomePage extends Component {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    videos: state.videos.videos
+    videos: state.videos
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchVideos: () => {
-     console.log("fetching videos!");
       $.get('/fetch')
       .done(function(res){
-      	console.log("response: ",res);
          dispatch(fetchVideoList(res));
       });
+    },
+    fetchCategories: () => {
+      dispatch(loadCategories())
     }
   };
 };

@@ -6,6 +6,7 @@ module.exports = {
   userSignUp: function (req, res) {
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
+      console.log("useris:", user);
       if (user) {
         console.log('Username already exists!');
         res.sendStatus(200);
@@ -16,7 +17,9 @@ module.exports = {
         }
         db.User.create({
           username: req.body.username,
-          password: hash
+          password: hash,
+
+
         })
         .then(function(user) {
           console.log('User created successfully');
@@ -52,7 +55,6 @@ module.exports = {
     // .catch(function(err) {
     //   console.log(err);
     // })
-    console.log('req.user', req.user);
     res.send(req.user);
   },
 
@@ -63,5 +65,25 @@ module.exports = {
     console.log('User logged out!');
     res.send('Logged out');
     // Redirect or do something else to let user know they successfully loged out
+  },
+
+
+  editAboutMe: function (req,res) {
+    db.User.findOne({where: {username: req.body.username}})
+    .then(function(user) {
+      console.log('User is:', user);
+      user.aboutMe = req.body.info;
+      user.save()
+      .then(function(user) {
+        console.log('User updated successfully');
+        res.send(201, user);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
   }
 };

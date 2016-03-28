@@ -1,50 +1,64 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchVideoList } from '../actions/actions.jsx';
-import Video from 'react-html5video';
+import VideoPlayer from './VideoPlayer.jsx';
+import VotesSection from './VotesSection.jsx';
+import DiscussionSection from './DiscussionSection.jsx';
+import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
+import video from 'video.js';
 import $ from 'jquery';
 
 //Component Code
-export default function PlayerPage({currentVideo}) {
-  console.log(currentVideo);
+export class PlayerPage extends Component {
 
-  if(currentVideo){
+  componentWillMount(){
+      this.props.loadFeedback(this.props.currentVideo.id);
+      this.props.loadQuestions(this.props.currentVideo.id);
+  }
 
-    return(
-      <div id = 'Featured'>
+  /**
+  shouldComponentUpdate{
 
-        <Video width="800" height="600" controls loop muted
-            poster={currentVideo.cover}
-            onCanPlayThrough={() => {
-                // Do stuff 
-            }}>
-            <source src={currentVideo.url} type="video/mp4" />
-        </Video>
+  }
+  **/
 
+  render(){
+    if(this.props.currentVideo){
+      return (
 
-        <h3>{currentVideo.title}</h3>
-        <h4>{currentVideo.description}</h4>
-      </div>  
-    );  
-  }else{
-    return (
-      <h2>Player Page</h2>
-    );
+        <div id = 'PlayerPage'>
+    
+          <div><VideoPlayer currentVideo = {this.props.currentVideo}/></div>
+
+          <div><VotesSection /></div>
+
+        <div>
+          <h2><DiscussionSection /></h2>
+        </div>
+        </div> 
+      );
+    } else {
+      return (
+        <h2>Player Page</h2>
+      );   
+    }
   }
 }
+
 
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    currentVideo: state.currentVideo.currentVideo
+    currentVideo: state.currentVideo,
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeFeatured: (value) => {
-      console.log('Selected video!');
-      dispatch(changeCurrentVideo(value));
+    loadFeedback: (videoid) => {
+      dispatch(loadFeedback(videoid));
+    },
+    loadQuestions: (videoid) => {
+      dispatch(loadQuestions(videoid));
     }
   };
 };

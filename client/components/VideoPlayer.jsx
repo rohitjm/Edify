@@ -2,14 +2,23 @@ import React, {Component} from 'react';
 
 export default class VideoPlayer extends Component {
 
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return nextState.currentVideo.url !== this.state.currentVideo.url;
+  // }
+
   render() {
-    var videoSrc = "http://dndm6u438fnmq.cloudfront.net/bunny50MB.mp4";
     return (
-      <div className="container">
-        <iframe className="player" type="text/html" width="300px" height="250px"
-  src={videoSrc}
-  frameborder="0"/>
-      </div>
+      <div id = 'VideoPlayer'>  
+        <div id = 'Playercover'>
+          <video width='900' height='400' controls muted data-setup='{}'>
+            <source src={this.props.currentVideo.url} type="video/mp4" />
+          </video>
+        </div>
+          <div id = 'description'>
+          <h3>Title: {this.props.currentVideo.title}</h3>
+          <h4>Description: {this.props.currentVideo.description}</h4>
+        </div>
+      </div>  
     );
   }
 }

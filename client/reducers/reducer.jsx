@@ -1,84 +1,143 @@
 import { combineReducers } from 'redux'
 import $ from 'jquery';
-import {reducer as formReducer} from 'redux-form';
 
 const CurrentVideo = (state = {}, action) => {
-  var newstate = Object.assign({},state);
+  var video = Object.assign({},state);
   switch (action.type) {
     case 'SELECT_VIDEO':
-    	console.log(action.data);
-      newstate.currentVideo = action.data;
-      return newstate;
+      return action.data;
+    case 'UP_VOTE':
+    console.log("videois:", video);
+      video.upVotes = action.payload;
+      return video;
+    case 'DOWN_VOTE':
+      video.downVotes = action.payload;
+      return video;
     default:
       return state;
   }
 }
 
 const VideoList = (state = {}, action) => {
-	var newstate = Object.assign({}, state);
-	switch (action.type) {
-		case 'FETCH_VIDEOS':
-			console.log("fetching videos");
-      newstate.videos = action.videos;
-    case 'RECEIEVED_VIDEOS':
-      console.log("from reducer received: ",action.videos);
-      newstate.videos = action.videos;
-      console.log("newstate.videos", newstate.videos )
-      return newstate;
-
-		default:
-			return state;	
-	}
+  switch (action.type) {
+    case 'FETCH_VIDEOS':
+      return action.videos;
+    default:
+      return state; 
+  }
 }
 
-// const Video = (state = {}, action) => {
-//   var news = Object.assign({}, state);
-//   switch (action.type) {
-//     case 'RECEIEVED_VIDEOS':
-//       console.log("from reducer received: ",action.videos);
-//       news.found = action.videos;
-//       console.log("news.found.title is", news.found.title )
-//         return news.found;
-//     default:
-//       return state; 
-//   }
-// }
 
-const UserInfo = (state = {}, action) => {
-  var newstate = Object.assign({}, state);
-  switch (action.type) {
-    case 'UPDATE_USER_INFO':
-      newstate.user = action.info;
-      return newstate;
+const User = (state = {}, action) => {
+  var user = action.data;
+  switch(action.type) {
+    case 'CHANGE_USER':
+      user = action.user;
+      return user;
+    case 'UPDATE_ABOUTME':
+      user.aboutMe = action.data.aboutMe;
+      return user;
     default:
       return state;
   }
 }
 
-const User = (state = {}, action) => {
-  var newState = Object.assign({},state);
+
+const ToggleAboutMeEdit= (state = {}, action) => {
   switch(action.type) {
-    case 'CHANGE_USER':
-      console.log('from reducer: ', action.user);
-      newState.user = action.user;
+    case 'SHOW_ABOUTME_EDIT':
+      return true;
+    case "HIDE_ABOUTME_EDIT":
+      return false;
     default:
-      return newState;
+      return state;
+  }
+}
+
+const ToggleAnswerEdit= (state = {}, action) => {
+  switch(action.type) {
+    case 'SHOW_ANSWER_EDIT':
+      return action.question;
+    case "HIDE_ANSWER_EDIT":
+      return "";
+    default:
+      return state;
+  }
+}
+
+
+const SignInModal = (state = {}, action) => {
+  switch (action.type) {
+    case 'SHOW_SIGNIN_MODAL':
+      return true;
+    case 'HIDE_SIGNIN_MODAL':
+      return false;
+    default:
+      return state;
+  }
+}
+
+const SignUpModal = (state = {}, action) => {
+  switch (action.type) {
+    case 'SHOW_SIGNUP_MODAL':
+      return true;
+    case 'HIDE_SIGNUP_MODAL':
+      return false;
+    default:
+      return state;
+  }
+}
+
+const UploadModal = (state = {}, action) => {
+  switch (action.type) {
+    case 'SHOW_UPLOAD_MODAL':
+      return true;
+    case 'HIDE_UPLOAD_MODAL':
+      return false;
+    default:
+      return state;
+  }
+}
+
+const Feedback = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOAD_FEEDBACK':
+      return action.payload;
+    default:
+      return state;  
+  }
+}
+
+const Categories = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOAD_CATEGORIES':
+      return action.categories;
+    default:
+      return state;  
+  }
+}
+
+const Questions = (state = {}, action) => {
+  switch(action.type) {
+    case 'LOAD_QUESTIONS' :
+      return action.payload;
+    default:
+      return state;
   }
 }
 
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
-<<<<<<< HEAD
   videos: VideoList,
-  form: formReducer,
-  videos: VideoList,
-  user: User
-
-=======
-  videos:VideoList,
-  // found: Video,
-  form: formReducer
->>>>>>> 69829e371749aa0ee0b1b19f0280c708441a2ddc
+  user: User,
+  categories: Categories,
+  feedback: Feedback,
+  questions: Questions,
+  displaySignInModal: SignInModal,
+  displaySignUpModal: SignUpModal,
+  displayUploadModal: UploadModal,
+  aboutMeEdit: ToggleAboutMeEdit,
+  answerEdit: ToggleAnswerEdit
 });
 
 export default VideoAppHandler;
