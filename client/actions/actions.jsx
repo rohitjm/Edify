@@ -43,6 +43,12 @@ export const changeCurrentVideo = (video) => {
   };
 };
 
+export const addToWatch = (info) => {
+  return(dispatch) => {
+    $.post('/addToWatch', info)
+  }
+};
+
 export const videoFetch = () => {
 	return(dispatch) => {
 		dispatch(fetchVideoList());
