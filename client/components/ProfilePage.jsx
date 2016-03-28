@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { fetchVideoList, updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutMeEdit} from '../actions/actions.jsx';
+import { fetchVideoList, updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutMeEdit, fetchWatchList} from '../actions/actions.jsx';
 import UserInfo from './UserInfo.jsx';
 import VideoGrid from './VideoGrid.jsx';
 import $ from 'jquery';
@@ -37,10 +37,14 @@ const mapDispatchToProps = (dispatch) => {
     fetchUploadedVideos: function(user) {
       $.post('/fetch', user)
         .done(function(res){
-          console.log("respondis", res)
            dispatch(fetchVideoList(res));
         });
-
+    },
+    fetchWatchList: function(userid) {
+      $.post('/fetchWatchList', {userid: userid})
+      .done( (videos) => {
+        dispatch(fetchVideoList(videos));
+      });
     }
   }
 }
@@ -73,9 +77,15 @@ var aboutMeEdit = <form className="aboutMeForm">
           {this.props.aboutMeEdit === true ? aboutMeEdit : aboutMe}
         </div>
       </div>
-      <Tab label="Uploaded Videos">
-      </Tab>
-      <VideoGrid />
+      <Tabs>
+        <Tab label="Uploaded Videos" onClick={ () => this.props.fetchUploadedVideos(this.props.user)}>
+          <VideoGrid />
+        </Tab>
+        <Tab label="Watch List" onClick={ () => this.props.fetchWatchList(this.props.user.id)}>
+          <VideoGrid />
+        </Tab>
+      </Tabs>
+
 
   </div>
   );

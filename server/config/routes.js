@@ -59,6 +59,6 @@ module.exports = function(app, express) {
   app.post('/addToWatch', videoController.addWatchListVideo);
 
   // Fetches the watchlist for a particular user
-  app.post('/fetchWatchList', videoController.addWatchListVideo);
+  app.post('/fetchWatchList', videoController.fetchWatchList);
 
 };

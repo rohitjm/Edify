@@ -59,12 +59,11 @@ module.exports = {
   },
 
   fetchWatchList: function (req, res) {
-    var userId = req.userID;
-    db.db.query('select * from videos inner join watchlistvideos on (videos.id = watchlistvideos.videoid) inner join users on \
-                (watchlistvideos.userid = users.id) where users.id ='+userId)
+    var userId = req.body.userid;
+    db.db.query('select * from Videos inner join WatchListVideos on (Videos.id = WatchListVideos.videoid) inner join Users on \
+                (WatchListVideos.userid = Users.id) where Users.id ='+userId, {type: db.db.QueryTypes.SELECT})
     .then(function(data) {
-      var videos = data.rows;
-      res.send(200, videos);
+      res.send(200, data);
     })
     .catch(function(err) {
       throw err;
@@ -73,8 +72,8 @@ module.exports = {
   },
 
   addWatchListVideo: function (req, res) {
-    var userID = req.user.id;
-    var videoID = req.video.id;
+    var userID = req.body.user.id;
+    var videoID = req.body.video.id;
     db.WatchListVideo.create({
       videoID: videoID,
       userID: userID
