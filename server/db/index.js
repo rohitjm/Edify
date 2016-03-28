@@ -46,7 +46,7 @@ var Votes = db.define('Votes', {
   timestamps: false
 });
 
-var WishList = db.define('WishList', {
+var WatchListVideo = db.define('WatchListVideo', {
   videoID: Sequelize.STRING,
   userID: Sequelize.STRING
 });

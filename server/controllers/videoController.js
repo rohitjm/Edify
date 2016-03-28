@@ -56,5 +56,22 @@ module.exports = {
       throw err;
       res.sendStatus(500);
     });
-  }
+  },
+
+  fetchWatchList: function (req, res) {
+    var userId = req.userID;
+    db.db.query('select * from videos inner join watchlistvideos on (videos.id = watchlistvideos.videoid) inner join users on \
+                (watchlistvideos.userid = users.id) where users.id ='+userId)
+    .then(function(data) {
+      var videos = data.rows;
+      res.send(200, videos);
+    })
+    .catch(function(err) {
+      throw err;
+      res.send(500);
+    });
+  },
+
+
+
 };
