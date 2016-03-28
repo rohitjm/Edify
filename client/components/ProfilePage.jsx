@@ -4,6 +4,9 @@ import { fetchVideoList, updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutM
 import UserInfo from './UserInfo.jsx';
 import VideoGrid from './VideoGrid.jsx';
 import $ from 'jquery';
+import Tab from 'material-ui/lib/tabs/tab';
+import Tabs from 'material-ui/lib/tabs/tabs';
+
 
 
 const mapStateToProps = (state) => {
@@ -59,7 +62,7 @@ var aboutMeEdit = <form className="aboutMeForm">
                           Save Changes
                         </button>
                       </form>
-    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo(null,this.props.user,this.props.aboutMeEdit) } placeholder = "Click to Update About Me">{this.props.aboutMe}</div>
+    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo(null,this.props.user,this.props.aboutMeEdit) }> hey {this.props.aboutMe}</div>
   
   return (
     <div>
@@ -70,7 +73,9 @@ var aboutMeEdit = <form className="aboutMeForm">
           {this.props.aboutMeEdit === true ? aboutMeEdit : aboutMe}
         </div>
       </div>
-      <div ><VideoGrid /></div>
+      <Tab label="Uploaded Videos">
+      </Tab>
+      <VideoGrid />
 
   </div>
   );

@@ -30,7 +30,8 @@ export default class App extends Component {
   constructor(props) {
     super(props)
   }
-  //the key passed through context must be called "muiTheme"
+
+ //the key passed through context must be called "muiTheme"
  childContextTypes = {
     muiTheme: React.PropTypes.object,
   };
