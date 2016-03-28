@@ -55,6 +55,7 @@ module.exports = {
     // .catch(function(err) {
     //   console.log(err);
     // })
+    req.user.password = "";
     res.send(req.user);
   },
 

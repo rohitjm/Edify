@@ -33,7 +33,7 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
         { videos.map(function(video){
           
           return <GridTile key = {video.cover} 
-          title = {video.title} subtitle= {<span>by <b>{video.description}</b></span>} actionIcon={<IconButton onMouseDown = {() => addToWatch(video,user)} ><StarBorder color="white"/></IconButton>} >
+          title = {video.title} subtitle= {<span>by <b>{video.description}</b></span>} actionIcon={<IconButton onMouseDown = {() => addToWatch(video,user) } ><StarBorder color="white" /></IconButton>} >
           <img src={video.cover} onClick = {() => selectVideo(video)} /></GridTile>;
 				
         })}
