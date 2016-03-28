@@ -46,6 +46,11 @@ var Votes = db.define('Votes', {
   timestamps: false
 });
 
+var WatchListVideo = db.define('WatchListVideo', {
+  videoID: Sequelize.STRING,
+  userID: Sequelize.STRING
+});
+
 // Category's schema
 var Category = db.define('Category', {
   name: Sequelize.STRING
