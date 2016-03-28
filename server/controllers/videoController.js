@@ -72,6 +72,20 @@ module.exports = {
     });
   },
 
-
+  addWatchListVideo: function (req, res) {
+    var userID = req.user.id;
+    var videoID = req.video.id;
+    db.WatchListVideo.create({
+      videoID: videoID,
+      userID: userID
+    })
+    .then(function() {
+      res.sendStatus(201);
+    })
+    .catch(function(err) {
+      throw err;
+      res.sendStatus(500);
+    });
+  }
 
 };
