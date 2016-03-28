@@ -97,7 +97,13 @@ User.sync()
         .then(function() {
           Question.sync()
           .then(function() {
-            console.log('Tables successfully created');
+            WatchListVideo.sync()
+            .then(function() {
+              console.log('Tables successfully created');
+            })
+            .catch(function(err) {
+              throw err;
+            });
           })
           .catch(function(err) {
             throw err;
@@ -128,4 +134,5 @@ exports.Video = Video;
 exports.Votes = Votes;
 exports.Question = Question;
 exports.Category = Category;
+exports.WatchListVideo = WatchListVideo;
 exports.db = db;
