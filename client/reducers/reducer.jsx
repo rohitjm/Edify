@@ -142,6 +142,19 @@ const CheckVideoDuration = (state = {}, action) => {
   }
 }
 
+const VideoIsValidated = (state = {}, action) => {
+  switch(action.type) {
+    case 'VIDEO_VALIDATED_TRUE':
+      return true;
+    case 'VIDEO_VALIDATED_FALSE':
+      return false;
+    case 'VIDEO_VALIDATED_RESET':
+      return {};
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -154,7 +167,8 @@ const VideoAppHandler = combineReducers({
   displayUploadModal: UploadModal,
   aboutMeEdit: ToggleAboutMeEdit,
   answerEdit: ToggleAnswerEdit,
-  checkVideoDuration: CheckVideoDuration
+  checkVideoDuration: CheckVideoDuration,
+  videoIsValidated: VideoIsValidated
 });
 
 export default VideoAppHandler;

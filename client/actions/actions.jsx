@@ -308,3 +308,21 @@ export const stopVideoDurationCheck = () => {
     type: 'STOP_VIDEO_DURATION_CHECK'
   }
 };
+
+export const videoValidatedTrue = () => {
+  return {
+    type: 'VIDEO_VALIDATED_TRUE'
+  }
+}
+
+export const videoValidatedFalse = () => {
+  return {
+    type: 'VIDEO_VALIDATED_FALSE'
+  }
+}
+
+export const videoValidatedReset = () => {
+  return {
+    type: 'VIDEO_VALIDATED_RESET'
+  }
+}

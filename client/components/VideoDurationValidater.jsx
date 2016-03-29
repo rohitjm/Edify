@@ -8,7 +8,7 @@ export default class VideoDurationValidater extends Component {
     var filename = this.props.filename;
     var video, wrapper;
     wrapper = document.createElement('div');
-    wrapper.innerHTML = "<video id='attachmentVideo2' class='video-js vjs-default-skin' controls preload='auto' width='900' height='400'><source src='" + this.props.videoURL + "' type='video/mp4' /></video>";
+    wrapper.innerHTML = "<video class='video-js vjs-default-skin' controls preload='auto' width='1' height='1'><source src='" + this.props.videoURL + "' type='video/mp4' /></video>";
     video = wrapper.firstChild;
     this.refs.target.getDOMNode().appendChild(video);
     var player = videojs(video, {}, function() {
@@ -18,8 +18,10 @@ export default class VideoDurationValidater extends Component {
           .done(function() {
             console.log('IT WAS DELETED!!!!!!!');
           });
+        } else {
+
         }
-          stopVideoDurationCheck();
+        stopVideoDurationCheck();
       });
     });
   }
@@ -29,7 +31,7 @@ export default class VideoDurationValidater extends Component {
       
       <div>
         <h1>Validating video length</h1>
-        <div id="attachmentVideoContainer2" ref="target" />
+        <div ref="target" />
       </div>
 
     );

@@ -12,6 +12,7 @@ import ReactS3Uploader from 'react-s3-uploader';
 import VideoDurationValidater from './VideoDurationValidater.jsx'
 
 import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck } from '../actions/actions.jsx';
+import { videoValidatedTrue, videoValidatedFalse, videoValidatedReset } from '../actions/actions.jsx';
 
 export default class UploadModal extends Component {
 
@@ -124,7 +125,8 @@ const mapStateToProps = (state) => {
     displayUploadModal: state.displayUploadModal,
     user: state.user,
     categories: state.categories,
-    checkVideoDuration: state.checkVideoDuration
+    checkVideoDuration: state.checkVideoDuration,
+    videoIsValidated: state.videoIsValidated
   }
 };
 
@@ -144,6 +146,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     stopVideoDurationCheck: () => {
       dispatch(stopVideoDurationCheck());
+    },
+    videoValidatedTrue: () => {
+      dispatch(videoValidatedTrue());
+    },
+    videoValidatedFalse: () => {
+      dispatch(videoValidatedFalse());
+    },
+    videoValidatedReset: () => {
+      dispatch(videoValidatedReset());
     }
   };
 };
