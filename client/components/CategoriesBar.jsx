@@ -26,7 +26,9 @@ export default class CategoriesBar extends React.Component {
 
     return (
 
-    <Toolbar>
+    <Toolbar
+      style={{backgroundColor: '#388E3C'}}
+    >
       <ToolbarGroup firstChild={true} float="left">
         <FlatButton label="Science" secondary={true} 
           onTouchTap={() => {this.props.searchByCategory(8)}} />
