@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import TextField from 'material-ui/lib/text-field';
@@ -10,12 +10,9 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import {connect} from 'react-redux';
 import ReactS3Uploader from 'react-s3-uploader';
 
-import { addVideo, hideUploadModal, loadCategories } from '../actions/actions.jsx';
+import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck } from '../actions/actions.jsx';
 
-export default class UploadModal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default class UploadModal extends Component {
 
   render() {
 
@@ -81,6 +78,7 @@ export default class UploadModal extends React.Component {
             onFinish={(videoResponse) => {
               console.log('video response', videoResponse.filename)
               videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
+              this.props.checkVideoDuration();
             }}
           />
           Thumbnail File (.jpg)
@@ -100,6 +98,7 @@ export default class UploadModal extends React.Component {
           </DropDownMenu>
         </Dialog>
       </div>
+
     );
   }
 }
@@ -122,6 +121,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     closeModal: () => {
       dispatch(hideUploadModal())
+    },
+    checkVideoDuration: () => {
+      dispatch(startVideoDurationCheck());
     }
   };
 };

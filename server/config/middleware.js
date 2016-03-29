@@ -11,7 +11,6 @@ var compiler = webpack(webpackConfig);
 var AWS = require('aws-sdk');
 AWS.config.loadFromPath(__dirname + '/aws-config.json');
 
-
 module.exports = function(app, express) {
   app.use(morgan('dev'));
 
