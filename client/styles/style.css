@@ -92,6 +92,11 @@ padding: 30px 20px 20px 20px;
   margin: auto; 	
 }
 
+#durationCheck {
+  z-index: -5;
+  position: absolute;
+}
+
 body {
   margin: 0;
   padding: 0;

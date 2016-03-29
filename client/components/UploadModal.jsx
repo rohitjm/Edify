@@ -9,16 +9,26 @@ import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import {connect} from 'react-redux';
 import ReactS3Uploader from 'react-s3-uploader';
+import VideoDurationValidater from './VideoDurationValidater.jsx'
 
-import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck } from '../actions/actions.jsx';
+import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck } from '../actions/actions.jsx';
 
 export default class UploadModal extends Component {
 
   render() {
+    var displayUploadModal = this.props.displayUploadModal;
+    var user = this.props.user;
+    var categories = this.props.categories
+    var checkVideoDuration = this.props.checkVideoDuration;
+    var submitVideo = this.props.submitVideo;
+    var closeModal = this.props.closeModal;
+    var startVideoDurationCheck = this.props.startVideoDurationCheck;
+    var stopVideoDurationCheck = this.props.stopVideoDurationCheck;
+
 
     const items = [];
-    for (let i = 0; i < this.props.categories.length; i++) {
-      items.push(<MenuItem value={this.props.categories[i].id} key={i} primaryText={this.props.categories[i].name}/>);
+    for (let i = 0; i < categories.length; i++) {
+      items.push(<MenuItem value={categories[i].id} key={i} primaryText={categories[i].name}/>);
     }
 
     const style = {
@@ -41,13 +51,12 @@ export default class UploadModal extends Component {
       <FlatButton
         label='Cancel'
         secondary={true}
-        onClick={this.props.closeModal}
+        onClick={closeModal}
       />,
       <FlatButton
         label='Submit'
         onClick={() => {
-          console.log('submit button clicked')
-          this.props.submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: this.props.user, url: videoUrl, categoryId: categoryId})
+          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId})
         }}
       />
     ];
@@ -59,7 +68,7 @@ export default class UploadModal extends Component {
           actions={actions}
           modal={false}
           contentStyle={customContentStyle}
-          open={this.props.displayUploadModal === true}
+          open={displayUploadModal === true}
         >
           <TextField
             ref="title"
@@ -78,7 +87,7 @@ export default class UploadModal extends Component {
             onFinish={(videoResponse) => {
               console.log('video response', videoResponse.filename)
               videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
-              this.props.checkVideoDuration();
+              startVideoDurationCheck(videoUrl);
             }}
           />
           Thumbnail File (.jpg)
@@ -97,7 +106,12 @@ export default class UploadModal extends Component {
             {items}
           </DropDownMenu>
         </Dialog>
-      </div>
+        <div id='durationCheck' >
+          {checkVideoDuration.checking === true ?
+          <VideoDurationValidater videoURL={checkVideoDuration.videoURL} stopVideoDurationCheck={stopVideoDurationCheck} /> :
+          ''}
+        </div>
+       </div>
 
     );
   }
@@ -107,7 +121,8 @@ const mapStateToProps = (state) => {
   return {
     displayUploadModal: state.displayUploadModal,
     user: state.user,
-    categories: state.categories
+    categories: state.categories,
+    checkVideoDuration: state.checkVideoDuration
   }
 };
 
@@ -122,8 +137,11 @@ const mapDispatchToProps = (dispatch) => {
     closeModal: () => {
       dispatch(hideUploadModal())
     },
-    checkVideoDuration: () => {
-      dispatch(startVideoDurationCheck());
+    startVideoDurationCheck: (videoURL) => {
+      dispatch(startVideoDurationCheck(videoURL));
+    },
+    stopVideoDurationCheck: () => {
+      dispatch(stopVideoDurationCheck());
     }
   };
 };

@@ -127,11 +127,15 @@ const Questions = (state = {}, action) => {
 }
 
 const CheckVideoDuration = (state = {}, action) => {
+  var videoCheck = Object.assign({},state);
   switch(action.type) {
     case 'START_VIDEO_DURATION_CHECK':
-      return true;
+      videoCheck.checking = true;
+      videoCheck.videoURL = action.videoURL;
+      return videoCheck;
     case 'STOP_VIDEO_DURATION_CHECK':
-      return false;
+      videoCheck.checking = false;
+      return videoCheck;
     default:
       return state;
   }
