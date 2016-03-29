@@ -55,4 +55,10 @@ module.exports = function(app, express) {
   // Add's answer to an existing question
   app.post('/addAnswer', discussionController.addAnswer);
 
+  // Add's a video to a user's watchlist
+  app.post('/addToWatch', videoController.addWatchListVideo);
+
+  // Fetches the watchlist for a particular user
+  app.post('/fetchWatchList', videoController.fetchWatchList);
+
 };
