@@ -294,3 +294,15 @@ export const hideAnswerEdit = () => {
     type: 'HIDE_ANSWER_EDIT'
   }
 };
+
+export const startVideoDurationCheck = () => {
+  return {
+    type: 'START_VIDEO_DURATION_CHECK'
+  }
+};
+
+export const stopVideoDurationCheck = () => {
+  return {
+    type: 'STOP_VIDEO_DURATION_CHECK'
+  }
+};

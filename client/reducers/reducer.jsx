@@ -126,6 +126,17 @@ const Questions = (state = {}, action) => {
   }
 }
 
+const CheckVideoDuration = (state = {}, action) => {
+  switch(action.type) {
+    case 'START_VIDEO_DURATION_CHECK':
+      return true;
+    case 'STOP_VIDEO_DURATION_CHECK':
+      return false;
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -137,7 +148,8 @@ const VideoAppHandler = combineReducers({
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,
   aboutMeEdit: ToggleAboutMeEdit,
-  answerEdit: ToggleAnswerEdit
+  answerEdit: ToggleAnswerEdit,
+  checkVideoDuration: CheckVideoDuration
 });
 
 export default VideoAppHandler;
