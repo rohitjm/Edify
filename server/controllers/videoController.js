@@ -1,4 +1,5 @@
 var db = require('../db');
+var AWS = require('aws-sdk');
 
 module.exports = {
   // Handles importing a video to the S3 storage 
@@ -84,6 +85,25 @@ module.exports = {
     .catch(function(err) {
       throw err;
       res.sendStatus(500);
+    });
+  },
+
+  deleteVideoFromBucket: function(req, res) {
+    var filename = req.body.filename;
+    var bucketInstance = new AWS.S3();
+    var params = {
+      Bucket: 'video.bucket1',
+      Key: filename
+    };
+    bucketInstance.deleteObject(params, function (err, data) {
+      if (data) {
+        console.log("File deleted successfully");
+        res.send(200);
+      }
+      else {
+        console.log("Check if you have sufficient permissions : "+err);
+        res.send(500);
+      }
     });
   }
 
