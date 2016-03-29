@@ -1,18 +1,20 @@
 FROM node:argon
 
-RUN npm install -g nodemon
-RUN npm install -g webpack
+#install Node modules
+RUN apt-get update && apt-get install -y openssh-server
+RUN npm install express -g
+RUN npm install nodemon -g
+RUN npm install webpack -g
 
-# Create app directory and copy package.json
+#Create app directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
 
-# Install app dependencies
-RUN npm install
-RUN webpack --progress --colors
+#Bundle app source
+COPY . /usr/src/app
 
-# Bundle app source
-COPY . /usr/src/app/
+#Install bcrypt
+RUN npm install bcrypt
 
-EXPOSE 8000
-CMD [ "npm", "start" ]
+EXPOSE 3000
+CMD [ "npm","start" ]

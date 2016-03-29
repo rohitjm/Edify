@@ -97,9 +97,6 @@ User.sync()
 });
 
 
-
-
-
 exports.Comment = Comment;
 exports.User = User;
 exports.Video = Video;

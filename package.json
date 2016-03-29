@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint -c .eslintrc.json --ignore-path .gitignore .",
     "start": "nodemon --watch server server/server.js",
-    "build": "webpack --progress --colors",
+    "build": "webpack --progress --colors --config ./config/webpack.config.js", 
     "test": "mocha --compilers js:babel-register --recursive"
   },
   "pre-commit": [
