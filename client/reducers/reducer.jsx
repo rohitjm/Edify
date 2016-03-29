@@ -132,7 +132,7 @@ const CheckVideoDuration = (state = {}, action) => {
     case 'START_VIDEO_DURATION_CHECK':
       videoCheck.checking = true;
       videoCheck.videoURL = action.videoURL;
-      videocheck.filename = action.filename;
+      videoCheck.filename = action.filename;
       return videoCheck;
     case 'STOP_VIDEO_DURATION_CHECK':
       videoCheck.checking = false;

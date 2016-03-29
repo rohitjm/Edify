@@ -19,7 +19,9 @@ export default class UploadModal extends Component {
     var displayUploadModal = this.props.displayUploadModal;
     var user = this.props.user;
     var categories = this.props.categories
-    var checkVideoDuration = this.props.checkVideoDuration;
+    var videoURL = this.props.checkVideoDuration.videoURL;
+    var filename = this.props.checkVideoDuration.filename;
+    var checking = this.props.checkVideoDuration.checking;
     var submitVideo = this.props.submitVideo;
     var closeModal = this.props.closeModal;
     var startVideoDurationCheck = this.props.startVideoDurationCheck;
@@ -107,8 +109,8 @@ export default class UploadModal extends Component {
           </DropDownMenu>
         </Dialog>
         <div id='durationCheck' >
-          {checkVideoDuration.checking === true ?
-          <VideoDurationValidater videoURL={checkVideoDuration.videoURL} stopVideoDurationCheck={stopVideoDurationCheck} /> :
+          {checking === true ?
+          <VideoDurationValidater videoURL={videoURL} filename={filename} stopVideoDurationCheck={stopVideoDurationCheck} /> :
           ''}
         </div>
        </div>
@@ -137,8 +139,8 @@ const mapDispatchToProps = (dispatch) => {
     closeModal: () => {
       dispatch(hideUploadModal())
     },
-    startVideoDurationCheck: (videoURL) => {
-      dispatch(startVideoDurationCheck(videoURL));
+    startVideoDurationCheck: (videoURL, filename) => {
+      dispatch(startVideoDurationCheck(videoURL, filename));
     },
     stopVideoDurationCheck: () => {
       dispatch(stopVideoDurationCheck());
