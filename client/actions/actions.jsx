@@ -295,10 +295,11 @@ export const hideAnswerEdit = () => {
   }
 };
 
-export const startVideoDurationCheck = (videoURL) => {
+export const startVideoDurationCheck = (videoURL, filename) => {
   return {
     type: 'START_VIDEO_DURATION_CHECK',
-    videoURL: videoURL
+    videoURL: videoURL,
+    filename: filename
   }
 };
 

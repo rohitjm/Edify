@@ -85,9 +85,9 @@ export default class UploadModal extends Component {
           <ReactS3Uploader  
             signingUrl="/s3/sign"
             onFinish={(videoResponse) => {
-              console.log('video response', videoResponse.filename)
-              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + videoResponse.filename;
-              startVideoDurationCheck(videoUrl);
+              var filename = videoResponse.filename;
+              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
+              startVideoDurationCheck(videoUrl, filename);
             }}
           />
           Thumbnail File (.jpg)

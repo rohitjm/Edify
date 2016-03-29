@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import $ from 'jquery';
 
 export default class VideoDurationValidater extends Component {
 
@@ -11,9 +12,9 @@ export default class VideoDurationValidater extends Component {
     this.refs.target.getDOMNode().appendChild(video);
     var player = videojs(video, {}, function() {
       this.on('loadedmetadata', function() {
-        if(this.duration() > 5) {
-          stopVideoDurationCheck();
+        if(this.duration() > 300) {
         }
+          stopVideoDurationCheck();
       });
     });
   }
