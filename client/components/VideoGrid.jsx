@@ -16,7 +16,6 @@ export function VideoGrid({ videos , selectVideo}) {
   },
   gridList: {
     width: 1200,
-    height: 500,
     overflowY: 'auto',
     marginBottom: 15,
    

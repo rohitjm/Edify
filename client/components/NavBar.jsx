@@ -75,7 +75,9 @@ class NavBar extends Component {
 
     
     return (
-      <Toolbar>
+      <Toolbar
+        className="Nav"
+      >
         <ToolbarGroup firstChild={true} float="left">
           <ToolbarTitle text="Virtuoso" style={{cursor: 'pointer'}} onClick={() => this.props.goHome()}/>
         </ToolbarGroup>

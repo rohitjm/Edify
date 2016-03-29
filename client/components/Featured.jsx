@@ -20,8 +20,6 @@ export default function Featured({videos, selectVideo}) {
 
 	  return(
 	  	
-      <div id = 'HomePage'>
-      <div id = 'cardCover'>
          <div id= 'inner'>
            <Card >
              <CardMedia onClick = {() => selectVideo(currentVideo)}
@@ -30,8 +28,7 @@ export default function Featured({videos, selectVideo}) {
              </CardMedia>
            </Card>
          </div>
-       </div>
-	  	</div>	
+         
   	);	
 
 	}else{
