@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
 import DiscussionSection from './DiscussionSection.jsx';
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
 import video from 'video.js';
 import $ from 'jquery';
@@ -26,15 +28,28 @@ export class PlayerPage extends Component {
       return (
 
         <div id = 'PlayerPage'>
-    
-          <div><VideoPlayer currentVideo = {this.props.currentVideo}/></div>
 
-          <div><VotesSection /></div>
+        <GridList
+          padding={0}
+          cols={8}
+          cellHeight={700}
+        >
+        <GridTile
+          cols={5}
+        >
+          <VideoPlayer currentVideo = {this.props.currentVideo}/>
+        </GridTile>
+        <GridTile
+          cols={3}
+        >
+          <VotesSection />
+        </GridTile>
+        </GridList>
 
-        <div>
-          <h2><DiscussionSection /></h2>
+         
+        <h2><DiscussionSection /></h2>
         </div>
-        </div> 
+
       );
     } else {
       return (

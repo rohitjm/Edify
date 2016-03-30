@@ -81,7 +81,7 @@ class NavBar extends Component {
     return (
       <Toolbar
         className="Nav"
-        style={{backgroundColor: '#4CAF50'}}
+        style={{backgroundColor: '#319b43'}}
       >
         <ToolbarGroup firstChild={true} float="left">
           <ToolbarTitle text="BRAIN FOOD" style={{cursor: 'pointer', color: 'white', fontSize: '30px', paddingLeft: '12px'}} onClick={() => this.props.goHome()}/>

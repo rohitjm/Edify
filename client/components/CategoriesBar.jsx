@@ -27,34 +27,34 @@ export default class CategoriesBar extends React.Component {
     return (
 
     <Toolbar
-      style={{backgroundColor: '#4CAF50'}}
+      style={{backgroundColor: '#d9d9d9'}}
     >
       <ToolbarGroup firstChild={true} float="left">
-        <FlatButton label="Science" style={{color: 'white'}} 
+        <FlatButton label="Science" style={{color: '#388E3C'}} 
           onTouchTap={() => {this.props.searchByCategory(8)}} />
         <ToolbarSeparator style={{}} />
-        <FlatButton label="Arts" style={{color: 'white'}}
+        <FlatButton label="Arts" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(1)}} />
         <ToolbarSeparator />
-        <FlatButton label="Business" style={{color: 'white'}}
+        <FlatButton label="Business" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(12)}} />
         <ToolbarSeparator />
-        <FlatButton label="Sports" style={{color: 'white'}}
+        <FlatButton label="Sports" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(14)}} />
         <ToolbarSeparator />
-        <FlatButton label="Languages" style={{color: 'white'}} 
+        <FlatButton label="Languages" style={{color: '#388E3C'}} 
           onTouchTap={() => {this.props.searchByCategory(3)}} />
         <ToolbarSeparator />
-        <FlatButton label="Cooking" style={{color: 'white'}}
+        <FlatButton label="Cooking" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(11)}} />
         <ToolbarSeparator />
-        <FlatButton label="History" style={{color: 'white'}} 
+        <FlatButton label="History" style={{color: '#388E3C'}} 
           onTouchTap={() => {this.props.searchByCategory(4)}} />
         <ToolbarSeparator />
       </ToolbarGroup>
       <ToolbarGroup float="right">
         <IconMenu
-          iconButtonElement={<svg fill="white" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+          iconButtonElement={<svg fill="#388E3C" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
               <path d="M0-.75h24v24H0z" fill="none"/>
             </svg>}
