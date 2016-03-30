@@ -45,10 +45,21 @@ const User = (state = {}, action) => {
 
 const ToggleAboutMeEdit= (state = {}, action) => {
   switch(action.type) {
-    case 'SHOW_EDIT':
+    case 'SHOW_ABOUTME_EDIT':
       return true;
-    case "HIDE_EDIT":
+    case "HIDE_ABOUTME_EDIT":
       return false;
+    default:
+      return state;
+  }
+}
+
+const ToggleAnswerEdit= (state = {}, action) => {
+  switch(action.type) {
+    case 'SHOW_ANSWER_EDIT':
+      return action.question;
+    case "HIDE_ANSWER_EDIT":
+      return "";
     default:
       return state;
   }
@@ -88,12 +99,59 @@ const UploadModal = (state = {}, action) => {
   }
 }
 
-const Comments = (state = {}, action) => {
+const Feedback = (state = {}, action) => {
   switch (action.type) {
-    case 'LOAD_COMMENTS':
+    case 'LOAD_FEEDBACK':
       return action.payload;
     default:
       return state;  
+  }
+}
+
+const Categories = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOAD_CATEGORIES':
+      return action.categories;
+    default:
+      return state;  
+  }
+}
+
+const Questions = (state = {}, action) => {
+  switch(action.type) {
+    case 'LOAD_QUESTIONS' :
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const CheckVideoDuration = (state = {}, action) => {
+  var videoCheck = Object.assign({},state);
+  switch(action.type) {
+    case 'START_VIDEO_DURATION_CHECK':
+      videoCheck.checking = true;
+      videoCheck.videoURL = action.videoURL;
+      videoCheck.filename = action.filename;
+      return videoCheck;
+    case 'STOP_VIDEO_DURATION_CHECK':
+      videoCheck.checking = false;
+      return videoCheck;
+    default:
+      return state;
+  }
+}
+
+const VideoIsValidated = (state = {}, action) => {
+  switch(action.type) {
+    case 'VIDEO_VALIDATED_TRUE':
+      return true;
+    case 'VIDEO_VALIDATED_FALSE':
+      return false;
+    case 'VIDEO_VALIDATED_RESET':
+      return {};
+    default:
+      return state;
   }
 }
 
@@ -101,11 +159,16 @@ const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
   user: User,
-  comments: Comments,
+  categories: Categories,
+  feedback: Feedback,
+  questions: Questions,
   displaySignInModal: SignInModal,
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,
-  aboutMeEdit:ToggleAboutMeEdit
+  aboutMeEdit: ToggleAboutMeEdit,
+  answerEdit: ToggleAnswerEdit,
+  checkVideoDuration: CheckVideoDuration,
+  videoIsValidated: VideoIsValidated
 });
 
 export default VideoAppHandler;

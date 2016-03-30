@@ -1,9 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { fetchVideoList, updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutMeEdit} from '../actions/actions.jsx';
+import { fetchVideoList, updateAboutMe, aboutMeEdit, showAboutMeEdit, hideAboutMeEdit, fetchWatchList} from '../actions/actions.jsx';
 import UserInfo from './UserInfo.jsx';
 import VideoGrid from './VideoGrid.jsx';
 import $ from 'jquery';
+import Tab from 'material-ui/lib/tabs/tab';
+import Tabs from 'material-ui/lib/tabs/tabs';
+
 
 
 const mapStateToProps = (state) => {
@@ -34,10 +37,14 @@ const mapDispatchToProps = (dispatch) => {
     fetchUploadedVideos: function(user) {
       $.post('/fetch', user)
         .done(function(res){
-          console.log("respondis", res)
            dispatch(fetchVideoList(res));
         });
-
+    },
+    fetchWatchList: function(userid) {
+      $.post('/fetchWatchList', {userid: userid})
+      .done( (videos) => {
+        dispatch(fetchVideoList(videos));
+      });
     }
   }
 }
@@ -59,7 +66,7 @@ var aboutMeEdit = <form className="aboutMeForm">
                           Save Changes
                         </button>
                       </form>
-    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo(null,this.props.user,this.props.aboutMeEdit) }>hey {this.props.aboutMe}</div>
+    var aboutMe = <div className="aboutMe" onClick={ () => this.props.updateUserInfo(null,this.props.user,this.props.aboutMeEdit) }> hey {this.props.aboutMe}</div>
   
   return (
     <div>
@@ -70,7 +77,15 @@ var aboutMeEdit = <form className="aboutMeForm">
           {this.props.aboutMeEdit === true ? aboutMeEdit : aboutMe}
         </div>
       </div>
-      <div ><VideoGrid /></div>
+      <Tabs>
+        <Tab label="Uploaded Videos" onClick={ () => this.props.fetchUploadedVideos(this.props.user)}>
+          <VideoGrid />
+        </Tab>
+        <Tab label="Watch List" onClick={ () => this.props.fetchWatchList(this.props.user.id)}>
+          <VideoGrid />
+        </Tab>
+      </Tabs>
+
 
   </div>
   );

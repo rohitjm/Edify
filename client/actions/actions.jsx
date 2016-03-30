@@ -25,13 +25,13 @@ export const updateAboutMe = (data) => {
 
 export const showAboutMeEdit = () => {
   return {
-    type: 'SHOW_EDIT'
+    type: 'SHOW_ABOUTME_EDIT',
   }
 };
 
 export const hideAboutMeEdit = () => {
   return {
-    type: 'HIDE_EDIT'
+    type: 'HIDE_ABOUTME_EDIT',
   }
 };
 
@@ -41,6 +41,12 @@ export const changeCurrentVideo = (video) => {
     type: 'SELECT_VIDEO',
     data: video
   };
+};
+
+export const addToWatch = (info) => {
+  return(dispatch) => {
+    $.post('/addToWatch', info)
+  }
 };
 
 export const videoFetch = () => {
@@ -85,7 +91,7 @@ export const signUpUser = (user) => {
   return(dispatch) => {
     $.post('/signup', user)
     .then((response) => 
-      {
+      { dispatch(signInUser(user));
         dispatch(changeUser(response));
       });
   }
@@ -125,6 +131,30 @@ export const hideSignUpModal= () => {
   }
 };
 
+export const loadAllFeedback = (feedback) => {
+  return {
+    type: 'LOAD_FEEDBACK',
+    payload: feedback
+  }
+};  
+
+export const loadQuestions = (videoid) => {
+  return(dispatch) => {
+    $.post('/loadQuestions', {videoid:videoid})
+    .then((questions) => 
+      {
+        dispatch(loadAllQuestions(questions));
+      });
+  }
+};
+
+export const loadAllQuestions = (questions) => {
+  return {
+    type: 'LOAD_QUESTIONS',
+    payload: questions
+  }
+};
+
 export const toggleUploadModal= () => {
   return {
     type: 'SHOW_UPLOAD_MODAL',
@@ -137,37 +167,64 @@ export const hideUploadModal= () => {
   }
 };
 
-export const loadComments = (videoid) => {
+export const loadFeedback = (videoid) => {
   return(dispatch) => {
-    $.post('/loadComments', {videoid:videoid})
-    .then((comments) => 
+    $.post('/loadFeedback', {videoid:videoid})
+    .then((feedback) => 
       {
-        dispatch(loadAllComments(comments));
+        dispatch(loadAllFeedback(feedback));
       });
   }
 };
 
-export const addComment  = (comment, videoID, userID) => {
-  var newComment = {
-    content: comment,
+export const addFeedback  = (feedback, username, videoID, userID) => {
+  var newFeedback = {
+    feedback: feedback,
+    username: username,
     videoID: videoID,
     userID: userID
   };
   return(dispatch) => {
-    $.post('/addComment', newComment)
+    $.post('/addFeedback', newFeedback)
     .then(() => 
       {
-        dispatch(loadComments(videoID));
+        dispatch(loadFeedback(videoID));
       });
   }
-}
+};
 
-export const loadAllComments = (comments) => {
-  return {
-    type: 'LOAD_COMMENTS',
-    payload:comments
+export const addQuestion  = (question, asker, videoID, userID) => {
+  var newQuestion = {
+    content: question,
+    asker: asker,
+    videoID: videoID,
+    userID: userID
+  };
+  return(dispatch) => {
+    $.post('/addQuestion', newQuestion)
+    .then(() => 
+      {
+        dispatch(loadQuestions(videoID));
+      });
   }
-};  
+};
+
+export const loadCategories = () => {
+  return(dispatch) => {
+    $.get('/loadCategories')
+    .then((categories) => 
+      {
+        dispatch(populateCategories(categories));
+      });
+  }
+};
+
+export const populateCategories = (categories) => {
+  return {
+    type: 'LOAD_CATEGORIES',
+    categories: categories
+  }
+};
 
 export const upVote = (userID,videoID) => {
   var vote = {
@@ -212,5 +269,60 @@ export const downVoteMore = (voteCount) => {
   return{
     type:'DOWN_VOTE',
     payload:voteCount
+  }
+}
+
+export const addAnswer  = (answer, questionID, videoID) => {
+  return(dispatch) => {
+    $.post('/addAnswer', {answer: answer, questionID: questionID})
+    .then(() =>
+      {
+        dispatch(loadQuestions(videoID));
+      });
+  }
+};
+
+export const showAnswerEdit = (questionID) => {
+  return {
+    type: 'SHOW_ANSWER_EDIT',
+    question: questionID
+  }
+};
+
+export const hideAnswerEdit = () => {
+  return {
+    type: 'HIDE_ANSWER_EDIT'
+  }
+};
+
+export const startVideoDurationCheck = (videoURL, filename) => {
+  return {
+    type: 'START_VIDEO_DURATION_CHECK',
+    videoURL: videoURL,
+    filename: filename
+  }
+};
+
+export const stopVideoDurationCheck = () => {
+  return {
+    type: 'STOP_VIDEO_DURATION_CHECK'
+  }
+};
+
+export const videoValidatedTrue = () => {
+  return {
+    type: 'VIDEO_VALIDATED_TRUE'
+  }
+}
+
+export const videoValidatedFalse = () => {
+  return {
+    type: 'VIDEO_VALIDATED_FALSE'
+  }
+}
+
+export const videoValidatedReset = () => {
+  return {
+    type: 'VIDEO_VALIDATED_RESET'
   }
 }
