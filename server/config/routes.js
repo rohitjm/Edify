@@ -61,4 +61,7 @@ module.exports = function(app, express) {
   // Fetches the watchlist for a particular user
   app.post('/fetchWatchList', videoController.fetchWatchList);
 
+  // Delete video from S3 bucket if duration was too long
+  app.post('/deleteVideoFromBucket', videoController.deleteVideoFromBucket);
+
 };

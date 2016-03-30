@@ -294,3 +294,35 @@ export const hideAnswerEdit = () => {
     type: 'HIDE_ANSWER_EDIT'
   }
 };
+
+export const startVideoDurationCheck = (videoURL, filename) => {
+  return {
+    type: 'START_VIDEO_DURATION_CHECK',
+    videoURL: videoURL,
+    filename: filename
+  }
+};
+
+export const stopVideoDurationCheck = () => {
+  return {
+    type: 'STOP_VIDEO_DURATION_CHECK'
+  }
+};
+
+export const videoValidatedTrue = () => {
+  return {
+    type: 'VIDEO_VALIDATED_TRUE'
+  }
+}
+
+export const videoValidatedFalse = () => {
+  return {
+    type: 'VIDEO_VALIDATED_FALSE'
+  }
+}
+
+export const videoValidatedReset = () => {
+  return {
+    type: 'VIDEO_VALIDATED_RESET'
+  }
+}
