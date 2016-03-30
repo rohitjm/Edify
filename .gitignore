@@ -41,6 +41,7 @@ client/bundle.js.map
 
 # AWS access keys
 server/config/aws-config.json
+AWS credentials
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

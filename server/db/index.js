@@ -128,12 +128,7 @@ User.sync()
   throw err;
 });
 
-<<<<<<< HEAD
-
-exports.Comment = Comment;
-=======
 exports.Feedback = Feedback;
->>>>>>> 1b9888c832364a032c5a4725fa520dd15a48226d
 exports.User = User;
 exports.Video = Video;
 exports.Votes = Votes;
