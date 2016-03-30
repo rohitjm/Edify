@@ -97,6 +97,11 @@ padding: 30px 20px 20px 20px;
   position: absolute;
 }
 
+.uploadTitle {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
 body {
   margin: 0;
   padding: 0;

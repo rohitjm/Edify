@@ -27,6 +27,10 @@ export default class UploadModal extends Component {
     var closeModal = this.props.closeModal;
     var startVideoDurationCheck = this.props.startVideoDurationCheck;
     var stopVideoDurationCheck = this.props.stopVideoDurationCheck;
+    var videoIsValidated = this.props.videoIsValidated;
+    var videoValidatedTrue = this.props.videoValidatedTrue;
+    var videoValidatedFalse = this.props.videoValidatedFalse;
+    var videoValidatedReset = this.props.videoValidatedReset;
 
 
     const items = [];
@@ -54,12 +58,17 @@ export default class UploadModal extends Component {
       <FlatButton
         label='Cancel'
         secondary={true}
-        onClick={closeModal}
+        onClick={() => {
+          closeModal();
+          videoValidatedReset();
+        }}
       />,
       <FlatButton
         label='Submit'
+        disabled={videoIsValidated === true ? false : true}
         onClick={() => {
-          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId})
+          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId});
+          videoValidatedReset();
         }}
       />
     ];
@@ -84,23 +93,6 @@ export default class UploadModal extends Component {
             type="description"
             id="description"
           />
-          Video File (.mp4)
-          <ReactS3Uploader  
-            signingUrl="/s3/sign"
-            onFinish={(videoResponse) => {
-              var filename = videoResponse.filename;
-              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
-              startVideoDurationCheck(videoUrl, filename);
-            }}
-          />
-          Thumbnail File (.jpg)
-          <ReactS3Uploader  
-            signingUrl="/s3/sign"
-            onFinish={(coverResponse) => {
-              console.log('cover response', coverResponse.filename)
-              coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
-            }}
-          />
           Categories
           <DropDownMenu maxHeight={300}
             value={'Category'}
@@ -108,10 +100,35 @@ export default class UploadModal extends Component {
             ref="category">
             {items}
           </DropDownMenu>
+          <div><h4 className="uploadTitle">Video File (.mp4)</h4>
+          <ReactS3Uploader  
+            signingUrl="/s3/sign"
+            onFinish={(videoResponse) => {
+              var filename = videoResponse.filename;
+              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
+              startVideoDurationCheck(videoUrl, filename);
+            }}
+          /></div>
+          {videoIsValidated === true ? 
+            (<div><h4 className="uploadTitle">Thumbnail File (.jpg)</h4>
+            <ReactS3Uploader  
+              signingUrl="/s3/sign"
+              onFinish={(coverResponse) => {
+                console.log('cover response', coverResponse.filename)
+                coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
+              }}
+            /></div>) : videoIsValidated === false ?
+            (<span>Your video was too long! Only videos under 5 minutes long may be uploaded. </span>)
+            : ""}
         </Dialog>
         <div id='durationCheck' >
           {checking === true ?
-          <VideoDurationValidater videoURL={videoURL} filename={filename} stopVideoDurationCheck={stopVideoDurationCheck} /> :
+          <VideoDurationValidater videoURL={videoURL}
+           filename={filename} 
+           stopVideoDurationCheck={stopVideoDurationCheck} 
+           videoValidatedTrue={videoValidatedTrue}
+           videoValidatedFalse={videoValidatedFalse}
+           /> :
           ''}
         </div>
        </div>
