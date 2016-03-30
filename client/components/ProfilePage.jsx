@@ -85,8 +85,6 @@ var aboutMeEdit = <form className="aboutMeForm">
           <VideoGrid />
         </Tab>
       </Tabs>
-
-
   </div>
   );
 }

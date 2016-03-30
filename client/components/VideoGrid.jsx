@@ -18,7 +18,6 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
   },
   gridList: {
     width: 1200,
-    height: 500,
     overflowY: 'auto',
     marginBottom: 15,
    

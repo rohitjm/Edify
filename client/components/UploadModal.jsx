@@ -54,6 +54,8 @@ export default class UploadModal extends Component {
     let coverUrl;
     let categoryId;
 
+    categoryId = 1;
+
     const actions = [
       <FlatButton
         label='Cancel'
@@ -95,7 +97,7 @@ export default class UploadModal extends Component {
           />
           Categories
           <DropDownMenu maxHeight={300}
-            value={1}
+            value={categoryId}
             onChange={(evt, index, item) => {categoryId = item}}
             ref="category">
             {items}

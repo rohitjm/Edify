@@ -22,7 +22,7 @@ export class HomePage extends Component {
   	  <div id = "HomePage">
   	  	<div id = 'box'><Featured /></div>
         <CategoriesBar />
-    	  <div ><VideoGrid /></div>
+    	  <VideoGrid />
         {this.props.checkVideoDuration === true ? durationCheck : ''}
   	  </div>
   	);
