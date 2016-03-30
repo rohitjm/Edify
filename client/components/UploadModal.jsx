@@ -95,7 +95,7 @@ export default class UploadModal extends Component {
           />
           Categories
           <DropDownMenu maxHeight={300}
-            value={'Category'}
+            value={1}
             onChange={(evt, index, item) => {categoryId = item}}
             ref="category">
             {items}
