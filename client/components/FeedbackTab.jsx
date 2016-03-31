@@ -23,8 +23,8 @@ export default class FeedbackTab extends Component {
         {feedback.map(function (singleFeedback){
           return(
             <div>
-              <h3> {singleFeedback.feedback} </h3>
-              <h4> {singleFeedback.username} </h4>
+              <h3 style={{marginBottom: '0px'}}> {singleFeedback.feedback} </h3>
+              <h4 style={{marginTop: '0px', fontSize: '20px', color: 'gray'}}> {singleFeedback.username} </h4>
             </div>
           ); 
         })}
@@ -40,6 +40,8 @@ export default class FeedbackTab extends Component {
           rows={1}
           rowsMax={5}
           ref='feedback'
+          underlineShow={false}
+          style={{backgroundColor: '#eef7ee', paddingLeft: '7px', height: '38px'}} hintStyle={{paddingTop: '4px', height: '19px'}}
         />
         <RaisedButton label="Submit" onClick={() => addFeedback(this.refs.feedback.getValue(), username, videoid, userid)}/>
         {feedbackFound}

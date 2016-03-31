@@ -34,18 +34,18 @@
 }
 
 #PlayerPage {
-background-color : #eeeeee;
+background-color : white;
 padding: 30px 20px 20px 20px;
 }
 #Playercover {
   background-color : white;
   width : 1200px;
   height: 700px;
-  padding-left: 100px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   margin:auto;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 
 }
 
@@ -234,4 +234,23 @@ padding: 0px 0px 0px 0px;
 
 .Votes {
   width: 25%;
+}
+
+title {
+  font-size: 30px;
+}
+
+p {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-left: 60px;
+}
+
+.upvotes {
+  margin-left: 20px;
+}
+
+div span.downvotes {
+  margin-left: 70px;
 }

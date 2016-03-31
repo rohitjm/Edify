@@ -5,12 +5,12 @@ export default class VideoPlayer extends Component {
   componentDidMount() {
     var video, wrapper;
     wrapper = document.createElement('div');
-    wrapper.innerHTML = "<video id='attachmentVideo' class='video-js vjs-default-skin' controls preload='auto' width='900' height='400'><source src='" + this.props.currentVideo.url + "' type='video/mp4' /></video>";
+    wrapper.innerHTML = "<video id='attachmentVideo' class='video-js vjs-default-skin' controls preload='auto' width='900' height='450'><source src='" + this.props.currentVideo.url + "' type='video/mp4' /></video>";
     video = wrapper.firstChild;
     this.refs.target.getDOMNode().appendChild(video);
     var player = videojs(video, {}, function() {
       this.on('loadedmetadata', function() {
-        if(this.duration() > 65) {
+        if(this.duration() > 300) {
           window.location = '/';
         }
       });
@@ -25,10 +25,6 @@ export default class VideoPlayer extends Component {
             <h2>{this.props.title}</h2>
             <div id="attachmentVideoContainer" ref="target" />
           </div>
-        </div>
-        <div id = 'description'>
-          <h3>Title: {this.props.currentVideo.title}</h3>
-          <h4>Description: {this.props.currentVideo.description}</h4>
         </div>
       </div>  
     );
