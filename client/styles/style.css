@@ -10,22 +10,20 @@
 #sheet {
   background-color : white;
   width : 1200px;
-  height: 700px;
-  padding: 20px;
-  margin:auto;
+  padding: 40px;
+  margin: 0px;
 }
 #sheett {
-  background-color : white;
+  background-color : #8BC34A;
   display: flex;
   width : 1200px;
-  height: 400px;
-  padding: 20px;
+  padding: 0px;
   margin:auto;
-  margin-top: 10px;
+  margin-top: 0px;
   overflow: hidden;
 }
 #cover {
-  background-color : white;
+  background-color : #8BC34A;
   width : 750px;
   height: 340px;
   margin: auto;
@@ -35,23 +33,19 @@
  /*align-items: center;*/*/
 }
 
-#HomePage {
-background-color : #eeeeee;
-padding: 10px 0px 30px 0px;
-}
 #PlayerPage {
-background-color : #eeeeee;
+background-color : white;
 padding: 30px 20px 20px 20px;
 }
 #Playercover {
   background-color : white;
   width : 1200px;
   height: 700px;
-  padding-left: 100px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   margin:auto;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 
 }
 
@@ -67,12 +61,12 @@ padding: 30px 20px 20px 20px;
 }
 
 #cardCover{
- background-color : white;
- margin: auto;
+ background-color : #8BC34A;
+ margin: 0px;
  width : 1200px;
  height: 750px;
  padding: 20px;
- margin-bottom: 80px;
+ margin-bottom: 0px;
 
 }
 
@@ -80,7 +74,7 @@ padding: 30px 20px 20px 20px;
  max-width: 100%;
  max-height: 100%;
 /*#featured {
-	width: 200px;   Or whatever 
+  width: 200px;   Or whatever 
   height: 200px;  
   margin: auto; 
 }*/
@@ -89,7 +83,7 @@ padding: 30px 20px 20px 20px;
 #VideoGrid {
   width: 100px;  /* Or whatever */
   height: 100px; /* Or whatever */
-  margin: auto; 	
+  margin: auto;   
 }
 
 #durationCheck {
@@ -136,9 +130,10 @@ body {
   
 }
 
-.video-play video__control {
+/*.video-play video__control {
   width = 30px;
-}
+}*/
+
 .homeImage {
   max-width: 100px;
   max-height: 100px;
@@ -154,12 +149,12 @@ body {
   display: flex;
 }
 
-.videoThumbnail {
+/*.videoThumbnail {
   width: 250px;
   height: 250px;
   border: 3px solid #73AD21;
   margin: auto;
-}
+}*/
 
 .image_thumbnail {
   max-width: 250px;
@@ -179,7 +174,7 @@ body {
 }
 
 .navBar {
-  background-color: #C1E1A6;
+  background-color: #689F38;
 }
 
 .authBox {
@@ -216,6 +211,46 @@ body {
   background-image: 
 }
 
+body {
+  background-color: white;
+}
 
+#HomePage {
+background-color : white;
+padding: 0px 0px 0px 0px;
+}
 
+.Nav {
+  background-color: white;
+}
 
+.VideoPlayer {
+  margin: auto;
+}
+
+.VideoPlayer {
+  width: 75%;
+}
+
+.Votes {
+  width: 25%;
+}
+
+title {
+  font-size: 30px;
+}
+
+p {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-left: 60px;
+}
+
+.upvotes {
+  margin-left: 20px;
+}
+
+div span.downvotes {
+  margin-left: 70px;
+}

@@ -30,12 +30,8 @@ export default class Q_ATab extends Component {
         { questions.map(function (question){
           return(
             <div>
-              <div>
-                <h3> {question.asker}: {question.question} </h3>
-              </div>
-              <div>
+                <h3 style={{fontSize: ''}}> {question.asker}: {question.question} </h3>
                 <h3> {question.answer ? "A: "+question.answer : ""} </h3>
-              </div>
               {/*
                 If current user is creator of current video, and either answerEdit hasn't been set yet (starts as an object, have to
                 check this before checking length) or the question isn't being edited currently, the 'Answer' (or 'Edit')
@@ -79,6 +75,8 @@ export default class Q_ATab extends Component {
           rows={1}
           rowsMax={5}
           ref='question'
+          underlineShow={false}
+          style={{backgroundColor: '#eef7ee', paddingLeft: '7px', height: '38px'}} hintStyle={{paddingTop: '4px', height: '19px'}}
         />
         <RaisedButton label="Submit" onClick={() => addQuestion(this.refs.question.getValue(), asker, videoid, userid)}/>
         {questionsFound}

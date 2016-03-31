@@ -26,43 +26,52 @@ export default class CategoriesBar extends React.Component {
 
     return (
 
-    <Toolbar>
+    <Toolbar
+      style={{backgroundColor: '#d9d9d9'}}
+    >
       <ToolbarGroup firstChild={true} float="left">
-        <FlatButton label="Science" secondary={true} 
+        <FlatButton label="Science" style={{color: '#388E3C'}} 
           onTouchTap={() => {this.props.searchByCategory(8)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Arts" secondary={true} 
+        <ToolbarSeparator style={{}} />
+        <FlatButton label="Arts" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(1)}} />
         <ToolbarSeparator />
-        <FlatButton label="Business" secondary={true} 
+        <FlatButton label="Business" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(12)}} />
         <ToolbarSeparator />
-        <FlatButton label="Sports" secondary={true} 
+        <FlatButton label="Sports" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(14)}} />
         <ToolbarSeparator />
-        <FlatButton label="Languages" secondary={true} 
+        <FlatButton label="Languages" style={{color: '#388E3C'}} 
           onTouchTap={() => {this.props.searchByCategory(3)}} />
         <ToolbarSeparator />
-        <FlatButton label="Cooking" secondary={true} 
+        <FlatButton label="Cooking" style={{color: '#388E3C'}}
           onTouchTap={() => {this.props.searchByCategory(11)}} />
         <ToolbarSeparator />
-        <FlatButton label="History" secondary={true} 
+        <FlatButton label="History" style={{color: '#388E3C'}} 
           onTouchTap={() => {this.props.searchByCategory(4)}} />
         <ToolbarSeparator />
       </ToolbarGroup>
       <ToolbarGroup float="right">
-        <DropDownMenu
+        <IconMenu
+          iconButtonElement={<svg fill="#388E3C" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+              <path d="M0-.75h24v24H0z" fill="none"/>
+            </svg>}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
           onChange={(evt, index, item) => {this.props.searchByCategory(item)}}
+          backgroundColor='#4CAF50'
         >
-          <MenuItem value={2} primaryText="Literature" />
-          <MenuItem value={5} primaryText="Music" />
-          <MenuItem value={6} primaryText="Philosophy" />
-          <MenuItem value={7} primaryText="Medicine" />
-          <MenuItem value={9} primaryText="Engineering" />
-          <MenuItem value={13} primaryText="Education" />
-          <MenuItem value={10} primaryText="Mathematics" />
-          <MenuItem value={15} primaryText="Other" />
-        </DropDownMenu>
+          <MenuItem value={2} primaryText="LITERATURE" />
+          <MenuItem value={5} primaryText="MUSIC" />
+          <MenuItem value={6} primaryText="PHILOSOPHY" />
+          <MenuItem value={7} primaryText="MEDICINE" />
+          <MenuItem value={9} primaryText="ENGINEERING" />
+          <MenuItem value={13} primaryText="EDUCATION" />
+          <MenuItem value={10} primaryText="MATHEMATICS" />
+          <MenuItem value={15} primaryText="OTHER" />
+        </IconMenu>
       </ToolbarGroup>
     </Toolbar>
 

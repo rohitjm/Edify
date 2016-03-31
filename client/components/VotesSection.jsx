@@ -12,8 +12,9 @@ export default class VotesSection extends Component {
   render() {
     return (
       <div>
-        <h3 onClick = {() => this.props.upVote(this.props.user.id, this.props.currentVideo.id)}>Up Vote: {this.props.currentVideo.upVotes} </h3>
-        <h3 onClick = {() => this.props.downVote(this.props.user.id, this.props.currentVideo.id)}>Down Vote :  {this.props.currentVideo.downVotes} </h3>
+        <img style={{height: '120px', paddingRight: '30px', paddingLeft: '10px'}} src="https://openclipart.org/image/2400px/svg_to_png/214028/Thumbs-Up-Circle.png" onClick = {() => this.props.upVote(this.props.user.id, this.props.currentVideo.id)}/>
+        <img style={{height: '120px'}} src="https://openclipart.org/image/2400px/svg_to_png/214030/Thumbs-Down-Circle.png" onClick = {() => this.props.downVote(this.props.user.id, this.props.currentVideo.id)}/>
+        <p><span class="upvotes">{this.props.currentVideo.upVotes}</span><span style={{marginLeft: '135px'}} class="downVotes">{this.props.currentVideo.downVotes}</span></p>
       </div>
     );
   };
