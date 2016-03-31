@@ -84,7 +84,7 @@ class NavBar extends Component {
         style={{backgroundColor: '#319b43'}}
       >
         <ToolbarGroup firstChild={true} float="left">
-          <ToolbarTitle text="BRAIN FOOD" style={{cursor: 'pointer', color: 'white', fontSize: '30px', paddingLeft: '12px'}} onClick={() => this.props.goHome()}/>
+          <ToolbarTitle text="EDify" style={{cursor: 'pointer', color: 'white', fontSize: '30px', paddingLeft: '12px'}} onClick={() => this.props.goHome()}/>
         </ToolbarGroup>
           {this.props.user.username !== undefined ? Auth : noAuth }
         <ToolbarGroup float="right" style={{width: "26%"}}>

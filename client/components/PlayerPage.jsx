@@ -32,16 +32,20 @@ export class PlayerPage extends Component {
         <GridList
           padding={0}
           cols={8}
-          cellHeight={700}
+          cellHeight={255}
         >
         <GridTile
-          cols={5}
+          cols={6}
+          rows={2}
         >
+          <h3 class="title" style={{fontSize: '30px', marginTop: '0px', marginBottom: '0px'}}>{this.props.currentVideo.title}</h3>
           <VideoPlayer currentVideo = {this.props.currentVideo}/>
         </GridTile>
         <GridTile
-          cols={3}
+          cols={2}
+          rows={2}
         >
+          <h4 class="description" style={{fontSize: '20px', marginTop: '65px', marginBottom: '0px', height: '255px'}}>{this.props.currentVideo.description}</h4>
           <VotesSection />
         </GridTile>
         </GridList>
