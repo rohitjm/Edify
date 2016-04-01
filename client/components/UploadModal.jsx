@@ -11,8 +11,8 @@ import {connect} from 'react-redux';
 import ReactS3Uploader from 'react-s3-uploader';
 import VideoDurationValidater from './VideoDurationValidater.jsx'
 
-import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck } from '../actions/actions.jsx';
-import { videoValidatedTrue, videoValidatedFalse, videoValidatedReset, categoriesMenu } from '../actions/actions.jsx';
+import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck, videoValidatedTrue } from '../actions/actions.jsx';
+import { videoValidatedFalse, videoValidatedReset, categoriesMenu, startUploadProgress, stopUploadProgress } from '../actions/actions.jsx';
 
 export default class UploadModal extends Component {
 
@@ -33,6 +33,10 @@ export default class UploadModal extends Component {
     var videoValidatedReset = this.props.videoValidatedReset;
     var categoriesMenu = this.props.categoriesMenu;
     var categorySelected = this.props.categorySelected;
+    var startUploadProgress = this.props.startUploadProgress;
+    var stopUploadProgress = this.props.stopUploadProgress;
+    var processing = this.props.checkVideoDuration.proccessing;
+    console.log(processing);
 
 
     const items = [];
@@ -60,6 +64,7 @@ export default class UploadModal extends Component {
           closeModal();
           videoValidatedReset();
           categoriesMenu({});
+          stopUploadProgress();
         }}
       />,
       <FlatButton
@@ -106,10 +111,16 @@ export default class UploadModal extends Component {
           <div><h4 className="uploadTitle">Video File (.mp4)</h4>
           <ReactS3Uploader  
             signingUrl="/s3/sign"
+            onProgress={(percent) => {
+              if (percent > 0 && percent < 20) {
+                startUploadProgress();
+              }
+            }}
             onFinish={(videoResponse) => {
               var filename = videoResponse.filename;
               videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
               startVideoDurationCheck(videoUrl, filename);
+              stopUploadProgress();
             }}
           /></div>
           {videoIsValidated === true ? 
@@ -121,8 +132,11 @@ export default class UploadModal extends Component {
                 coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
               }}
             /></div>) : videoIsValidated === false ?
-            (<span>Your video was too long! Only videos under 5 minutes long may be uploaded. </span>)
+            (<span>Your video was too long! Only videos under 5 minutes long may be uploaded.</span>)
             : ""}
+          {processing === true ? 
+          (<span>Processing video...</span>)
+          : ""}
         </Dialog>
         <div id='durationCheck' >
           {checking === true ?
@@ -179,6 +193,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     categoriesMenu: (id) => {
       dispatch(categoriesMenu(id));
+    },
+    startUploadProgress: () => {
+      dispatch(startUploadProgress());
+    },
+    stopUploadProgress: () => {
+      dispatch(stopUploadProgress());
     }
   };
 };
