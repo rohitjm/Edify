@@ -67,7 +67,7 @@ export default class UploadModal extends Component {
         disabled={videoIsValidated === true ? false : true}
         style={{color: '#303F9F'}}
         onClick={() => {
-          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId});
+          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categorySelected});
           videoValidatedReset();
           categoriesMenu({});
         }}
