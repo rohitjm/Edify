@@ -17,8 +17,7 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
  
   },
   gridList: {
-    width: 1200,
-    height: 500,
+    width: 1000,
     overflowY: 'auto',
     marginBottom: 15,
    
@@ -28,12 +27,12 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
 	if(Object.keys(videos).length !== 0){
 		return (
 			<div id= "sheet" style={styles.root}>
-        <GridList cellHeight={220} style={styles.gridList} cols= {4} padding= {5} >
+        <GridList cellHeight={220} style={styles.gridList} cols= {3} padding= {5} >
 				
         { videos.map(function(video){
           
           return <GridTile key = {video.cover} 
-          title = {video.title} subtitle= {<span>by <b>{video.description}</b></span>} actionIcon={<IconButton onMouseDown = {() => addToWatch(video,user)} ><StarBorder color="white"/></IconButton>} >
+          title = {video.title} subtitle= {<span>by <b>{video.description}</b></span>} actionIcon={<IconButton onMouseDown = {() => addToWatch(video,user) } ><StarBorder color="white" /></IconButton>} >
           <img src={video.cover} onClick = {() => selectVideo(video)} /></GridTile>;
 				
         })}

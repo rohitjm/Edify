@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import VideoPlayer from './VideoPlayer.jsx';
 import VotesSection from './VotesSection.jsx';
 import DiscussionSection from './DiscussionSection.jsx';
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
-import video from 'video.js';
 import $ from 'jquery';
 
 //Component Code
@@ -15,7 +16,7 @@ export class PlayerPage extends Component {
       this.props.loadQuestions(this.props.currentVideo.id);
   }
 
-  /**
+  /*
   shouldComponentUpdate{
 
   }
@@ -26,15 +27,19 @@ export class PlayerPage extends Component {
       return (
 
         <div id = 'PlayerPage'>
-    
-          <div><VideoPlayer currentVideo = {this.props.currentVideo}/></div>
-
-          <div><VotesSection /></div>
-
-        <div>
-          <h2><DiscussionSection /></h2>
+          <h3 class="title" style={{fontFamily: 'Raleway', fontWeight: 'bold', fontSize: '27px', marginTop: '10px', marginBottom: '0px', marginLeft: '225px'}}>{this.props.currentVideo.title}</h3>
+          <div className='videoplayer'>
+          <VideoPlayer currentVideo = {this.props.currentVideo}/>
+          </div>
+      
+          <div className='side'>
+            <h4 class="description" style={{float: 'left', fontFamily: 'Raleway', fontSize: '20px', marginBottom: '0px', marginTop: '0px', marginLeft: '95px', height: '100px'}}>{this.props.currentVideo.description}</h4>
+            <VotesSection />
+          </div>
+       
+        <h2><DiscussionSection /></h2>
         </div>
-        </div> 
+
       );
     } else {
       return (

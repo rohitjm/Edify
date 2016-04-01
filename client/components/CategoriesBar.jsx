@@ -26,43 +26,52 @@ export default class CategoriesBar extends React.Component {
 
     return (
 
-    <Toolbar>
+    <Toolbar
+      style={{backgroundColor: '#303F9F'}}
+    >
       <ToolbarGroup firstChild={true} float="left">
-        <FlatButton label="Science" secondary={true} 
+        <FlatButton label="Science" style={{color: '#f0f0f5'}} 
           onTouchTap={() => {this.props.searchByCategory(8)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Arts" secondary={true} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}} />
+        <FlatButton label="Arts" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(1)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Business" secondary={true} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Business" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(12)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Sports" secondary={true} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Sports" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(14)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Languages" secondary={true} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Languages" style={{color: '#f0f0f5'}} 
           onTouchTap={() => {this.props.searchByCategory(3)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Cooking" secondary={true} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Cooking" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(11)}} />
-        <ToolbarSeparator />
-        <FlatButton label="History" secondary={true} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="History" style={{color: '#f0f0f5'}} 
           onTouchTap={() => {this.props.searchByCategory(4)}} />
-        <ToolbarSeparator />
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
       </ToolbarGroup>
       <ToolbarGroup float="right">
-        <DropDownMenu
+        <IconMenu
+          iconButtonElement={<svg fill="#f0f0f5" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+              <path d="M0-.75h24v24H0z" fill="none"/>
+            </svg>}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
           onChange={(evt, index, item) => {this.props.searchByCategory(item)}}
+          backgroundColor='#4CAF50'
         >
-          <MenuItem value={2} primaryText="Literature" />
-          <MenuItem value={5} primaryText="Music" />
-          <MenuItem value={6} primaryText="Philosophy" />
-          <MenuItem value={7} primaryText="Medicine" />
-          <MenuItem value={9} primaryText="Engineering" />
-          <MenuItem value={13} primaryText="Education" />
-          <MenuItem value={10} primaryText="Mathematics" />
-          <MenuItem value={15} primaryText="Other" />
-        </DropDownMenu>
+          <MenuItem value={2} primaryText="LITERATURE" />
+          <MenuItem value={5} primaryText="MUSIC" />
+          <MenuItem value={6} primaryText="PHILOSOPHY" />
+          <MenuItem value={7} primaryText="MEDICINE" />
+          <MenuItem value={9} primaryText="ENGINEERING" />
+          <MenuItem value={13} primaryText="EDUCATION" />
+          <MenuItem value={10} primaryText="MATHEMATICS" />
+          <MenuItem value={15} primaryText="OTHER" />
+        </IconMenu>
       </ToolbarGroup>
     </Toolbar>
 

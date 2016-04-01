@@ -11,7 +11,7 @@ module.exports = function(app, express) {
   app.post('/signup', userController.userSignUp);
 
   // Handles request to sign in existing user
-  app.post('/signin', passport.authenticate('local'), userController.userSignIn);
+  app.post('/signin', userController.userSignIn);
 
   // Handles user sign out
   app.get('/signout', userController.userSignOut);
@@ -60,5 +60,8 @@ module.exports = function(app, express) {
 
   // Fetches the watchlist for a particular user
   app.post('/fetchWatchList', videoController.fetchWatchList);
+
+  // Delete video from S3 bucket if duration was too long
+  app.post('/deleteVideoFromBucket', videoController.deleteVideoFromBucket);
 
 };

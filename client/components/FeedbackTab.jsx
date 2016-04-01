@@ -23,8 +23,9 @@ export default class FeedbackTab extends Component {
         {feedback.map(function (singleFeedback){
           return(
             <div>
-              <h3> {singleFeedback.feedback} </h3>
-              <h4> {singleFeedback.username} </h4>
+              <hr/>
+              <h4 style={{fontFamily: 'Raleway', margin: '0px', marginLeft: '50px', fontSize: '20px', color: '#303F9F'}}> {singleFeedback.username} </h4>
+              <h3 style={{fontFamily: 'Raleway', margin: '0px', marginLeft: '50px'}}> {singleFeedback.feedback} </h3>
             </div>
           ); 
         })}
@@ -33,15 +34,17 @@ export default class FeedbackTab extends Component {
     }
 
     return (
-      <div>
+      <div className='feedback'>
         <TextField
           hintText="Enter feedback..."
           multiLine={true}
-          rows={1}
           rowsMax={5}
           ref='feedback'
+          underlineShow={false}
+          style={{fontFamily: 'Raleway', backgroundColor: '#f0f0f5', paddingLeft: '7px', height: '100px', width: '525px', marginLeft: '50px', marginTop: '25px'}} hintStyle={{paddingTop: '4px', height: '19px'}}
         />
-        <RaisedButton label="Submit" onClick={() => addFeedback(this.refs.feedback.getValue(), username, videoid, userid)}/>
+        <br/>
+        <RaisedButton label="Submit" style={{marginLeft: '490px'}} labelColor='#f0f0f5' backgroundColor='#ff4f1a' onClick={() => addFeedback(this.refs.feedback.getValue(), username, videoid, userid)}/>
         {feedbackFound}
       </div>
     )

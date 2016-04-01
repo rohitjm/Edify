@@ -15,12 +15,16 @@ export class HomePage extends Component {
 	}
 
   render(){
+    var durationCheck = <h1>CHECKING DURATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
+
   	//this.props.fetchVideos();
   	return (
   	  <div id = "HomePage">
   	  	<div id = 'box'><Featured /></div>
-        <CategoriesBar />
-    	  <div ><VideoGrid /></div>
+        <div className="info" style={{fontFamily: 'Raleway', fontSize: '30px'}}><br/><b>Learn something new</b><br/><span style={{fontSize: '20px'}}>in five minutes or less!</span><br/></div>
+          <CategoriesBar />
+      	  <VideoGrid />
+        {this.props.checkVideoDuration === true ? durationCheck : ''}
   	  </div>
   	);
   }
@@ -29,7 +33,8 @@ export class HomePage extends Component {
 //Container Code
 const mapStateToProps = (state) => {
   return {
-    videos: state.videos
+    videos: state.videos,
+    checkVideoDuration: state.checkVideoDuration
   }
 };
 

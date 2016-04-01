@@ -59,29 +59,36 @@ const mapDispatchToProps = (dispatch) => {
 
 class NavBar extends Component {
 
+
   render(){
+
+  const buttonStyles = {
+    margin: 10,
+    marginTop: 15
+  }
+
   var noAuth =  <ToolbarGroup float="right">
-                  <ToolbarSeparator />
-                  <RaisedButton label="Sign In" primary={true} onTouchTap={() => this.props.showSignInModal()}/>
-                  <RaisedButton label="Sign Up" primary={true} onTouchTap={() => this.props.showSignUpModal()}/>
+                  <RaisedButton label="Sign In" labelColor='#303F9F' backgroundColor='#f0f0f5' style={buttonStyles} onTouchTap={() => this.props.showSignInModal()}/>
+                  <RaisedButton label="Sign Up" labelColor='#303F9F' backgroundColor='#f0f0f5' style={buttonStyles} onTouchTap={() => this.props.showSignUpModal()}/>
                 </ToolbarGroup>
   
   var Auth =    <ToolbarGroup float="right">
-                  <ToolbarSeparator />
-                  <RaisedButton label="Profile" secondary={true} onTouchTap={() => this.props.goProfile()}/>
-                  <RaisedButton label="Upload Video" secondary={true} onTouchTap={() => this.props.showUploadModal()}/>
-                  <RaisedButton label="Sign Out" primary={true} onTouchTap={() => this.props.signOut()}/>
+                  <RaisedButton label="Upload Video" labelColor='#f0f0f5' backgroundColor='#303F9F' style={buttonStyles} onTouchTap={() => this.props.showUploadModal()}/>
+                  <RaisedButton label="Profile" labelColor='#f0f0f5' backgroundColor='#303F9F' style={buttonStyles} onTouchTap={() => this.props.goProfile()}/>
+                  <RaisedButton label="Sign Out" labelColor='#303F9F' backgroundColor='#f0f0f5' style={buttonStyles} onTouchTap={() => this.props.signOut()}/>
                 </ToolbarGroup>
 
     
     return (
-      <Toolbar>
+      <Toolbar
+        className="Nav"
+        style={{backgroundColor: '#ff4f1a', height: '75px'}}
+      >
         <ToolbarGroup firstChild={true} float="left">
-          <ToolbarTitle text="Virtuoso" style={{cursor: 'pointer'}} onClick={() => this.props.goHome()}/>
-        </ToolbarGroup>
-        <ToolbarGroup float="right" style={{width: "35%"}}>
-          <ToolbarSeparator />
+          <ToolbarTitle text="EDify" style={{cursor: 'pointer', color: 'white', fontSize: '45px', paddingLeft: '12px', paddingTop: '7px', marginRight: '220px'}} onClick={() => this.props.goHome()}/>
+        <ToolbarGroup float="right" style={{width: "26%"}}>
           <SearchBar handleSubmit={this.props.handleSubmit}/>
+        </ToolbarGroup>
         </ToolbarGroup>
           {this.props.user.username !== undefined ? Auth : noAuth }
       </Toolbar>

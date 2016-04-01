@@ -126,6 +126,44 @@ const Questions = (state = {}, action) => {
   }
 }
 
+const CheckVideoDuration = (state = {}, action) => {
+  var videoCheck = Object.assign({},state);
+  switch(action.type) {
+    case 'START_VIDEO_DURATION_CHECK':
+      videoCheck.checking = true;
+      videoCheck.videoURL = action.videoURL;
+      videoCheck.filename = action.filename;
+      return videoCheck;
+    case 'STOP_VIDEO_DURATION_CHECK':
+      videoCheck.checking = false;
+      return videoCheck;
+    default:
+      return state;
+  }
+}
+
+const VideoIsValidated = (state = {}, action) => {
+  switch(action.type) {
+    case 'VIDEO_VALIDATED_TRUE':
+      return true;
+    case 'VIDEO_VALIDATED_FALSE':
+      return false;
+    case 'VIDEO_VALIDATED_RESET':
+      return {};
+    default:
+      return state;
+  }
+}
+
+const AuthError = (state = {}, action) => {
+  switch(action.type) {
+    case 'AUTH_ERROR':
+      return action.error;
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -137,7 +175,10 @@ const VideoAppHandler = combineReducers({
   displaySignUpModal: SignUpModal,
   displayUploadModal: UploadModal,
   aboutMeEdit: ToggleAboutMeEdit,
-  answerEdit: ToggleAnswerEdit
+  answerEdit: ToggleAnswerEdit,
+  checkVideoDuration: CheckVideoDuration,
+  videoIsValidated: VideoIsValidated,
+  authError: AuthError
 });
 
 export default VideoAppHandler;
