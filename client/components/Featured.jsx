@@ -39,6 +39,7 @@ export default function Featured({videos, selectVideo}) {
           key={2}
           style={{fontFamily: 'Raleway'}}
           title={currentVideo2.title}
+          style={{fontFamily: 'Raleway'}}
           subtitle={'by ' + currentVideo2.description}
           cols={1}
         >

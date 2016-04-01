@@ -49,6 +49,7 @@ export default class UploadModal extends Component {
       maxWidth: 'none',
     };
 
+
     let coverUrl;
 
     const actions = [
