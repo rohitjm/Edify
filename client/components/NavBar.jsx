@@ -85,7 +85,7 @@ class NavBar extends Component {
         style={{backgroundColor: '#ff4f1a', height: '75px'}}
       >
         <ToolbarGroup firstChild={true} float="left">
-          <ToolbarTitle text="EDify" style={{fontFamily: 'Fredoka One', fontStyle: 'bold', fontSize: '50px', cursor: 'pointer', color: 'white', paddingLeft: '12px', paddingTop: '7px', marginRight: '220px'}} onClick={() => this.props.goHome()}/>
+          <ToolbarTitle text="EDify" style={{fontFamily: 'Fredoka One', fontStyle: 'bold', fontSize: '50px', cursor: 'pointer', color: 'white', paddingLeft: '12px', paddingTop: '7px', marginRight: '20px'}} onClick={() => this.props.goHome()}/>
         <ToolbarGroup float="right" style={{width: "26%"}}>
           <SearchBar handleSubmit={this.props.handleSubmit}/>
         </ToolbarGroup>
