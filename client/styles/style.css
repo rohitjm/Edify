@@ -8,10 +8,11 @@
   margin: auto; 
 }
 #sheet {
-  background-color : white;
+  background-color : #f0f0f5;
   width : 1200px;
   padding: 40px;
   margin: 0px;
+  padding-top: 5px;
 }
 #sheett {
   background-color : #8BC34A;
@@ -212,7 +213,7 @@ body {
 }
 
 body {
-  background-color: white;
+  background-color: #f0f0f5;
 }
 
 #HomePage {
@@ -253,4 +254,12 @@ p {
 
 div span.downvotes {
   margin-left: 70px;
+}
+
+.info {
+  font-size: : 200px;
+  background-color: #f0f0f5;
+  padding-bottom: 37px;
+  margin: auto;
+  text-align:center
 }

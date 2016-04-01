@@ -17,7 +17,7 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
  
   },
   gridList: {
-    width: 1200,
+    width: 1000,
     overflowY: 'auto',
     marginBottom: 15,
    
@@ -27,7 +27,7 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
 	if(Object.keys(videos).length !== 0){
 		return (
 			<div id= "sheet" style={styles.root}>
-        <GridList cellHeight={220} style={styles.gridList} cols= {4} padding= {5} >
+        <GridList cellHeight={220} style={styles.gridList} cols= {3} padding= {5} >
 				
         { videos.map(function(video){
           

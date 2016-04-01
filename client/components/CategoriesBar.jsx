@@ -27,34 +27,34 @@ export default class CategoriesBar extends React.Component {
     return (
 
     <Toolbar
-      style={{backgroundColor: '#d9d9d9'}}
+      style={{backgroundColor: '#303F9F'}}
     >
       <ToolbarGroup firstChild={true} float="left">
-        <FlatButton label="Science" style={{color: '#388E3C'}} 
+        <FlatButton label="Science" style={{color: '#f0f0f5'}} 
           onTouchTap={() => {this.props.searchByCategory(8)}} />
-        <ToolbarSeparator style={{}} />
-        <FlatButton label="Arts" style={{color: '#388E3C'}}
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}} />
+        <FlatButton label="Arts" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(1)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Business" style={{color: '#388E3C'}}
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Business" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(12)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Sports" style={{color: '#388E3C'}}
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Sports" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(14)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Languages" style={{color: '#388E3C'}} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Languages" style={{color: '#f0f0f5'}} 
           onTouchTap={() => {this.props.searchByCategory(3)}} />
-        <ToolbarSeparator />
-        <FlatButton label="Cooking" style={{color: '#388E3C'}}
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="Cooking" style={{color: '#f0f0f5'}}
           onTouchTap={() => {this.props.searchByCategory(11)}} />
-        <ToolbarSeparator />
-        <FlatButton label="History" style={{color: '#388E3C'}} 
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
+        <FlatButton label="History" style={{color: '#f0f0f5'}} 
           onTouchTap={() => {this.props.searchByCategory(4)}} />
-        <ToolbarSeparator />
+        <ToolbarSeparator style={{backgroundColor: '#f0f0f5'}}/>
       </ToolbarGroup>
       <ToolbarGroup float="right">
         <IconMenu
-          iconButtonElement={<svg fill="#388E3C" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+          iconButtonElement={<svg fill="#f0f0f5" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
               <path d="M0-.75h24v24H0z" fill="none"/>
             </svg>}
