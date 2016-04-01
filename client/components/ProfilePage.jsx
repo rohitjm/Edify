@@ -61,7 +61,7 @@ componentDidMount(){
 
 render(){
 var aboutMeEdit = <form className="aboutMe">
-                        <textarea row= "20" col = "40"ref="aboutMe" >{this.props.aboutMe}</textarea>
+                        <textarea rows= "15" cols = "35" ref="aboutMe" >{this.props.aboutMe}</textarea>
                        <button type="button" className="aboutMeSubmitButton" onClick={() => this.props.updateUserInfo(this.refs.aboutMe.value, this.props.user,this.props.aboutMeEdit)}>
                           Save Changes
                         </button>
