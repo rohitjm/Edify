@@ -137,6 +137,12 @@ const CheckVideoDuration = (state = {}, action) => {
     case 'STOP_VIDEO_DURATION_CHECK':
       videoCheck.checking = false;
       return videoCheck;
+    case 'START_UPLOAD_PROGRESS':
+      videoCheck.proccessing = true;
+      return videoCheck;
+    case 'STOP_UPLOAD_PROGRESS':
+      videoCheck.proccessing = false;
+      return videoCheck;
     default:
       return state;
   }

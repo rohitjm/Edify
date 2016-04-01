@@ -351,3 +351,15 @@ export const categoriesMenu = (categoryid) => {
     categoryid: categoryid
   }
 }
+
+export const startUploadProgress = () => {
+  return {
+    type: 'START_UPLOAD_PROGRESS'
+  }
+}
+
+export const stopUploadProgress = () => {
+  return {
+    type: 'STOP_UPLOAD_PROGRESS'
+  }
+}
