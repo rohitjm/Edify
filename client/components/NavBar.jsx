@@ -90,6 +90,7 @@ class NavBar extends Component {
           <SearchBar handleSubmit={this.props.handleSubmit}/>
         </ToolbarGroup>
         </ToolbarGroup>
+
           {this.props.user.username !== undefined ? Auth : noAuth }
       </Toolbar>
     );

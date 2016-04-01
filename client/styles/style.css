@@ -34,9 +34,22 @@
  /*align-items: center;*/*/
 }
 
+
 #PlayerPage {
 background-color : #f0f0f5;
 }
+
+
+#AboutMe {
+  padding: 0px 10px 10px 10px;
+  border:1px solid #000;
+  margin: 10px
+}
+.aboutMe {
+  width: 100px;
+  height: 200px;
+}
+
 
 #Playercover {
   background-color : #f0f0f5;
@@ -71,7 +84,9 @@ background-color : #f0f0f5;
  margin-bottom: 0px;
 
 }
-
+#tabs {
+  margin-left: 0px;
+}
 #inner {
  max-width: 100%;
  max-height: 100%;
@@ -262,6 +277,7 @@ div span.downvotes {
   background-color: #f0f0f5;
 }
 
+
 .feedback {
   background-color: white;
   width: 100%;
@@ -288,3 +304,8 @@ div span.downvotes {
   background-color: #f0f0f5;
   margin-bottom: 10px;
 }
+
+.Votes {
+  width: 25%;
+}
+
