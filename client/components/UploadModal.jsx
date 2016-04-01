@@ -12,7 +12,7 @@ import ReactS3Uploader from 'react-s3-uploader';
 import VideoDurationValidater from './VideoDurationValidater.jsx'
 
 import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck } from '../actions/actions.jsx';
-import { videoValidatedTrue, videoValidatedFalse, videoValidatedReset } from '../actions/actions.jsx';
+import { videoValidatedTrue, videoValidatedFalse, videoValidatedReset, categoriesMenu } from '../actions/actions.jsx';
 
 export default class UploadModal extends Component {
 
@@ -31,6 +31,8 @@ export default class UploadModal extends Component {
     var videoValidatedTrue = this.props.videoValidatedTrue;
     var videoValidatedFalse = this.props.videoValidatedFalse;
     var videoValidatedReset = this.props.videoValidatedReset;
+    var categoriesMenu = this.props.categoriesMenu;
+    var categorySelected = this.props.categorySelected;
 
 
     const items = [];
@@ -47,14 +49,8 @@ export default class UploadModal extends Component {
       maxWidth: 'none',
     };
 
-    // add snackbar for when video is finished uploading?
-    // add progress bar while video is uploading?
-
     let videoUrl;
     let coverUrl;
-    let categoryId;
-
-    categoryId = 1;
 
     const actions = [
       <FlatButton
@@ -63,6 +59,7 @@ export default class UploadModal extends Component {
         onClick={() => {
           closeModal();
           videoValidatedReset();
+          categoriesMenu({});
         }}
       />,
       <FlatButton
@@ -72,6 +69,7 @@ export default class UploadModal extends Component {
         onClick={() => {
           submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId});
           videoValidatedReset();
+          categoriesMenu({});
         }}
       />
     ];
@@ -98,8 +96,10 @@ export default class UploadModal extends Component {
           />
           Categories
           <DropDownMenu maxHeight={300}
-            value={categoryId}
-            onChange={(evt, index, item) => {categoryId = item}}
+            value={typeof categorySelected === 'object' ? 1 : categorySelected}
+            onChange={(evt, index, item) => {
+              categoriesMenu(item);
+            }}
             ref="category">
             {items}
           </DropDownMenu>
@@ -146,7 +146,8 @@ const mapStateToProps = (state) => {
     user: state.user,
     categories: state.categories,
     checkVideoDuration: state.checkVideoDuration,
-    videoIsValidated: state.videoIsValidated
+    videoIsValidated: state.videoIsValidated,
+    categorySelected: state.categoriesMenu
   }
 };
 
@@ -175,6 +176,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     videoValidatedReset: () => {
       dispatch(videoValidatedReset());
+    },
+    categoriesMenu: (id) => {
+      dispatch(categoriesMenu(id));
     }
   };
 };
