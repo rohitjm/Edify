@@ -19,7 +19,7 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
     width: 1000,
     overflowY: 'auto',
     marginBottom: 15,
-   
+    fontFamily: 'Raleway'
   },
 };
 	
