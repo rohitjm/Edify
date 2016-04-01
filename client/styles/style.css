@@ -13,6 +13,7 @@
   padding: 40px;
   margin: 0px;
   padding-top: 5px;
+  padding-left: 120px;
 }
 #sheett {
   background-color : #8BC34A;
@@ -39,10 +40,20 @@
 background-color : #f0f0f5;
 }
 
+.welcomeBackTitle {
+  padding-top: 5px;
+  margin-top: 5px;
+  padding-left: 12px;
+  font-family:'Raleway';
+  color: #303F9F ;
+  font-size: 20px;
+}
 
 #AboutMe {
   padding: 0px 10px 10px 10px;
-  border:1px solid #000;
+  border:1px solid #303F9F ;
+  background-color: white;
+  height: 350px;
   margin: 10px
 }
 .aboutMe {
@@ -283,9 +294,6 @@ div span.downvotes {
   width: 100%;
 }
 
-#attachmentVideo_html5_api {
-
-}
 
 .videoplayer {
   margin-left: 225px;
