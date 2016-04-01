@@ -21,8 +21,9 @@ export class HomePage extends Component {
   	return (
   	  <div id = "HomePage">
   	  	<div id = 'box'><Featured /></div>
-        <CategoriesBar />
-    	  <VideoGrid />
+        <div className="info" style={{fontFamily: 'Raleway', fontSize: '30px'}}><br/><b>Learn something new</b><br/><span style={{fontSize: '20px'}}>in five minutes or less!</span><br/></div>
+          <CategoriesBar />
+      	  <VideoGrid />
         {this.props.checkVideoDuration === true ? durationCheck : ''}
   	  </div>
   	);

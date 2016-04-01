@@ -8,10 +8,11 @@
   margin: auto; 
 }
 #sheet {
-  background-color : white;
+  background-color : #f0f0f5;
   width : 1200px;
   padding: 40px;
   margin: 0px;
+  padding-top: 5px;
 }
 #sheett {
   background-color : #8BC34A;
@@ -34,17 +35,18 @@
 }
 
 #PlayerPage {
-background-color : white;
-padding: 30px 20px 20px 20px;
+background-color : #f0f0f5;
 }
+
 #Playercover {
-  background-color : white;
+  background-color : #f0f0f5;
   width : 1200px;
-  height: 700px;
+  height: 380px;
   padding-left: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   margin:auto;
+  margin-top: 0px;
   margin-bottom: 0px;
 
 }
@@ -212,7 +214,7 @@ body {
 }
 
 body {
-  background-color: white;
+  background-color: #f0f0f5;
 }
 
 #HomePage {
@@ -224,20 +226,13 @@ padding: 0px 0px 0px 0px;
   background-color: white;
 }
 
-.VideoPlayer {
-  margin: auto;
-}
-
-.VideoPlayer {
-  width: 75%;
-}
 
 .Votes {
   width: 25%;
 }
 
 title {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 p {
@@ -253,4 +248,43 @@ p {
 
 div span.downvotes {
   margin-left: 70px;
+}
+
+.info {
+  font-size: : 200px;
+  background-color: #f0f0f5;
+  padding-bottom: 37px;
+  margin: auto;
+  text-align:center
+}
+
+.tabs {
+  background-color: #f0f0f5;
+}
+
+.feedback {
+  background-color: white;
+  width: 100%;
+}
+
+#attachmentVideo_html5_api {
+
+}
+
+.videoplayer {
+  margin-left: 225px;
+  background-color: #f0f0f5;
+}
+
+.feedback {
+  width: 80%;
+  margin: auto;
+}
+
+.side {
+  width: 80%;
+  height: 100px;
+  margin: auto;
+  background-color: #f0f0f5;
+  margin-bottom: 10px;
 }

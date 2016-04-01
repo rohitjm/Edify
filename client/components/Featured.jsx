@@ -21,7 +21,7 @@ export default function Featured({videos, selectVideo}) {
         <div id= 'inner'>
         <GridList
           cols={2}
-          cellHeight={300}
+          cellHeight={400}
           padding={0}
         >
         <GridTile

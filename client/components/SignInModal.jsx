@@ -26,9 +26,11 @@ export default class SignInModal extends Component {
           closeModal();
           authErrorReset();
         }}
+        style={{color: '#ff4f1a'}}
       />,
       <FlatButton
         label='Submit'
+        style={{color: '#303F9F'}}
         onClick={() => {
           signIn({username: this.refs.username.getValue(), password: this.refs.password.getValue()});
         }}

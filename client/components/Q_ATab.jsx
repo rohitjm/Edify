@@ -30,8 +30,10 @@ export default class Q_ATab extends Component {
         { questions.map(function (question){
           return(
             <div>
-                <h3 style={{fontSize: ''}}> {question.asker}: {question.question} </h3>
-                <h3> {question.answer ? "A: "+question.answer : ""} </h3>
+                <hr/>
+                <h3 style={{fontFamily: 'Raleway', margin: '0px', marginLeft: '50px', fontSize: '20px', color: '#303F9F'}}> {question.asker} </h3>
+                <h3 style={{fontFamily: 'Raleway', margin: '0px', marginLeft: '50px'}}> {question.question} </h3>
+                <h4 style={{fontFamily: 'Raleway', margin: '0px', marginLeft: '85px', color: '#a6a6a6', fontStyle: 'italic'}}> {question.answer ? question.answer : ""} </h4>
               {/*
                 If current user is creator of current video, and either answerEdit hasn't been set yet (starts as an object, have to
                 check this before checking length) or the question isn't being edited currently, the 'Answer' (or 'Edit')
@@ -39,8 +41,8 @@ export default class Q_ATab extends Component {
               */}
               {
                 (userid === video_userid && (typeof answerEdit === 'object' || answerEdit.length === 0)) ? (question.answer ?
-                <RaisedButton label="Edit" onClick={() => showAnswerEdit(question.id)}/> :
-                <RaisedButton label="Answer" onClick={() => showAnswerEdit(question.id)}/>) : ""
+                <RaisedButton label="Edit" style={{marginLeft: '490px'}} labelColor='#f0f0f5' backgroundColor='#ff4f1a' onClick={() => showAnswerEdit(question.id)}/> :
+                <RaisedButton label="Answer" style={{marginLeft: '490px'}} labelColor='#f0f0f5' backgroundColor='#ff4f1a' onClick={() => showAnswerEdit(question.id)}/>) : ""
               }
               {/*
                 If answerEdit is equal to the current question's id (user is 'Answer'ing this question) a text field with associated 'Submit'
@@ -53,11 +55,12 @@ export default class Q_ATab extends Component {
                   defaultValue={question.answer ? question.answer : ""}
                   multiLine={true}
                   rows={1}
+                  style={{marginLeft: '50px', width: '300px'}}
                   rowsMax={5}
                   ref='answer'
                   />
-                  <RaisedButton label="Submit" onClick={() => addAnswer(_this.refs.answer.getValue(), question.id, videoid)}/>
-                  <RaisedButton label="Cancel" onClick={() => hideAnswerEdit()}/>
+                  <RaisedButton label="Submit" style={{marginLeft: '45px'}} labelColor='#f0f0f5' backgroundColor='#ff4f1a'onClick={() => addAnswer(_this.refs.answer.getValue(), question.id, videoid)}/>
+                  <RaisedButton label="Cancel" style={{marginLeft: '5px'}} labelColor='#f0f0f5' backgroundColor='#ff4f1a'onClick={() => hideAnswerEdit()}/>
                 </div>) : ""
               }
             </div>
@@ -68,17 +71,16 @@ export default class Q_ATab extends Component {
     }
 
     return (
-      <div>
+      <div className='feedback'>
         <TextField
           hintText="Enter a question..."
           multiLine={true}
-          rows={1}
           rowsMax={5}
           ref='question'
           underlineShow={false}
-          style={{backgroundColor: '#eef7ee', paddingLeft: '7px', height: '38px'}} hintStyle={{paddingTop: '4px', height: '19px'}}
+          style={{backgroundColor: '#f0f0f5', paddingLeft: '7px', height: '100px', width: '525px', marginLeft: '50px', marginTop: '25px'}} hintStyle={{paddingTop: '4px', height: '19px'}}
         />
-        <RaisedButton label="Submit" onClick={() => addQuestion(this.refs.question.getValue(), asker, videoid, userid)}/>
+        <RaisedButton label="Submit" style={{marginLeft: '490px'}} labelColor='#f0f0f5' backgroundColor='#ff4f1a' onClick={() => addQuestion(this.refs.question.getValue(), asker, videoid, userid)}/>
         {questionsFound}
       </div>
     )
