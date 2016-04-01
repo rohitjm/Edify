@@ -59,7 +59,7 @@ export default class UploadModal extends Component {
     const actions = [
       <FlatButton
         label='Cancel'
-        secondary={true}
+        style={{color: '#ff4f1a'}}
         onClick={() => {
           closeModal();
           videoValidatedReset();
@@ -68,6 +68,7 @@ export default class UploadModal extends Component {
       <FlatButton
         label='Submit'
         disabled={videoIsValidated === true ? false : true}
+        style={{color: '#303F9F'}}
         onClick={() => {
           submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId});
           videoValidatedReset();

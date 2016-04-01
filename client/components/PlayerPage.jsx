@@ -6,7 +6,6 @@ import DiscussionSection from './DiscussionSection.jsx';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
-import video from 'video.js';
 import $ from 'jquery';
 
 //Component Code
@@ -17,7 +16,7 @@ export class PlayerPage extends Component {
       this.props.loadQuestions(this.props.currentVideo.id);
   }
 
-  /**
+  /*
   shouldComponentUpdate{
 
   }
@@ -28,29 +27,16 @@ export class PlayerPage extends Component {
       return (
 
         <div id = 'PlayerPage'>
-
-        <GridList
-          padding={0}
-          cols={8}
-          cellHeight={255}
-        >
-        <GridTile
-          cols={6}
-          rows={2}
-        >
-          <h3 class="title" style={{fontSize: '30px', marginTop: '0px', marginBottom: '0px'}}>{this.props.currentVideo.title}</h3>
+          <h3 class="title" style={{fontFamily: 'Raleway', fontWeight: 'bold', fontSize: '27px', marginTop: '10px', marginBottom: '0px', marginLeft: '225px'}}>{this.props.currentVideo.title}</h3>
+          <div className='videoplayer'>
           <VideoPlayer currentVideo = {this.props.currentVideo}/>
-        </GridTile>
-        <GridTile
-          cols={2}
-          rows={2}
-        >
-          <h4 class="description" style={{fontSize: '20px', marginTop: '65px', marginBottom: '0px', height: '255px'}}>{this.props.currentVideo.description}</h4>
-          <VotesSection />
-        </GridTile>
-        </GridList>
-
-         
+          </div>
+      
+          <div className='side'>
+            <h4 class="description" style={{float: 'left', fontFamily: 'Raleway', fontSize: '20px', marginBottom: '0px', marginTop: '0px', marginLeft: '95px', height: '100px'}}>{this.props.currentVideo.description}</h4>
+            <VotesSection />
+          </div>
+       
         <h2><DiscussionSection /></h2>
         </div>
 
