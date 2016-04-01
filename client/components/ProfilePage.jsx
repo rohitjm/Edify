@@ -77,7 +77,7 @@ var aboutMeEdit = <form className="aboutMe">
      <GridList
           
           padding={0}
-          cols={8}
+          cols={9}
           cellHeight={700}
         >
         <GridTile
@@ -93,10 +93,12 @@ var aboutMeEdit = <form className="aboutMe">
       </div>
       </GridTile>
      
-      <GridTile cols={6}>
-      <Tabs id = "tabs">
+      <GridTile cols={7}>
+      <Tabs className= "tabs">
         <Tab label="Uploaded Videos" onClick={ () => this.props.fetchUploadedVideos(this.props.user)}>
+         
           <VideoGrid />
+
         </Tab>
         <Tab label="Watch List" onClick={ () => this.props.fetchWatchList(this.props.user.id)}>
           <VideoGrid />
