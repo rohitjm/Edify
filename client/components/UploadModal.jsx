@@ -53,7 +53,7 @@ export default class UploadModal extends Component {
       maxWidth: 'none',
     };
 
-    let videoUrl;
+
     let coverUrl;
 
     const actions = [
@@ -72,7 +72,7 @@ export default class UploadModal extends Component {
         disabled={videoIsValidated === true ? false : true}
         style={{color: '#303F9F'}}
         onClick={() => {
-          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categorySelected});
+          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoURL, categoryId: categorySelected});
           videoValidatedReset();
           categoriesMenu({});
         }}
@@ -118,8 +118,8 @@ export default class UploadModal extends Component {
             }}
             onFinish={(videoResponse) => {
               var filename = videoResponse.filename;
-              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
-              startVideoDurationCheck(videoUrl, filename);
+              videoURL = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
+              startVideoDurationCheck(videoURL, filename);
               stopUploadProgress();
             }}
           /></div>

@@ -37,6 +37,7 @@ export default function Featured({videos, selectVideo}) {
         <GridTile
           onClick = {() => selectVideo(currentVideo2)}
           key={2}
+          style={{fontFamily: 'Raleway'}}
           title={currentVideo2.title}
           style={{fontFamily: 'Raleway'}}
           subtitle={'by ' + currentVideo2.description}
