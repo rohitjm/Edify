@@ -23,11 +23,12 @@ export default class SignInModal extends React.Component {
     const actions = [
       <FlatButton
         label='Cancel'
-        secondary={true}
+        style={{color: '#ff4f1a'}}
         onClick={this.props.closeModal}
       />,
       <FlatButton
         label='Submit'
+        style={{color: '#303F9F'}}
         onClick={() => {
           this.props.signIn({username: this.refs.username.getValue(), password: this.refs.password.getValue()})
         }}

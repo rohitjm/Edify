@@ -11,7 +11,9 @@ class DiscussionSection extends Component {
 
   render() {
     return (
-      <Tabs>
+      <Tabs
+        className='tabs'
+      >
         <Tab label="Feedback">
           <FeedbackTab addFeedback={this.props.addFeedback}
             feedback={this.props.feedback}
