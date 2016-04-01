@@ -164,6 +164,15 @@ const AuthError = (state = {}, action) => {
   }
 }
 
+const CategoriesMenu = (state = {}, action) => {
+  switch(action.type) {
+    case 'CATEGORIES_MENU_CHANGE':
+      return action.categoryid
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -178,7 +187,8 @@ const VideoAppHandler = combineReducers({
   answerEdit: ToggleAnswerEdit,
   checkVideoDuration: CheckVideoDuration,
   videoIsValidated: VideoIsValidated,
-  authError: AuthError
+  authError: AuthError,
+  categoriesMenu: CategoriesMenu
 });
 
 export default VideoAppHandler;
