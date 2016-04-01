@@ -347,6 +347,7 @@ export const videoValidatedReset = () => {
 
 export const categoriesMenu = (categoryid) => {
   return {
-    type: 'CATEGORIES_MENU_CHANGE'
+    type: 'CATEGORIES_MENU_CHANGE',
+    categoryid: categoryid
   }
 }
