@@ -100,7 +100,7 @@ export const signUpUser = (user) => {
         dispatch(signInUser(user));
         dispatch(changeUser(response));
         dispatch(authError(null));
-        dispatch(hideSignInModal());
+        dispatch(hideSignUpModal());
       }, (error) =>
       {
         dispatch(authError(error.responseText));
