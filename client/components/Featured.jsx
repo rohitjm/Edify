@@ -28,7 +28,7 @@ export default function Featured({videos, selectVideo}) {
           onClick = {() => selectVideo(currentVideo1)}
           key={1}
           title={currentVideo1.title}
-          subtitle={'by ' + currentVideo1.description}
+          subtitle={'by ' + currentVideo1.userName}
           cols={1}
         >
           <img className='featuredVideo' src={currentVideo1.cover} />
@@ -37,7 +37,7 @@ export default function Featured({videos, selectVideo}) {
           onClick = {() => selectVideo(currentVideo2)}
           key={2}
           title={currentVideo2.title}
-          subtitle={'by ' + currentVideo2.description}
+          subtitle={'by ' + currentVideo2.userName}
           cols={1}
         >
           <img className='featuredVideo' src={currentVideo2.cover} />
