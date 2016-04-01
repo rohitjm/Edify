@@ -26,6 +26,7 @@ var Video = db.define('Video', {
   description: Sequelize.STRING,
   url:Sequelize.STRING,
   cover:Sequelize.STRING,
+  userName: Sequelize.STRING,
   upVotes:Sequelize.INTEGER,
   downVotes:Sequelize.INTEGER
 });
