@@ -1,4 +1,4 @@
-FROM node:argon
+FROM node:5.0.0
 
 #install Node modules
 RUN apt-get update 
@@ -16,5 +16,5 @@ COPY . /usr/src/app
 #NPM install
 RUN npm install
 
-EXPOSE 8000
+EXPOSE 80
 CMD [ "npm","start" ]
